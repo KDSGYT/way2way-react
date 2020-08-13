@@ -3,7 +3,7 @@ import './AgencyItem.scss'
 const AgencyItem = ({ data }) => {
 
     const { id, name, phone, email, address, branch, website, parttime, fulltime, verified } = data
-
+  
     return (
         <div className="agency-item">
 
@@ -15,7 +15,6 @@ const AgencyItem = ({ data }) => {
             <li>{address}</li>
             <li>{branch}</li>
             <li><a href={website}>{website}</a></li>
-            
             <br/>
         </div>
     )
