@@ -1,0 +1,17 @@
+.agency-item {
+    color:white;
+
+    display: grid;
+    grid-template-columns: 1.5% 15% 3% 10% 13% 16% 10% 10% ;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    height: 100%;
+    margin:10px;
+    margin-left:-1%;
+    li {
+        // border:  1px solid white;
+        list-style-type: none;
+        display: inline-block;
+
+    }
+}

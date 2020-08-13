@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Home from './views/home/Home';
+import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Axios from 'axios';
 
 function App() {
+
+  const [data, setData] = useState([""])
+
+  useEffect(() => {
+    const url = "http://localhost:8080/api/agency"
+    Axios.get(url)
+      .then(response => setData(response.data))
+      .catch(err => console.log(err.message))
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Home list={data} />
     </div>
   );
 }
