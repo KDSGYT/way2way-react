@@ -1,17 +1,27 @@
 .agency-item {
     color:white;
-
+    font-size: 1.2rem;
     display: grid;
-    grid-template-columns: 1.5% 15% 3% 10% 13% 16% 10% 10% ;
+    grid-template-columns: 1.5% 15% 10% 13% 16% 10% 10% ;
     border-bottom: 1px solid grey;
     width: 100%;
     height: 100%;
+    max-height: 40px;
     margin:10px;
     margin-left:-1%;
+    padding-left: 10px;
     li {
         // border:  1px solid white;
         list-style-type: none;
         display: inline-block;
-
+        a{
+            color:white;
+        }
     }
+}
+
+.stamp{
+    position: absolute;
+    width: 20px;
+    margin-left:5px;
 }

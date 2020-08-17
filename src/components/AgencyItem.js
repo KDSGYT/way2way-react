@@ -1,15 +1,14 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import './AgencyItem.scss'
-const AgencyItem = ({ data }) => {
+import stampIcon from '../assets/stamp.svg';
+const AgencyItem = ({ data, id }) => {
 
-    const { id, name, phone, email, address, branch, website, parttime, fulltime, verified } = data
-  
+    const { name, phone, email, address, branch, website, verified } = data
+    const stamp = verified ? <img src={stampIcon} className="stamp" alt="verified" title="verified"/>: null;
     return (
         <div className="agency-item">
-
             <li>{id}</li>    
-            <li>{name}</li>
-            <li>{verified}</li>
+            <li>{name} {stamp}</li>
             <li>{phone}</li>
             <li>{email}</li>
             <li>{address}</li>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 export const Search = ({ setSearchTerm }) => {
 
@@ -26,7 +26,7 @@ export const Search = ({ setSearchTerm }) => {
 
     return (
         <section style={sectionStyle} >
-            <input style={style} onChange={(e) => setSearchTerm(e.target.value)} type="text" placeholder="Search" />
+            <input style={style} onChange={(e) => setSearchTerm(e.target.value)} type="text" placeholder="Try using keywords eg. verified" />
         </section>
     );
 }
