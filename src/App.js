@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './App.scss';
 import Home from './views/home/Home';
 // import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Axios from 'axios';
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
         <Home list={data} />
-        <Footer />
+        {/* <Footer /> */}
     </div>
   );
 }

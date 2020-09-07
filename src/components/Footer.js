@@ -3,7 +3,9 @@ import './Footer.scss'
 function Footer() {
     return(
         <footer >
-            something
+            <ul>
+                <li></li>
+            </ul>
         </footer>
     )
 }

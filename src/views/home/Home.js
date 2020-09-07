@@ -14,7 +14,7 @@ function Home({ list }) {
     const regex = new RegExp('(' + searchTerm + ')', "gi")
     const resultOutput = list.filter(item => {
         if (regex.test(item.name)) return true;
-        if( (item.verified && regex.test("verified")) || (item.parttime && regex.test("parttime")) || (item.fulltime && regex.test("fulltime"))) return true;
+        if ((item.verified && regex.test("verified")) || (item.parttime && regex.test("parttime")) || (item.fulltime && regex.test("fulltime"))) return true;
         return false;
     })
 
@@ -27,22 +27,22 @@ function Home({ list }) {
     }, [searchTerm])
 
     return (
-        <header>
+        <div className="header">
             <ul>
                 <li><Search setSearchTerm={setSearchTerm} /></li>
                 <div className="agency-item field-name" >
                     <li >id</li>
                     <li >name</li>
                     <li >phone</li>
-                    <li >email</li>
-                    <li >address</li>
+                    {/* <li >email</li> */}
+                    {/* <li >address</li> */}
                     <li >branch</li>
-                    <li >website</li>
+                    {/* <li >website</li> */}
                     <br />
                 </div>
                 {output}
             </ul>
-        </header>
+        </div>
     )
 
 }
