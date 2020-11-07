@@ -34,10 +34,10 @@ function Home({ list }) {
                     <li >id</li>
                     <li >name</li>
                     <li >phone</li>
-                    {/* <li >email</li> */}
-                    {/* <li >address</li> */}
+                    <li >email</li>
+                    <li >address</li>
                     <li >branch</li>
-                    {/* <li >website</li> */}
+                    <li >website</li>
                     <br />
                 </div>
                 {output}

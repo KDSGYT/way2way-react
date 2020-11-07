@@ -10,10 +10,10 @@ const AgencyItem = ({ data, id }) => {
             <li>{id}</li>    
             <li>{name} {stamp}</li>
             <li>{phone}</li>
-            {/* <li>{email}</li> */}
-            {/* <li>{address}</li> */}
+            <li>{email}</li>
+            <li>{address}</li>
             <li>{branch}</li>
-            {/* <li><a href={website}>{website}</a></li> */}
+            <li><a href={website}>{website}</a></li>
             <br/>
         </div>
     )
