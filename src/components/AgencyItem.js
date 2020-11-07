@@ -14,7 +14,7 @@ const AgencyItem = ({ data, id }) => {
             <li>{address}</li>
             <li>{branch}</li>
             <li><a href={"https://" + website}>{website}</a></li>
-            <br />
+            <br/>
         </div>
     )
 }
