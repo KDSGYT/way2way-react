@@ -10,11 +10,15 @@ function App() {
   const [data, setData] = useState([""])
 
   useEffect(() => {
-    const url = "http://localhost:8080/api/agency"
-    Axios.get(url)
+    const url = "http://www.way2way.in/api/wp-json/mo/v1/agencyList"
+    Axios.get(url, {
+      mode:'cors'
+    })
+
       .then(response => setData(response.data))
       .catch(err => console.log(err.message))
-  }, [])
+      // .finally( response => console.log(response))
+    }, [])
 
 
   return (
