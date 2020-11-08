@@ -3,6 +3,7 @@ import './App.scss';
 import Home from './views/home/Home';
 // import { Link, BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Axios from 'axios';
+import { sortDataAlphabetically } from './assets/functions'
 
 function App() {
 
@@ -11,19 +12,19 @@ function App() {
   useEffect(() => {
     const url = "http://www.way2way.in/api/wp-json/mo/v1/agencyList"
     Axios.get(url, {
-      mode:'cors'
+      mode: 'cors'
     })
-
-      .then(response => setData(response.data))
+      .then(res => sortDataAlphabetically(res.data))
+      .then(sortedData => setData(sortedData))
       .catch(err => console.log(err.message))
-      // .finally( response => console.log(response))
-    }, [])
+    // .finally( response => console.log(response))
+  }, [])
 
 
   return (
     <div className="App">
-        <Home list={data} />
-        {/* <Footer /> */}
+      <Home list={data} />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -31,13 +31,13 @@ function Home({ list }) {
             <ul>
                 <li><Search setSearchTerm={setSearchTerm} /></li>
                 <div className="agency-item field-name" >
-                    <li >id</li>
-                    <li >name</li>
-                    <li >phone</li>
-                    <li >email</li>
-                    <li >address</li>
-                    <li >branch</li>
-                    <li >website</li>
+                    <li className="id">ID</li>
+                    <li className="name">Name</li>
+                    <li className="phone">Phone</li>
+                    <li className="email">Email</li>
+                    <li className="address">Address</li>
+                    <li className="branch">Branch</li>
+                    <li className="website">Website</li>
                     <br />
                 </div>
                 {output}

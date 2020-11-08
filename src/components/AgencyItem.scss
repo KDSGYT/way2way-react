@@ -1,8 +1,11 @@
 .agency-item {
     color: white;
     font-size: 1.2rem;
-    display: grid;
-    grid-template-columns: minmax(30px, 1.5%) minmax(300px, 15%) minmax(180px, 10%) minmax(240px, 13%) minmax(400px, 16%) 10% 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    // display: grid;
+    // grid-template-columns: minmax(30px, 1.5%) minmax(300px, 15%) minmax(180px, 10%) minmax(240px, 13%) minmax(400px, 16%) 10% 10%;
     // grid-template-columns: 1.5% 15% 10% 13% 16% 10% 10% ;
     border-bottom: 1px solid grey;
     width: 100%;
@@ -12,11 +15,18 @@
     margin-left: -1%;
     padding-left: 10px;
 
+
+    .id{
+        border:2 solid black;
+        width: 10%;
+    }
+
     li {
         // border:  1px solid white;
+        width: 100%;
         list-style-type: none;
         display: inline-block;
-
+        
         a {
             color: white;
             text-decoration: none;
