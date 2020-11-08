@@ -30,7 +30,7 @@ function Home({ list }) {
         <div className="header">
             <ul>
                 <li><Search setSearchTerm={setSearchTerm} /></li>
-                <div className="agency-item field-name" >
+                <div className="agency-item " id="field-name" >
                     <li className="id">ID</li>
                     <li className="name">Name</li>
                     <li className="phone">Phone</li>

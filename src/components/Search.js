@@ -10,6 +10,7 @@ export const Search = ({ setSearchTerm }) => {
 
     const style = {
         border: "none",
+        borderRadius: "0px",
         borderBottom: "1px solid white",
         backgroundColor: "transparent",
         width: "40%",
