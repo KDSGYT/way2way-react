@@ -11,7 +11,9 @@ const AgencyItem = ({ data, id }) => {
         <div className="agency-item">
             <li className="id">{id}</li>
             <li className="name">{name} {stamp}</li>
-            <li className="phone">{phone}</li>
+            <li className="phone">
+                <a href={`tel:${phone}`}>{phone}</a>
+            </li>
             <li className="email">{email}</li>
             <li className="address">{address}</li>
             <li className="branch">{branch}</li>
