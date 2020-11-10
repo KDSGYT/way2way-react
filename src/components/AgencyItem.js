@@ -10,12 +10,12 @@ const AgencyItem = ({ data, id }) => {
     return (
         <div className="agency-item">
             <li className="id">{id}</li>
-            <li>{name} {stamp}</li>
-            <li>{phone}</li>
-            <li>{email}</li>
-            <li>{address}</li>
-            <li>{branch}</li>
-            <li><a href={"https://" + website}>{website}</a></li>
+            <li className="name">{name} {stamp}</li>
+            <li className="phone">{phone}</li>
+            <li className="email">{email}</li>
+            <li className="address">{address}</li>
+            <li className="branch">{branch}</li>
+            <li className="website"><a href={"https://" + website}>{website}</a></li>
             <br />
         </div>
     )

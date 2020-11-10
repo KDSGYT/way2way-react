@@ -15,7 +15,8 @@ function Home({ list }) {
     const resultOutput = list.filter(item => {
         if (regex.test(item.name)) return true;
         if ((item.verified && regex.test("verified")) || (item.parttime && regex.test("parttime")) || (item.fulltime && regex.test("fulltime"))) return true;
-        return false;
+        if ( (regex.test(item.branch)) ) return true;
+            return false;
     })
 
     useEffect(() => {
