@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Home.scss'
-import AgencyItem from '../../components/AgencyItem'
+import AgencyItem from '../../components/AgencyItem/AgencyItem'
 import { Search } from '../../components/Search'
 
 function Home({ list }) {
