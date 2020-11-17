@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './Home.scss'
-import AgencyItem from '../../components/AgencyItem'
+import AgencyItem from '../../components/AgencyItem/AgencyItem'
 import { Search } from '../../components/Search'
-
-function Home({ list }) {
+import Loading from '../../components/Loading/Loading'
+function Home({ list, isLoading }) {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [result, setResult] = useState([]);
@@ -15,6 +15,7 @@ function Home({ list }) {
     const resultOutput = list.filter(item => {
         if (regex.test(item.name)) return true;
         if ((item.verified && regex.test("verified")) || (item.parttime && regex.test("parttime")) || (item.fulltime && regex.test("fulltime"))) return true;
+        if ((regex.test(item.branch))) return true;
         return false;
     })
 
@@ -26,6 +27,7 @@ function Home({ list }) {
         setResult(resultOutput)
     }, [searchTerm])
 
+    
     return (
         <div className="header">
             <ul>
@@ -40,11 +42,12 @@ function Home({ list }) {
                     <li className="website">Website</li>
                     <br />
                 </div>
-                {output}
+                {isLoading ? <Loading />: output}
             </ul>
         </div>
     )
 
 }
+
 
 export default Home;

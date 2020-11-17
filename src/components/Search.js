@@ -18,7 +18,7 @@ export const Search = ({ setSearchTerm }) => {
         outline: "none",
         height: "40px",
         color: "white",
-        fontSize: "1.2rem",
+        fontSize: "1rem",
         padding: "0 5px",
         margin: "auto 30%",
         // marginLeft:"%",
@@ -27,7 +27,12 @@ export const Search = ({ setSearchTerm }) => {
 
     return (
         <section style={sectionStyle} >
-            <input style={style} onChange={(e) => setSearchTerm(e.target.value)} type="text" placeholder="Try using keywords eg. verified" />
+            <input 
+                style={style} 
+                onChange={(e) => setSearchTerm(e.target.value)} 
+                type="text" 
+                placeholder={"Try \" Verified \" "} 
+            />
         </section>
     );
 }
