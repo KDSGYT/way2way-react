@@ -8,6 +8,7 @@ import { sortDataAlphabetically } from './assets/functions'
 function App() {
 
   const [data, setData] = useState([""])
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     const url = "http://www.way2way.in/api/wp-json/mo/v1/agencyList"
@@ -15,7 +16,7 @@ function App() {
       mode: 'cors'
     })
       .then(res => sortDataAlphabetically(res.data))
-      .then(sortedData => setData(sortedData))
+      .then(sortedData => {setData(sortedData); setisLoading(false)})
       .catch(err => console.log(err.message))
     // .finally( response => console.log(response))
   }, [])
@@ -23,7 +24,10 @@ function App() {
 
   return (
     <div className="App">
-      <Home list={data} />
+      <Home 
+        list={data} 
+        isLoading={isLoading} 
+      />
       {/* <Footer /> */}
     </div>
   );
