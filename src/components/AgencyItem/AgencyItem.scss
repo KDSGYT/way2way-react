@@ -1,26 +1,32 @@
+@import '../../assets/Variables.scss';
+
 .agency-item {
     color: white;
+    background: transparent;
     font-size: 1.2rem;
     font-weight: 300;
     border-bottom: 1px solid grey;
-    
+
     text-align: left;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    .id{
+
+    .id {
         width: 10%;
         min-width: 2ch;
     }
+
     li {
         width: 80%;
         // border: 2px solid black;
-        padding:10px;
+        padding: 10px;
         // min-width: auto;
         list-style-type: none;
         display: inline-block;
         margin: auto;
         overflow: hidden;
+
         a {
             color: white;
             text-decoration: none;
@@ -32,6 +38,15 @@
     position: absolute;
     width: 20px;
     margin-left: 5px;
+}
+
+@media all and (min-width:480px) {
+    .hoverAnimation {
+        &:hover {
+            background-color: $hoverBackgroundColor;
+
+        }
+    }
 }
 
 @media all and (max-width:480px) {

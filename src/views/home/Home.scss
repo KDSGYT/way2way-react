@@ -1,15 +1,19 @@
 .header {
     margin: 0;
     padding: 0;
-    
+
     ul {
         list-style-type: none;
         padding: 10px;
+
         #field-name {
             text-align: center;
         }
-        .id{
+
+        .id {
             display: hidden;
         }
+
+        
     }
 }
