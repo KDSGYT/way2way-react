@@ -3,6 +3,7 @@ import './Home.scss'
 import AgencyItem from '../../components/AgencyItem/AgencyItem'
 import { Search } from '../../components/Search'
 import Loading from '../../components/Loading/Loading'
+
 function Home({ list, isLoading }) {
 
     const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +28,7 @@ function Home({ list, isLoading }) {
         setResult(resultOutput)
     }, [searchTerm])
 
-    
+
     return (
         <div className="header">
             <ul>
@@ -42,7 +43,8 @@ function Home({ list, isLoading }) {
                     <li className="website">Website</li>
                     <br />
                 </div>
-                {isLoading ? <Loading />: output}
+                    {isLoading ? <Loading /> : output}
+
             </ul>
         </div>
     )

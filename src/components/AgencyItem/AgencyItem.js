@@ -6,7 +6,7 @@ const AgencyItem = ({ data, id }) => {
     const stamp = verified ? <img src={stampIcon} className="stamp" alt="verified" title="verified" /> : null;
 
     return (
-        <div className="agency-item">
+        <div className="hoverAnimation agency-item" >
             <li className="id">{id}</li>
             <li className="name">{name} {stamp}</li>
             <li className="phone">
