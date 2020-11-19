@@ -4,8 +4,9 @@ export const Search = ({ setSearchTerm }) => {
 
     const sectionStyle = {
         // border:"2px solid black",
-        width: "100%",
-        marginLeft: "-1%"
+        // width: "100%",
+        // display: "flex"
+        // marginLeft: "-1%"
     }
 
     const style = {
@@ -13,16 +14,15 @@ export const Search = ({ setSearchTerm }) => {
         borderRadius: "0px",
         borderBottom: "1px solid white",
         backgroundColor: "transparent",
-        width: "40%",
+        width: "25vw",
+        minWidth:"300px",
         textAlign: "center",
         outline: "none",
         height: "40px",
         color: "white",
         fontSize: "1rem",
         padding: "0 5px",
-        margin: "auto 30%",
-        // marginLeft:"%",
-
+        letterSpacing:"1px"
     }
 
     return (
@@ -31,7 +31,7 @@ export const Search = ({ setSearchTerm }) => {
                 style={style} 
                 onChange={(e) => setSearchTerm(e.target.value)} 
                 type="text" 
-                placeholder={"Try \" Verified \" "} 
+                placeholder={"Type \" Verified \" "} 
             />
         </section>
     );

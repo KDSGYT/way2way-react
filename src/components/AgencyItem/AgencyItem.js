@@ -12,7 +12,9 @@ const AgencyItem = ({ data, id }) => {
             <li className="phone">
                 <a href={`tel:${phone}`}>{phone}</a>
             </li>
-            <li className="email">{email}</li>
+            <li className="email">
+                <a href={`mailto:${email}`} >{email}</a>
+            </li>
             <li className="address">{address}</li>
             <li className="branch">{branch}</li>
             <li className="website"><a href={"https://" + website}>{website}</a></li>

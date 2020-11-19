@@ -32,7 +32,7 @@ function Home({ list, isLoading }) {
     return (
         <div className="header">
             <ul>
-                <li><Search setSearchTerm={setSearchTerm} /></li>
+                <li id="search-input"><Search setSearchTerm={setSearchTerm} /></li>
                 <div className="agency-item " id="field-name" >
                     <li className="id">ID</li>
                     <li className="name">Name</li>
