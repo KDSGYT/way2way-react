@@ -36,8 +36,13 @@ function Stories() {
         <section id="stories">
             <h3 id="heading">Stories</h3>
             {/* {stories} */}
+
             <Story
                 firstName={"1"}
+            />
+
+            <Story
+                firstName={"2"}
             />
         </section>
     )
