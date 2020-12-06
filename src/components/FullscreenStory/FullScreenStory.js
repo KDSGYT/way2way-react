@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './FullScreenStory.scss';
 import gsap from 'gsap';
 
@@ -19,13 +19,13 @@ function FullScreenStory({ fullScreen, setshowfullScreen, image }) {
         if (fullScreen === true) goFullScreenAnimation.play();
         setTimeout(() => (setshowfullScreen(false)), 7000)
         return (() => (goFullScreenAnimation.reverse()))
-    }, [fullScreen, goFullScreenAnimation])
+    }, [fullScreen, goFullScreenAnimation,setshowfullScreen])
 
 
     return (
         <section id="fullscreen-story">
             <div id="image-container" >
-                <img src={image}/>
+                <img src={image} alt="Some story" />
             </div>
         </section>
     )

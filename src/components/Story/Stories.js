@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Stories.scss';
 import Story from './Story';
-import { useGetStories } from '../../assets/StoryHooks';
+// import { useGetStories } from '../../assets/StoryHooks';
 
 function Stories() {
     // const storyData = useCreateStory(firstName, lastName, image)
