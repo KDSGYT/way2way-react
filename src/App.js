@@ -2,24 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './App.scss';
 import Home from './views/home/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Axios from 'axios';
+// import Axios from 'axios';
 import { sortDataAlphabetically } from './assets/functions';
 import AddData from './views/AddData/AddData';
 // import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { firestore } from './Util/firebase';
+import Login from './components/Login/Login';
 function App() {
 
   const [data, setData] = useState([""])
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
-    const url = "http://www.way2way.in/api/wp-json/mo/v1/agencyList"
-    Axios.get(url, {
-      mode: 'cors'
-    })
-      .then(res => sortDataAlphabetically(res.data))
-      .then(sortedData => { setData(sortedData); setisLoading(false) })
+    firestore.collection('agencies').get()
+      .then(res => res.docs.map(doc => doc.data()))// extract data from the response
+      .then(res => sortDataAlphabetically(res))// sort the data alphabetically
+      .then(sortedData => { setData(sortedData); setisLoading(false) }) // change the DATA state to display the data
       .catch(err => console.log(err.message))
-    // .finally( response => console.log(response))
   }, [])
 
 
@@ -35,6 +34,7 @@ function App() {
             {/* <Footer /> */}
           </Route>
           <Route exact path="/add-data"  > <AddData /></Route>
+          <Route exact path="/login"><Login /></Route>
         </Switch>
       </div>
     </Router>
