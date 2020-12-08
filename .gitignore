@@ -12,7 +12,11 @@
 /build
 build
 
+#util
+/src/Util
+
 # misc
+
 .DS_Store
 .env.local
 .env.development.local

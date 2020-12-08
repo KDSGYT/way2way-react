@@ -3,13 +3,13 @@ import './Home.scss'
 import AgencyItem from '../../components/AgencyItem/AgencyItem'
 import { Search } from '../../components/Search'
 import Loading from '../../components/Loading/Loading'
-
+// import Stories from '../../components/Story/Stories'
 function Home({ list, isLoading }) {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [result, setResult] = useState([]);
     const output = result.map((item, index) => {
-        return <AgencyItem data={item} id={index + 1} />
+        return <AgencyItem key={index} data={item} id={index + 1} />
     })
 
     const regex = new RegExp('(' + searchTerm + ')', "gi")
@@ -22,34 +22,35 @@ function Home({ list, isLoading }) {
 
     useEffect(() => {
         setResult(list)
+        
     }, [list])
 
     useEffect(() => {
         setResult(resultOutput)
     }, [searchTerm])
 
-
     return (
         <div className="header">
-            <ul>
-                <li id="search-input"><Search setSearchTerm={setSearchTerm} /></li>
-                <div className="agency-item " id="field-name" >
-                    <li className="id">ID</li>
-                    <li className="name">Name</li>
-                    <li className="phone">Phone</li>
-                    <li className="email">Email</li>
-                    <li className="address">Address</li>
-                    <li className="branch">Branch</li>
-                    <li className="website">Website</li>
+            <ul key="list">
+                <li key="search" id="search-input"><Search setSearchTerm={setSearchTerm} /></li>
+                {/* <li >
+                    <Stories />
+
+                </li> */}
+                <div key="agency-item" className="agency-item" id="field-name" >
+                    <li key="id" className="id">ID</li>
+                    <li key="name" className="name">Name</li>
+                    <li key="phone" className="phone">Phone</li>
+                    <li key="email" className="email">Email</li>
+                    <li key="address" className="address">Address</li>
+                    <li key="branch" className="branch">Branch</li>
+                    <li key="website" className="website">Website</li>
                     <br />
                 </div>
-                    {isLoading ? <Loading /> : output}
-
+                {isLoading ? <Loading key="loadingConponent" /> : output}
             </ul>
         </div>
     )
-
 }
-
 
 export default Home;

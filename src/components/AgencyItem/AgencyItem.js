@@ -7,17 +7,17 @@ const AgencyItem = ({ data, id }) => {
 
     return (
         <div className="hoverAnimation agency-item" >
-            <li className="id">{id}</li>
-            <li className="name">{name} {stamp}</li>
-            <li className="phone">
+            <li key="id" className="id">{id}</li>
+            <li key="name" className="name">{name} {stamp}</li>
+            <li key="phone" className="phone">
                 <a href={`tel:${phone}`}>{phone}</a>
             </li>
-            <li className="email">
+            <li key="email" className="email">
                 <a href={`mailto:${email}`} >{email}</a>
             </li>
-            <li className="address">{address}</li>
-            <li className="branch">{branch}</li>
-            <li className="website"><a href={"https://" + website}>{website}</a></li>
+            <li key="address" className="address">{address}</li>
+            <li key="branch" className="branch">{branch}</li>
+            <li key="website" className="website"><a href={"https://" + website}>{website}</a></li>
             <br />
         </div>
     )

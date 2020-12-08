@@ -1,0 +1,26 @@
+#add-data {
+    // border: 2px solid white;
+    height: 100vh;
+    width: 100vw;
+    
+    #heading {
+        color: white;
+        // border:2px solid white;
+        text-align: center;
+    }
+
+    #submission-form {
+        padding:5%;
+        margin: auto;
+        background-color: white;
+        width: 400px;
+        height:40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-color: white;
+        &:first-child{
+            border:2px solid black;
+        }
+    }
+}
