@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import Home from './views/home/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 // import Axios from 'axios';
 import { sortDataAlphabetically } from './assets/functions';
 import AddData from './views/AddData/AddData';
@@ -33,8 +33,8 @@ function App() {
             />
             {/* <Footer /> */}
           </Route>
-          <Route exact path="/add-data"  > <AddData /></Route>
-          <Route exact path="/login"><Login /></Route>
+          <Route path="/add-data"  ><AddData /></Route>
+          <Route path="/login"><Login /></Route>
         </Switch>
       </div>
     </Router>

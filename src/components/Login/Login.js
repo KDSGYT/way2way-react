@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.scss';
-import { firebaseAuth, googleProvider, firestore } from '../../Util/firebase';
+import { firebaseAuth, googleProvider } from '../../Util/firebase';
 import { checkIfAdmin } from '../../assets/functions';
 function Login() {
 
@@ -10,11 +10,7 @@ function Login() {
         firebaseAuth.signInWithPopup(googleProvider)
             .then(data => data.user.uid)
             .then (UID =>  checkIfAdmin(UID, setError, error))
-            .catch(e => console.Error('You need to Login as Admin to get access.'))
-        // <Redirect to="/add-data" />
-        
-
-
+            .catch(e => console.error('You need to Login as Admin to get access.', e.message))
     }, [])
 
     return (
