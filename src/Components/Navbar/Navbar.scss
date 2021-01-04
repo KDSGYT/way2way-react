@@ -11,6 +11,9 @@
     justify-content: center;
     color: white;
     background-color: black;
+    &:after{
+        height: $navbar-height+1;
+    }
     // stroke: linear-gradient(green, yellow);
     
 
