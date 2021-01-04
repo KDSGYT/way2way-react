@@ -1,4 +1,3 @@
-import { firestore } from '../Util/firebase';
 export function sortDataAlphabetically(array) {
     return array.sort((a, b) => {
         var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
