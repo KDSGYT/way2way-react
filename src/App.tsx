@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
-// import { BrowserRouter as Router} from 'react-router-dom';
+import Navbar from './Components/Navbar/Navbar';
+import Home from './views/Home/Home';
+
 function App() {
 
   return (
       <div className="App">
-        <h1> Working</h1>
+        <Navbar />
+        <Home />
       </div>
   );
 }
