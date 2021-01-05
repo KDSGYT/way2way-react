@@ -1,6 +1,4 @@
 import React from 'react';
-import { Graphics } from 'pixi.js'
-import { Stage } from '@inlet/react-pixi'
 
 function Triangle() {
     return (
