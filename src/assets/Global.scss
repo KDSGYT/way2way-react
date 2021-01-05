@@ -5,10 +5,8 @@
     background: #000;
     background-clip: padding-box;
     $border: 3px;
-    /* !importanté */
     border: solid $border transparent;
     border-top: 1px;
-    /* !importanté */
 
     &:after {
         content: '';

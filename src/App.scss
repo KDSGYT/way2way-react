@@ -1,8 +1,52 @@
-@media screen and (max-width:768px) {
-}
+@media screen and (max-width:768px) {}
 
-body{
+body {
     max-width: 3840px;
 }
 
+#agency-area {
+    width: 100vw;
+    top:80vh;
+    height: 50vh;
+    margin: auto;
+    .text{
+        width: 50%;
+        text-align: center;
+        h1{
+            font-size: 4em;
+        }
+        p{
+            margin: auto;
+            font-size: 1.5em;
+            width: 60%;
+        }
+    }
+    #right-triangle{
+        position: absolute;
+        top:70%;
+        right: 0;
+    }
 
+}
+#accomodation-area{
+    height: 60vh;
+    padding-top:6%;
+    .accomodation{
+        // border:2px solid black;
+        width: 50%;
+        float: right;
+        text-align: center;
+        h1{
+            font-size: 4em;
+        }
+        p{
+            margin: auto;
+            font-size: 1.5em;
+            width: 60%;
+        }
+    }
+    #left-triangle{
+        top:140%;
+        position: absolute;
+    }
+}
