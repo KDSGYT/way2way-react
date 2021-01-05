@@ -1,18 +1,63 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 
 function Navbar() {
+
+    const style = {
+        borderBottom: "1px solid white",
+        paddingBottom: "5px"
+    }
+
     return (
         <nav id="navbar" className={"accentstyles"}>
             <div id="navpage-links" className="nav-links-group">
-                <li className="nav-link">HOME</li>
-                <li className="nav-link">AGENCY</li>
-                <li className="nav-link">ACCOMODATION</li>
-                <li className="nav-link">AUTHOR</li>
+                <NavLink
+                    activeStyle={style}
+                    to="/"
+                    exact
+                    className="nav-link"
+                >
+                    HOME
+                </NavLink>
+                <NavLink
+                    activeStyle={style}
+                    to="/agencies"
+                    className="nav-link"
+                >
+                    AGENCY
+            </NavLink>
+                <NavLink
+                    activeStyle={style}
+                    to="/accomodation"
+                    className="nav-link"
+                >
+                    ACCOMODATION
+                </NavLink>
+                <NavLink
+                    activeStyle={style}
+                    to="author"
+                    className="nav-link"
+                >
+                    AUTHOR
+                </NavLink>
             </div>
+
             <div className="nav-links-group" id="account-links">
-                <li className="nav-link">LOGIN</li>
-                <li className="nav-link">SIGNUP</li>
+                <NavLink
+                    to="/login"
+                    className="nav-link"
+                    activeStyle={style}
+                >
+                    LOGIN
+                </NavLink>
+                <NavLink
+                    to="/signup"
+                    className="nav-link"
+                    activeStyle={style}
+                >
+                    SIGNUP
+                </NavLink>
             </div>
         </nav>
     )

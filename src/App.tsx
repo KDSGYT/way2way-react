@@ -6,6 +6,7 @@ import RightTriangle from './Components/LeftTriangle/RightTriangle';
 import Home from './views/Home/Home';
 import AboutSection from './Components/AboutSection/AboutSection';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Author from './views/Author/Author';
 function App() {
 
   return (
@@ -49,6 +50,11 @@ function App() {
           {/* Agecny Route */}
           <Route path="/agencies">
 
+          </Route>
+
+          {/* Author Route */}
+          <Route path="/author">
+            <Author />
           </Route>
         </Switch>
       </div>
