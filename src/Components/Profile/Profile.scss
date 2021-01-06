@@ -1,46 +1,51 @@
+
 #profile {
-    $width: 30vh;
-    $height: 40vh;
+    // $width: 30vh;
+    // $height: 40vh;
     margin: auto;
-    width: $width;
-    height: $height;
-    border: 2px solid black;
+    width: 30vh;
+    height: 40vh;
+    // border: 2px solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     color: white;
-    background-color: black;
+    // background-color: black;
+    background-image: url('../../assets/img/profile.svg') ;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     // border-radius: 1%;
-    background-clip: padding-box;
-    $border: 4px;
-    /* !importanté */
-    border: solid $border transparent;
-    border-top: 1px;
-    /* !importanté */
-    
-    &:after {
-        content: '';
-        // background-color: green;
-        position: absolute;
-        height: $height + 1vh;
-        width: $width + 1.5vh;
-        top: $height - 6.9vh;
-        right: 0;
-        // bottom: 0;
-        left: 41.9%;
-        z-index: -1;
+    // background-clip: padding-box;
+    // $border: 4px;
+    // /* !importanté */
+    // border: solid $border transparent;
+    // border-top: 1px;
+    // /* !importanté */
+    // &:after {
+    //     // content: '';
+    //     // background-color: green;
+    //     position: absolute;
+    //     height: $height + 1vh;
+    //     width: $width + 1.5vh;
+    //     top: $height - 13.3vh;
+    //     // right: 50%;
+    //     // bottom: 0;
+    //     left: 41.9%;
+    //     z-index: -1;
 
-        margin: -$border;
-        /* !importanté */
-        border-radius: inherit;
-        /* !importanté */
-        background: linear-gradient(1.0turn, #F94848 0%, rgba(0, 0, 0, 1) 100%);
-    }
+    //     margin: -$border;
+    //     /* !importanté */
+    //     border-radius: inherit;
+    //     /* !importanté */
+    //     background: linear-gradient(1.0turn, #F94848 0%, rgba(0, 0, 0, 1) 100%);
+    // }
 
 
 
     #profile-image {
-        margin: 8% auto;
+        margin: 10% auto;
+        margin-top: 19%;
         background-image: url("../../assets/img/dp.PNG");
         background-position: center;
         background-size: cover;

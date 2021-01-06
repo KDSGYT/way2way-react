@@ -9,38 +9,42 @@
     text-align: center;
 
     #website-name {
-        height: 9%;
-        width: 20.5%;
+        // height: 9%;
+        // width: 20.5%;
         padding: 1%;
         margin: auto;
         text-align: center;
         color: white;
-        background: #000;
-        background-clip: padding-box;
-        $border: 4px;
-        /* !importanté */
-        border: solid $border transparent;
-        border-top: 1px;
-        /* !importanté */
+        background-image: url('../../assets/img/way2way.svg');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        // background: #000;
+        // background-clip: padding-box;
+        // $border: 4px;
+        // /* !importanté */
+        // border: solid $border transparent;
+        // border-top: 1px;
+        // /* !importanté */
 
-        &:after {
-            content: '';
-            // background-color: green;
-            position: absolute;
-            height: 13%;
-            width: 23.2%;
-            top: 47.1vh;
-            right: 74vh;
-            bottom: 0;
-            left: 74.1vh;
-            z-index: -1;
+        // &:after {
+        //     content: '';
+        //     // background-color: green;
+        //     position: absolute;
+        //     height: 13%;
+        //     width: 23.2%;
+        //     top: 47.1vh;
+        //     right: 74vh;
+        //     bottom: 0;
+        //     left: 74.1vh;
+        //     z-index: -1;
 
-            margin: -$border;
-            /* !importanté */
-            border-radius: inherit;
-            /* !importanté */
-            background: linear-gradient(1.0turn, #F94848 0%, rgba(0, 0, 0, 1) 100%);
-        }
+        //     margin: -$border;
+        //     /* !importanté */
+        //     border-radius: inherit;
+        //     /* !importanté */
+        //     background: linear-gradient(1.0turn, #F94848 0%, rgba(0, 0, 0, 1) 100%);
+        // }
 
         h1 {
             margin: auto;
