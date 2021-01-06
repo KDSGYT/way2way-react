@@ -1,5 +1,6 @@
 @import '../../assets/Global.scss';
 @import '../../assets/Variables.scss';
+
 #navbar {
     // border: 2px solid black;
     list-style-type: none;
@@ -10,12 +11,15 @@
     flex-direction: row;
     justify-content: center;
     color: white;
+    font-weight: 600;
     background-color: black;
-    &:after{
+
+    &:after {
         height: $navbar-height+1;
     }
+
     // stroke: linear-gradient(green, yellow);
-    
+
 
 
     .nav-links-group {
@@ -39,7 +43,8 @@
     .nav-link {
         margin: auto 2%;
     }
-    a{
+
+    a {
         text-decoration: none;
         color: white;
     }
