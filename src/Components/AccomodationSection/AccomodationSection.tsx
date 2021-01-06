@@ -1,6 +1,6 @@
 import React from 'react';
-import RightTriangle from './Triangle/RightTriangle';
-
+// import RightTriangle from './Triangle/RightTriangle';
+import './Accomodation.scss';
 function AccomodationSection() {
     return (
         <section id="accomodation-area">
@@ -8,9 +8,9 @@ function AccomodationSection() {
                 <h1>Accomodation</h1>
                 <p>Ads posted by desis for desis. Find accomodation starting at $350/month</p>
             </div>
-            <span id="left-triangle">
-                <RightTriangle />
-            </span>
+            <div id="left-triangle">
+                
+            </div>
         </section>
     )
 }

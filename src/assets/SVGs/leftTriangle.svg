@@ -1,8 +1,4 @@
-import React from 'react';
-
-function RightTriangle() {
-    return (
-        <svg width="815" height="827" viewBox="0 0 1115 1027" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="815" height="827" viewBox="0 0 1115 1027" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1104.5 699L10 1013L10.0001 13.9999L1104.5 317.5L1104.5 699Z" fill="black" stroke="url(#paint0_linear)" stroke-width="15" />
             <defs>
                 <linearGradient id="paint0_linear" x1="376" y1="1075" x2="540.5" y2="-3.00006" gradientUnits="userSpaceOnUse">
@@ -11,8 +7,3 @@ function RightTriangle() {
                 </linearGradient>
             </defs>
         </svg>
-
-    )
-}
-
-export default RightTriangle;

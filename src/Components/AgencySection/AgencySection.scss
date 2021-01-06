@@ -1,0 +1,41 @@
+#agency-area {
+    width: 100%;
+    height: 50vh;
+    margin: auto;
+    position: relative;
+    
+    .text {
+        // border:2px solid black;
+        width: 50%;
+        // height: 100%;
+        text-align: center;
+
+        h1 {
+            font-size: 4em;
+        }
+
+        p {
+            margin: auto;
+            font-size: 1.5em;
+            width: 60%;
+        }
+
+        
+    }
+    #right-triangle {
+
+    content: "";
+    padding: 0;
+    width: 60%;
+    height: 165%;
+    background-image: url('../../assets/SVGs/righTriangle.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: -9.6%;
+    top:-65%;
+    // bottom: -138%;
+}
+
+}

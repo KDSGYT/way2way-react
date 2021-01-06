@@ -1,0 +1,14 @@
+#left-triangle{
+    content:"";
+    padding: 0;
+    width: 50%;
+    height: 120%;
+    // border:2px solid black;
+    background-image: url('../../assets/SVGs/leftTriangle.svg');
+    background-position: center;
+    background-repeat: no-repeat ;
+    background-size: contain;
+    position: absolute;
+    top: -20%;
+    left:-3%;
+}

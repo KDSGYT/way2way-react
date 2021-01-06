@@ -1,6 +1,5 @@
 import React from 'react';
-import Triangle from './Triangle/Triangle';
-
+import './AgencySection.scss';
 function AgencySection() {
     return (
         <section id="agency-area">
@@ -8,10 +7,10 @@ function AgencySection() {
                 <h1>Agencies</h1>
                 <p>A list of all employment agencies that can help you to survive in Canada as a newcommer</p>
             </div>
-            <span id="right-triangle">
+            <div id="right-triangle">
 
-                <Triangle />
-            </span>
+                {/* <Triangle /> */}
+            </div>
         </section>
     )
 }
