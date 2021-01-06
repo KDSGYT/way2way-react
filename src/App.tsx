@@ -14,6 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
+
         <Switch>
 
           {/* Route for homepage */}
@@ -26,13 +27,13 @@ function App() {
 
           {/* Agecny Route */}
           <Route path="/agencies">
-
           </Route>
 
           {/* Author Route */}
           <Route path="/author">
             <Author />
           </Route>
+
         </Switch>
       </div>
     </Router>

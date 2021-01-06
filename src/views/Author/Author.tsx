@@ -1,8 +1,13 @@
 import React from 'react';
+import Profile from '../../Components/Profile/Profile';
+import './Author.scss';
+
 function Author(){
     return(
-        <h1>kdsgyt</h1>
-    )
+        <section id="author">
+            <Profile />
+        </section>
+        )
 }
 
 export default Author;
