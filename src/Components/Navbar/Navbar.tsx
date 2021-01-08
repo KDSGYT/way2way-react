@@ -46,15 +46,15 @@ function Navbar() {
             <div className="nav-links-group" id="account-links">
                 <NavLink
                     to="/login"
-                    className="nav-link"
                     activeStyle={style}
+                    className="nav-link"
                 >
                     LOGIN
                 </NavLink>
                 <NavLink
                     to="/signup"
-                    className="nav-link"
                     activeStyle={style}
+                    className="nav-link"
                 >
                     SIGNUP
                 </NavLink>

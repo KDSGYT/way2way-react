@@ -10,9 +10,9 @@ function Profile() {
             </div>
             <h1>Karan Pal Singh</h1>
             <ul id="social-media-links">
-                <li>KDSG.Live</li>
-                <li>LinkedIn</li>
-                <li>Github</li>
+                <li id="website"></li>
+                <li id="linked-in">LinkedIn</li>
+                <li id="github">Github</li>
             </ul>
         </div>
     )

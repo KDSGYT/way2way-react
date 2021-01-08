@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AgencySection.scss';
 function AgencySection() {
+    
     return (
         <section id="agency-area">
             <div className="text">

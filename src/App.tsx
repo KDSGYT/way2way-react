@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Author from './views/Author/Author';
 import AgencySection from './Components/AgencySection/AgencySection';
 import AccomodationSection from './Components/AccomodationSection/AccomodationSection';
+import Agency from './views/Agency/Agency';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
 
           {/* Agecny Route */}
           <Route path="/agencies">
+            <Agency />
           </Route>
 
           {/* Author Route */}
