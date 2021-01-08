@@ -1,8 +1,8 @@
-import { firestore } from '../Util/firebase';
+import { firebaseAuth, firestore } from '../Util/firebase';
 
 
-export function sortDataAlphabetically(array:any) {
-    return array.sort((a:any, b:any) => {
+export function sortDataAlphabetically(array: any) {
+    return array.sort((a: any, b: any) => {
         var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
         if (nameA < nameB) //sort string ascending
             return -1;
@@ -12,12 +12,27 @@ export function sortDataAlphabetically(array:any) {
     })
 }
 
-export async function getData(setState:any) {
-    const newState:any = []
+export function createUser(email: string, password: string) {
+    firebaseAuth.createUserWithEmailAndPassword(email, password)
+        .then((user: any) => {
+            // Signed in 
+            console.log(user)
+            // ...
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ..
+        });
+}
+
+
+export async function getData(setState: any) {
+    const newState: any = []
     const data = await firestore.collection('agencies').get()
-    await data.forEach((doc) => newState.push(doc.data()) )
+    await data.forEach((doc) => newState.push(doc.data()))
     setState(newState)
-    return ;
+    return;
 }
 
 // export function checkIfAdmin(UID, setError, error) {

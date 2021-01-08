@@ -19,11 +19,11 @@ function Agency() {
                 <table id="agency-list">
                     <tr id="header">
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone No.</th>
-                        <th>Branch</th>
-                        <th>E-Mail</th>
+                        <th>NAME</th>
+                        <th>ADDRESS</th>
+                        <th>PHONE</th>
+                        <th>BRANCH</th>
+                        <th>E-MAIL</th>
                     </tr>
                     <Suspense fallback={<h1>Loading</h1>}>
                         {list}

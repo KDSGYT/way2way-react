@@ -8,6 +8,8 @@ import Author from './views/Author/Author';
 import AgencySection from './Components/AgencySection/AgencySection';
 import AccomodationSection from './Components/AccomodationSection/AccomodationSection';
 import Agency from './views/Agency/Agency';
+import Login from './views/Login/Login';
+import Signup from './views/Signup/Signup';
 
 function App() {
 
@@ -36,6 +38,16 @@ function App() {
             <Author />
           </Route>
 
+          {/* Login Route */}
+          <Route path="/login">
+            <Login />
+          </Route>
+
+          {/* Signup Route */}
+          <Route>
+            <Signup />
+          </Route>
+          
         </Switch>
       </div>
     </Router>

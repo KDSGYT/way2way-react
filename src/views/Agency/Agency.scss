@@ -22,14 +22,21 @@
             // text-align: left;
             overflow: scroll;
             background-color: black;
+            position: relative;
+            
+            // #header{
 
+            //     position: sticky;
+            //     width: 100%;
+            //     top:0;
+            // }
             tr {
-
+                
                 height: 5vh;
-
                 border: none;
-
                 th {
+                    height: 5vh;
+                    max-height: 5vh;
                     color: white;
                     background-color: black;
                     //   height: 30%;  
