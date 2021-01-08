@@ -1,11 +1,11 @@
-#sign-up{
+#sign-up {
     height: 89vh;
     width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 
-    #sign-up-card{
+    #sign-up-card {
         margin: auto;
         border: 2px solid black;
         height: 70%;
@@ -14,11 +14,8 @@
         flex-direction: column;
         justify-content: space-around;
         padding: 10px;
-        &:nth-child(n){
-            border:2px solid black;
-        }
-        
-        #signup{
+
+        #signup {
             margin: 0 auto;
             width: 20%;
         }

@@ -12,20 +12,29 @@ export function sortDataAlphabetically(array: any) {
     })
 }
 
-export function createUser(email: string, password: string) {
-    firebaseAuth.createUserWithEmailAndPassword(email, password)
-        .then((user: any) => {
+export async function createUser(data: any, password:string) {
+    await firebaseAuth.createUserWithEmailAndPassword(data.email, password)
+        .then(async (user: any) => {
             // Signed in 
-            console.log(user)
-            // ...
+            const UID = user.user.uid;
+            await addUserToDB(UID, data)
         })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            // ..
+            console.log(error)
         });
 }
 
+async function addUserToDB(UID: string, data: any) {
+    const collection = firestore.collection('users');
+    await collection.doc(UID).set(data)
+
+}
+
+function getUserFromDB() {
+
+}
 
 export async function getData(setState: any) {
     const newState: any = []

@@ -9,25 +9,27 @@ function Agency() {
     React.useEffect(() => {
         getData(setData);
     }, [])
-    React.useEffect(() => {
-        console.log(data)
-    }, [data])
+
     const list = sortDataAlphabetically(data).map((item: any, index: number) => <AgencyList id={index + 1} data={item} />)
     return (
         <section id="agencies">
             <div id="container">
                 <table id="agency-list">
-                    <tr id="header">
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>ADDRESS</th>
-                        <th>PHONE</th>
-                        <th>BRANCH</th>
-                        <th>E-MAIL</th>
-                    </tr>
-                    <Suspense fallback={<h1>Loading</h1>}>
-                        {list}
-                    </Suspense>
+                    <thead>
+                        <tr id="header">
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>ADDRESS</th>
+                            <th>PHONE</th>
+                            <th>BRANCH</th>
+                            <th>E-MAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <Suspense fallback={<tr><td><h1>Loading</h1></td></tr>}>
+                            {list}
+                        </Suspense>
+                    </tbody>
                 </table>
             </div>
         </section>

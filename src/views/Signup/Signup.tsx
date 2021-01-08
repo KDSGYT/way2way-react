@@ -4,14 +4,19 @@ import './Signup.scss';
 import { createUser } from '../../assets/functions';
 
 function Signup() {
-    const name = useRef("")
-    const phone = useRef("")
+    const name:any = useRef("")
+    const phone:any = useRef("")
     const password: any = useRef("")
     const email: any = useRef()
 
     function handleClick() {
         // console.log(email.current.value)
-        createUser(email.current.value, password.current.value)
+        const data = {
+            name:name.current.value,
+            email:email.current.value,
+            phone:phone.current.value
+        }
+        createUser(data, password.current.value)
     }
 
     return (
