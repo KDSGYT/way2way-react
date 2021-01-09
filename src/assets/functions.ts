@@ -12,28 +12,40 @@ export function sortDataAlphabetically(array: any) {
     })
 }
 
-export async function createUser(data: any, password:string) {
+export async function createUser(data: any, password: string) {
     await firebaseAuth.createUserWithEmailAndPassword(data.email, password)
-        .then(async (user: any) => {
-            // Signed in 
-            const UID = user.user.uid;
-            await addUserToDB(UID, data)
-        })
+        .then( (user: any) => user.user.uid)
+        .then(async (UID:string)=> await addUserToDB(UID, data))
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(error)
+            console.error(error)
         });
 }
 
 async function addUserToDB(UID: string, data: any) {
     const collection = firestore.collection('users');
     await collection.doc(UID).set(data)
-
 }
 
-function getUserFromDB() {
+export async function loginUser(email: string, password: string) {
+    await firebaseAuth.signInWithEmailAndPassword(email, password)
+        .then((user: any) => {console.log(user.user.uid); return user.user.uid})
+        .then(async (UID:string) => await getUserFromDB(UID))
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.error(error)
+        });
+}
 
+async function getUserFromDB(UID:string) {
+    const DataRef = firestore.collection('users').doc(UID);
+    const doc = await DataRef.get()
+    if(!doc.exists){console.log('no such document')}
+    else {
+        console.log(doc.data())
+    }
 }
 
 export async function getData(setState: any) {
