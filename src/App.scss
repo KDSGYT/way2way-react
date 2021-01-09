@@ -4,26 +4,3 @@ body {
     max-width: 3840px;
 }
 
-
-#accomodation-area {
-    height: 60vh;
-    padding-top: 6%;
-    position: relative;
-
-    .accomodation {
-        // border:2px solid black;
-        width: 50%;
-        float: right;
-        text-align: center;
-
-        h1 {
-            font-size: 4em;
-        }
-
-        p {
-            margin: auto;
-            font-size: 1.5em;
-            width: 60%;
-        }
-    }
-}

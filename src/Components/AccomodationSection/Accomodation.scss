@@ -1,14 +1,38 @@
-#left-triangle{
-    content:"";
-    padding: 0;
-    width: 50%;
-    height: 120%;
-    // border:2px solid black;
-    background-image: url('../../assets/SVGs/leftTriangle.svg');
-    background-position: center;
-    background-repeat: no-repeat ;
-    background-size: contain;
-    position: absolute;
-    top: -20%;
-    left:-3%;
+
+#accomodation-area {
+    height: 60vh;
+    padding-top: 6%;
+    position: relative;
+
+    .accomodation {
+        // border:2px solid black;
+        width: 50%;
+        float: right;
+        text-align: center;
+
+        h1 {
+            font-size: 4em;
+        }
+
+        p {
+            margin: auto;
+            font-size: 1.5em;
+            width: 60%;
+        }
+    }
+    #left-triangle{
+        content:"";
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        height: 144%;
+        position: absolute;
+        // border:2px solid black;
+        background-image: url('../../assets/SVGs/leftTriangle.svg');
+        background-position: center;
+        background-repeat: no-repeat ;
+        background-size: contain;
+        top: -30%;
+        left:-2.7%;
+    }
 }
