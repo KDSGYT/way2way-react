@@ -28,10 +28,10 @@ async function addUserToDB(UID: string, data: any) {
     await collection.doc(UID).set(data)
 }
 
-export async function loginUser(email: string, password: string) {
+export async function loginUser(email: string, password: string, setState:any) {
     await firebaseAuth.signInWithEmailAndPassword(email, password)
         .then((user: any) => {console.log(user.user.uid); return user.user.uid})
-        .then(async (UID:string) => await getUserFromDB(UID))
+        .then(async (UID:string) => await getUserFromDB(UID,setState))
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -39,11 +39,12 @@ export async function loginUser(email: string, password: string) {
         });
 }
 
-async function getUserFromDB(UID:string) {
+async function getUserFromDB(UID:string,setState:any) {
     const DataRef = firestore.collection('users').doc(UID);
     const doc = await DataRef.get()
     if(!doc.exists){console.log('no such document')}
     else {
+        setState(doc.data())
         console.log(doc.data())
     }
 }

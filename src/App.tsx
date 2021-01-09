@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './views/Home/Home';
@@ -10,13 +10,21 @@ import AccomodationSection from './Components/AccomodationSection/AccomodationSe
 import Agency from './views/Agency/Agency';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
+import UserCTX from './CTX/CTX'
 
 function App() {
+  const [userData, setUserData] = useState({})
 
+  const value = { userData, setUserData }
+  React.useEffect(() => {
+    console.log(`userdata: ${userData}`)
+  }, [userData]);
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <UserCTX.Provider value={value}>
+          <Navbar />
+        </UserCTX.Provider>
 
         <Switch>
 
@@ -38,16 +46,20 @@ function App() {
             <Author />
           </Route>
 
-          {/* Login Route */}
-          <Route path="/login">
-            <Login />
-          </Route>
+          <UserCTX.Provider value={userData}>
 
-          {/* Signup Route */}
-          <Route>
-            <Signup />
-          </Route>
-          
+            {/* Login Route */}
+            <Route path="/login">
+              <Login />
+            </Route>
+
+            {/* Signup Route */}
+            <Route>
+              <Signup />
+            </Route>
+
+          </UserCTX.Provider>
+
         </Switch>
       </div>
     </Router>
