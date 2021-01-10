@@ -11,6 +11,7 @@ import Agency from './views/Agency/Agency';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import UserCTX from './CTX/CTX'
+import NOTFOUND from './views/404/404';
 
 function App() {
   const [userData, setUserData] = useState({})
@@ -53,7 +54,9 @@ function App() {
               <Signup />
             </Route>
 
-
+            <Route>
+              <NOTFOUND />
+            </Route>
           </Switch>
         </UserCTX.Provider>
       </div>
