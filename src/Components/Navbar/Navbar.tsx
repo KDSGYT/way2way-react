@@ -59,6 +59,7 @@ function Navbar() {
                 >
                     SIGNUP
                 </NavLink>
+                {/* will display the username in navbar when the user is logged in */}
                 <UserCTX.Consumer>
                     {(value: any) => {
                         if (value.userData.name) {

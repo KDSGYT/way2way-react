@@ -6,9 +6,11 @@ function AboutSection() {
             <div id="section-name">
                 <h1 id="about">About</h1>
             </div>
-            <div id="about-text">
-                <p>This website is for International Students, but not limited to international students looking for work and accomodation</p>
+            <div id="sub-section">
+                <div id="about-text">
+                    <p>This website is for International Students, but not limited to international students looking for work and accomodation</p>
 
+                </div>
             </div>
         </section>
     )

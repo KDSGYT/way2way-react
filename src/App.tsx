@@ -16,9 +16,9 @@ function App() {
   const [userData, setUserData] = useState({})
 
   const value = { userData, setUserData }
-  React.useEffect(() => {
-    console.log(`userdata: ${userData}`)
-  }, [userData]);
+  // React.useEffect(() => {
+  //   console.log(`userdata: ${userData}`)
+  // }, [userData]);
   return (
     <Router>
       <div className="App">
@@ -30,9 +30,6 @@ function App() {
             {/* Route for homepage */}
             <Route exact path="/">
               <Home />
-              <AgencySection />
-              <AccomodationSection />
-              <AboutSection />
             </Route>
 
             {/* Agecny Route */}
@@ -52,7 +49,7 @@ function App() {
             </Route>
 
             {/* Signup Route */}
-            <Route>
+            <Route path="/signup">
               <Signup />
             </Route>
 

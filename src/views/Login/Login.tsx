@@ -1,5 +1,5 @@
 import { TextField } from '@material-ui/core';
-import React, { useRef, useContext } from 'react';
+import React, { useRef } from 'react';
 import { loginUser } from '../../assets/functions';
 import UserCTX from '../../CTX/CTX';
 import './Login.scss';
