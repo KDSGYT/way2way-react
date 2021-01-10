@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './views/Home/Home';
-import AboutSection from './Components/AboutSection/AboutSection';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Author from './views/Author/Author';
-import AgencySection from './Components/AgencySection/AgencySection';
-import AccomodationSection from './Components/AccomodationSection/AccomodationSection';
 import Agency from './views/Agency/Agency';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import UserCTX from './CTX/CTX'
 import NOTFOUND from './views/404/404';
+import { firebaseAuth } from './Util/firebase';
+import {getUserFromDB} from './assets/functions'
+import UserProfile from './views/UserProfile/UserProfile';
 
 function App() {
   const [userData, setUserData] = useState({})
@@ -20,6 +20,17 @@ function App() {
   // React.useEffect(() => {
   //   console.log(`userdata: ${userData}`)
   // }, [userData]);
+
+
+  useEffect(() => {
+    firebaseAuth.onAuthStateChanged((user) => {
+      if (user) {
+        var uid = user.uid;
+        getUserFromDB(uid, setUserData)
+      } 
+    });
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -52,6 +63,10 @@ function App() {
             {/* Signup Route */}
             <Route path="/signup">
               <Signup />
+            </Route>
+
+            <Route path="/profile">
+              <UserProfile />
             </Route>
 
             <Route>

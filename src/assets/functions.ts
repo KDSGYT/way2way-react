@@ -1,4 +1,4 @@
-import { firebaseAuth, firestore } from '../Util/firebase';
+import firebase, { firebaseAuth, firestore } from '../Util/firebase';
 
 
 export function sortDataAlphabetically(array: any) {
@@ -14,8 +14,8 @@ export function sortDataAlphabetically(array: any) {
 
 export async function createUser(data: any, password: string) {
     await firebaseAuth.createUserWithEmailAndPassword(data.email, password)
-        .then( (user: any) => user.user.uid)
-        .then(async (UID:string)=> await addUserToDB(UID, data))
+        .then((user: any) => user.user.uid)
+        .then(async (UID: string) => await addUserToDB(UID, data))
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -28,10 +28,14 @@ async function addUserToDB(UID: string, data: any) {
     await collection.doc(UID).set(data)
 }
 
-export async function loginUser(email: string, password: string, setState:any) {
-    await firebaseAuth.signInWithEmailAndPassword(email, password)
-        .then((user: any) => {console.log(user.user.uid); return user.user.uid})
-        .then(async (UID:string) => await getUserFromDB(UID,setState))
+export async function loginUser(email: string, password: string, setState: any) {
+    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(async () => (
+            await firebaseAuth.signInWithEmailAndPassword(email, password)
+
+        ))
+        .then((user: any) => { console.log(user.user.uid); return user.user.uid })
+        .then(async (UID: string) => await getUserFromDB(UID, setState))
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -39,13 +43,13 @@ export async function loginUser(email: string, password: string, setState:any) {
         });
 }
 
-async function getUserFromDB(UID:string,setState:any) {
+export async function getUserFromDB(UID: string, setState: any) {
     const DataRef = firestore.collection('users').doc(UID);
     const doc = await DataRef.get()
-    if(!doc.exists){console.log('no such document')}
+    if (!doc.exists) { console.log('no such document') }
     else {
         setState(doc.data())
-        console.log(doc.data())
+        // console.log(doc.data())
     }
 }
 
