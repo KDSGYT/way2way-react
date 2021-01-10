@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import UserCTX from '../../CTX/CTX';
 import './Navbar.scss';
 
 function Navbar() {
@@ -58,6 +59,20 @@ function Navbar() {
                 >
                     SIGNUP
                 </NavLink>
+                <UserCTX.Consumer>
+                    {(value: any) => {
+                        if (value.userData.name) {
+                            return (<NavLink
+                                to="/profile"
+                                activeStyle={style}
+                                className="nav-link"
+                            >
+                                {value.userData.name}
+                            </NavLink>)
+
+                        }
+                    }}
+                </UserCTX.Consumer>
             </div>
         </nav>
     )

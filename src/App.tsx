@@ -24,29 +24,27 @@ function App() {
       <div className="App">
         <UserCTX.Provider value={value}>
           <Navbar />
-        </UserCTX.Provider>
 
-        <Switch>
+          <Switch>
 
-          {/* Route for homepage */}
-          <Route exact path="/">
-            <Home />
-            <AgencySection />
-            <AccomodationSection />
-            <AboutSection />
-          </Route>
+            {/* Route for homepage */}
+            <Route exact path="/">
+              <Home />
+              <AgencySection />
+              <AccomodationSection />
+              <AboutSection />
+            </Route>
 
-          {/* Agecny Route */}
-          <Route path="/agencies">
-            <Agency />
-          </Route>
+            {/* Agecny Route */}
+            <Route path="/agencies">
+              <Agency />
+            </Route>
 
-          {/* Author Route */}
-          <Route path="/author">
-            <Author />
-          </Route>
+            {/* Author Route */}
+            <Route path="/author">
+              <Author />
+            </Route>
 
-          <UserCTX.Provider value={userData}>
 
             {/* Login Route */}
             <Route path="/login">
@@ -58,9 +56,9 @@ function App() {
               <Signup />
             </Route>
 
-          </UserCTX.Provider>
 
-        </Switch>
+          </Switch>
+        </UserCTX.Provider>
       </div>
     </Router>
   );
