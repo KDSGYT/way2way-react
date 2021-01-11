@@ -7,9 +7,9 @@ function Login() {
     const email: any = useRef("")
     const password: any = useRef("")
 
-    async function handleSubmit(e: any, setState: any) {
+    async function handleSubmit(e: any, setState: any, setSignOut:any) {
         e.preventDefault();
-        await loginUser(email.current.value, password.current.value, setState)
+        await loginUser(email.current.value, password.current.value, setState, setSignOut)
     }
 
     // React.useEffect(() => {
@@ -23,7 +23,7 @@ function Login() {
                     <form id="login-card">
                         <TextField id="email" inputRef={email} required type="email" label="UserName or E-Mail" variant="outlined" />
                         <TextField id="password" inputRef={password} required type="password" label="Password" variant="outlined" />
-                        <input type="submit" onClick={(e:any) => handleSubmit(e, value.setUserData)} />
+                        <input type="submit" onClick={(e:any) => handleSubmit(e, value.setUserData, value.setSignOut)} />
                     </form>
                 </section>
 

@@ -15,8 +15,8 @@ import UserProfile from './views/UserProfile/UserProfile';
 
 function App() {
   const [userData, setUserData] = useState({})
-
-  const value = { userData, setUserData }
+  const [signOut , setSignOut ] = useState(true)
+  const value = { userData, setUserData, signOut, setSignOut }
   // React.useEffect(() => {
   //   console.log(`userdata: ${userData}`)
   // }, [userData]);
@@ -27,6 +27,7 @@ function App() {
       if (user) {
         var uid = user.uid;
         getUserFromDB(uid, setUserData)
+        setSignOut(false)
       } 
     });
   }, []);

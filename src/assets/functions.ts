@@ -28,7 +28,7 @@ async function addUserToDB(UID: string, data: any) {
     await collection.doc(UID).set(data)
 }
 
-export async function loginUser(email: string, password: string, setState: any) {
+export async function loginUser(email: string, password: string, setState: any, setSignOut:any) {
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => (
             await firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -36,6 +36,7 @@ export async function loginUser(email: string, password: string, setState: any) 
         ))
         .then((user: any) => { console.log(user.user.uid); return user.user.uid })
         .then(async (UID: string) => await getUserFromDB(UID, setState))
+        .then(() => setSignOut(false))
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;

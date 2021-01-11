@@ -45,24 +45,11 @@ function Navbar() {
             </div>
 
             <div className="nav-links-group" id="account-links">
-                <NavLink
-                    to="/login"
-                    activeStyle={style}
-                    className="nav-link"
-                >
-                    LOGIN
-                </NavLink>
-                <NavLink
-                    to="/signup"
-                    activeStyle={style}
-                    className="nav-link"
-                >
-                    SIGNUP
-                </NavLink>
+
                 {/* will display the username in navbar when the user is logged in */}
                 <UserCTX.Consumer>
                     {(value: any) => {
-                        if (value.userData.name) {
+                        if (!value.signOut) {
                             return (<NavLink
                                 to="/profile"
                                 activeStyle={style}
@@ -71,6 +58,23 @@ function Navbar() {
                                 {value.userData.name}
                             </NavLink>)
 
+                        } else {
+                            return (<>
+                                <NavLink
+                                    to="/login"
+                                    activeStyle={style}
+                                    className="nav-link"
+                                >
+                                    LOGIN
+                                </NavLink>
+                                <NavLink
+                                    to="/signup"
+                                    activeStyle={style}
+                                    className="nav-link"
+                                >
+                                    SIGNUP
+                                </NavLink>
+                            </>)
                         }
                     }}
                 </UserCTX.Consumer>
