@@ -1,4 +1,4 @@
-import React, { FC, Fragment, Profiler } from 'react';
+import React, { FC, Profiler } from 'react';
 import AboutSection from '../../Components/AboutSection/AboutSection';
 import AccomodationSection from '../../Components/AccomodationSection/AccomodationSection';
 import AgencySection from '../../Components/AgencySection/AgencySection';

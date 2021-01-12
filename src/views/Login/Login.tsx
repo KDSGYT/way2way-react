@@ -12,19 +12,18 @@ function Login() {
     const context: any = useContext(UserCTX)
 
     useEffect(() => {
-        if (context.signout) {
+        if (!context.signOut) {
             history.push('/profile');
         }
-    }, []);
+    }, [history, context.signOut]);
 
     async function handleSubmit(e: any, type: string) {
         e.preventDefault();
         try {
             await loginUser(email.current.value, password.current.value, context.setUserData, context.setSignOut, type)
-            if (!context.signOut) {
-                history.push('/profile')
-            }
-        } catch {
+            await history.push('/profile')
+        } catch (e){
+            console.log(e)
         }
 
     }

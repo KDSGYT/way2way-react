@@ -7,7 +7,7 @@ interface props {
 }
 const AgencyList: FC<props> = ({ data, id }) => {
 
-    const { address, name, branch, email, phone, verified, website } = data
+    const { address, name, branch, email, phone, verified } = data
     const stamp = verified ? <img src={stampIcon} className="stamp" alt="verified" title="verified" /> : null;
     return (
         <tr key={name} className="agency-card">

@@ -25,8 +25,8 @@ export async function createUser(data: any, password: string) {
         .then((user: any) => user.user.uid)
         .then(async (UID: string) => await addUserToDB(UID, data))
         .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            // var errorCode = error.code;
+            // var errorMessage = error.message;
             console.error(error)
         });
 }
@@ -55,16 +55,16 @@ export async function loginUser(email: string, password: string, setState: any, 
                 await firebaseAuth.signInWithEmailAndPassword(email, password)
 
             } else if (type === "google") {
-                await firebaseAuth.signInWithPopup(googleProvider)
+                await firebaseAuth.signInWithRedirect(googleProvider)
             }
         })
         .then((res: any) => res.user.uid)
         .then(async (UID: string) => await getUserFromDB(UID, setState))
         .then(() => setSignOut(false))
         .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.error(error)
+            // var errorCode = error.code;
+            // var errorMessage = error.message;
+            console.log(error)
         });
 }
 
