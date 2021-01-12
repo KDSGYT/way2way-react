@@ -21,7 +21,7 @@ function App() {
   //   console.log(`userdata: ${userData}`)
   // }, [userData]);
 
-
+  //load data form database if the user is already Signed in
   useEffect(() => {
     firebaseAuth.onAuthStateChanged((user) => {
       if (user) {

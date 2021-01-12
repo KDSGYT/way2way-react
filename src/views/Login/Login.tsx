@@ -1,5 +1,5 @@
 import { TextField } from '@material-ui/core';
-import React, { useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { loginUser } from '../../assets/functions';
 import UserCTX from '../../CTX/CTX';
@@ -9,35 +9,37 @@ function Login() {
     const email: any = useRef("")
     const password: any = useRef("")
     const history: any = useHistory();
-    async function handleSubmit(e: any, setState: any, setSignOut: any) {
+    const context: any = useContext(UserCTX)
+
+    useEffect(() => {
+        if (context.signout) {
+            history.push('/profile');
+        }
+    }, []);
+
+    async function handleSubmit(e: any, type: string) {
         e.preventDefault();
         try {
-            await loginUser(email.current.value, password.current.value, setState, setSignOut)
-            history.push('/profile');
+            await loginUser(email.current.value, password.current.value, context.setUserData, context.setSignOut, type)
+            if (!context.signOut) {
+                history.push('/profile')
+            }
         } catch {
         }
 
     }
 
     return (
-        <UserCTX.Consumer>
-            {(value: any) => {
-                if (value.signout) {
-                    history.push('/profile');
-                } else {
-                    return (
-                        <section id="login">
-                            <form id="login-card">
-                                <TextField id="email" inputRef={email} required type="email" label="UserName or E-Mail" variant="outlined" />
-                                <TextField id="password" inputRef={password} required type="password" label="Password" variant="outlined" />
-                                <input type="submit" onClick={(e: any) => handleSubmit(e, value.setUserData, value.setSignOut)} />
-                            </form>
-                        </section>
-                    )
-                }
+        <section id="login">
+            <form id="login-card">
+                <TextField id="email" inputRef={email} required type="email" label="UserName or E-Mail" variant="outlined" />
+                <TextField id="password" inputRef={password} required type="password" label="Password" variant="outlined" />
+                <input type="submit" onClick={(e: any) => handleSubmit(e, "email")} />
+                <hr />
+                <input type="button" onClick={(e: any) => handleSubmit(e, "google")} value="Sign In With Google" />
+            </form>
+        </section>
 
-            }}
-        </UserCTX.Consumer>
     )
 }
 export default Login;

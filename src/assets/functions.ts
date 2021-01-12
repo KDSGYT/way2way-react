@@ -1,6 +1,9 @@
-import firebase, { firebaseAuth, firestore } from '../Util/firebase';
+import firebase, { firebaseAuth, firestore, googleProvider } from '../Util/firebase';
 
-
+/**
+ * Arrange array elements alphabetically 
+ * @param array 
+ */
 export function sortDataAlphabetically(array: any) {
     return array.sort((a: any, b: any) => {
         var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
@@ -12,6 +15,11 @@ export function sortDataAlphabetically(array: any) {
     })
 }
 
+/**
+ * Create a new user using email password
+ * @param data Object Contains user data
+ * @param password string 
+ */
 export async function createUser(data: any, password: string) {
     await firebaseAuth.createUserWithEmailAndPassword(data.email, password)
         .then((user: any) => user.user.uid)
@@ -23,18 +31,34 @@ export async function createUser(data: any, password: string) {
         });
 }
 
+/**
+ * Adds user data to the DB to be used afterwards
+ * @param UID UserID that is unique to the project
+ * @param data User data to be sent to the DB
+ */
 async function addUserToDB(UID: string, data: any) {
     const collection = firestore.collection('users');
     await collection.doc(UID).set(data)
 }
 
-export async function loginUser(email: string, password: string, setState: any, setSignOut:any) {
+/**
+ * Login the user with simple email and password login credentials
+ * @param email Login Credentials
+ * @param password Login predentials
+ * @param setState set global state for data that is received
+ * @param setSignOut set the global state is the user is signed out or not
+ */
+export async function loginUser(email: string, password: string, setState: any, setSignOut: any, type: string) {
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .then(async () => (
-            await firebaseAuth.signInWithEmailAndPassword(email, password)
+        .then(async () => {
+            if (type === "email") {
+                await firebaseAuth.signInWithEmailAndPassword(email, password)
 
-        ))
-        .then((user: any) => { console.log(user.user.uid); return user.user.uid })
+            } else if (type === "google") {
+                await firebaseAuth.signInWithPopup(googleProvider)
+            }
+        })
+        .then((res: any) => res.user.uid)
         .then(async (UID: string) => await getUserFromDB(UID, setState))
         .then(() => setSignOut(false))
         .catch((error) => {
@@ -44,6 +68,11 @@ export async function loginUser(email: string, password: string, setState: any, 
         });
 }
 
+/**
+ * Retrieves the data from DB using UID received after login
+ * @param UID UserID unique to a project
+ * @param setState set global state for user info
+ */
 export async function getUserFromDB(UID: string, setState: any) {
     const DataRef = firestore.collection('users').doc(UID);
     const doc = await DataRef.get()
@@ -54,6 +83,10 @@ export async function getUserFromDB(UID: string, setState: any) {
     }
 }
 
+/**
+ * Retrieve data from DB for the list of agencies
+ * @param setState Sets data for agencies
+ */
 export async function getData(setState: any) {
     const newState: any = []
     const data = await firestore.collection('agencies').get()

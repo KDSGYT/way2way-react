@@ -13,6 +13,7 @@ function Navbar() {
     return (
         <nav id="navbar" className={"accentstyles"}>
             <div id="navpage-links" className="nav-links-group">
+                
                 <NavLink
                     activeStyle={style}
                     to="/"
@@ -21,6 +22,7 @@ function Navbar() {
                 >
                     HOME
                 </NavLink>
+
                 <NavLink
                     activeStyle={style}
                     to="/agencies"
@@ -28,6 +30,7 @@ function Navbar() {
                 >
                     AGENCY
             </NavLink>
+
                 <NavLink
                     activeStyle={style}
                     to="/accomodation"
@@ -35,6 +38,7 @@ function Navbar() {
                 >
                     ACCOMODATION
                 </NavLink>
+
                 <NavLink
                     activeStyle={style}
                     to="author"
@@ -42,6 +46,7 @@ function Navbar() {
                 >
                     AUTHOR
                 </NavLink>
+
             </div>
 
             <div className="nav-links-group" id="account-links">
