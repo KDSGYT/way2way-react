@@ -1,16 +1,136 @@
-#login{
-    border:2px solid black;
-    height: 89vh;
+#login {
+    // border: 2px solid black;
+    margin-top: 0.5vh;
+    height: 93.5vh;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    #login-card{
-        border:2px solid black;
-        padding: 1%;
-        height: 50%;
+    justify-content: space-around;
+    align-items: center;
+
+    #login-card {
+        // border: 2px solid black;
+        font-family: 'Segoe UI', Geneva, Verdana, sans-serif;
+        padding: 5%;
+        height: 100%;
+        width: 37.5%;
         margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+
+        h1 {
+            font-size: 4rem;
+            padding: 0;
+
+        }
+
+        #login-options {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .MuiCheckbox-colorPrimary {
+                color: #F44646;
+            }
+        }
+
+        #login-button {
+            width: 100%;
+            // border: 2px solid black;
+            height: auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            #input-login-button {
+                outline: none;
+                cursor: pointer;
+                position: absolute;
+                float: right;
+                right: 4%; //make zero when button design is done
+                width: 20%;
+                border: none;
+                background-color: black;
+                color: white;
+                font-size: 1.5rem;
+                padding: 1% 2%;
+                border-radius: 37px;
+                border-color: #F44646;
+                border-width: 3px;
+                border-style: solid;
+            }
+        }
+
+        #alternative-login-button {
+            height: 5%;
+            display: flex;
+            align-items: center;
+            // justify-content: space-evenly;
+            // border: 2px solid black;
+
+            .login-button {
+                width: 15%;
+                height: 100%;
+                // margin: auto;
+                margin-left:3%;
+                padding: 1%;
+                border: none;
+                background-color: white;
+                border-radius: 37px;
+                border-color: rgb(61, 61, 61);
+                border-width: 1px;
+                border-style: solid;
+
+                img {
+
+                    height: 100%;
+                }
+            }
+        }
+
     }
+
+
+    #login-art {
+        position: relative;
+        width: 62.5%;
+        height: 100%;
+        padding: 0;
+
+        p {
+
+            position: absolute;
+            font-size: 800%;
+            width: 50%;
+            min-width: 50%;
+            text-align: right;
+            // border: 2px solid white;
+            top: 10%;
+            right: 10%;
+            color: white;
+
+        }
+
+        #art {
+            // position: absolute;
+            content: "";
+            top: 0;
+            height: inherit;
+            widows: inherit;
+            background-image: url('../../assets/SVGs/login-art.svg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: inherit;
+        }
+    }
+
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
