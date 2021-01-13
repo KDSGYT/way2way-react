@@ -35,7 +35,7 @@ const Home: FC<props> = () => {
         <Profiler id="home" onRender={homeProfileCallback}>
             <section id="home">
                 <div id="website-name">
-                    <h1>Way2Way.in</h1>
+                    <h1>WAY2WAY.in</h1>
                 </div>
             </section>
             <AgencySection />

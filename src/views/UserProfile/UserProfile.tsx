@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import UserCTX from '../../CTX/CTX';
 import { firebaseAuth } from '../../Util/firebase';
+import PostAccAdd from './PostAccAdd/PostAccAdd';
 import './UserProfile.scss'
 function UserProfile() {
     const history = useHistory()
     const context: any = useContext(UserCTX);
-
+    const { path, url } = useRouteMatch();
     function signout(setSignOut: any) {
         firebaseAuth.signOut();
         setSignOut(true);
@@ -20,12 +21,14 @@ function UserProfile() {
             history.push('/login');
         }
 
-    }, []);
+    }, [context.signOut]);
 
     return (
         <section id="user-profile" >
-            <UserCTX.Consumer>
-                {(value: any) => {
+            <Link to={`${url}/post`} >Click</Link>
+            <Route exact path={`${path}`}>
+                <UserCTX.Consumer>
+                    {(value: any) => {
                         const {
                             name,
                             email,
@@ -44,8 +47,14 @@ function UserProfile() {
                                     } />
                             </div>
                         )
-                }}
-            </UserCTX.Consumer>
+                    }}
+                </UserCTX.Consumer>
+            </Route>
+            <Switch>
+                <Route path={`/profile/post`}>
+                    <PostAccAdd />
+                </Route>
+            </Switch>
         </section>
     )
 }

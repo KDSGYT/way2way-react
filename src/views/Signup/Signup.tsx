@@ -1,23 +1,33 @@
-import React, { useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
+import { useHistory } from 'react-router-dom';
+import UserCTX from '../../CTX/CTX';
 
 function Signup() {
-    const name:any = useRef("")
-    const phone:any = useRef("")
+    const name: any = useRef("")
+    const phone: any = useRef("")
     const password: any = useRef("")
     const email: any = useRef()
-
-    function handleClick() {
+    const history: any = useHistory();
+    const context:any = useContext(UserCTX)
+    async function handleClick() {
         // console.log(email.current.value)
         const data = {
-            name:name.current.value,
-            email:email.current.value,
-            phone:phone.current.value
+            name: name.current.value,
+            email: email.current.value,
+            phone: phone.current.value
         }
-        createUser(data, password.current.value)
+        await createUser(data, password.current.value)
+        history.pushState('/profile')
     }
+
+    useEffect(() => {
+       if(!context.signOut){
+           history.push('/profile')
+       } 
+    }, [context.signOut, history]);
 
     return (
         <section id="sign-up">

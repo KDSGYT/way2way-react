@@ -10,7 +10,7 @@ function Agency() {
         getData(setData);
     }, [])
 
-    const list = sortDataAlphabetically(data).map((item: any, index: number) => <AgencyList id={index + 1} data={item} />)
+    const list = sortDataAlphabetically(data).map((item: any, index: number) => <AgencyList id={index + 1} key={index} data={item} />)
     return (
         <section id="agencies">
             <div id="container">

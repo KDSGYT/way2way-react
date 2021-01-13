@@ -1,14 +1,18 @@
 
 #accomodation-area {
-    height: 60vh;
-    padding-top: 6%;
+    height: 65vh;
     position: relative;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     .accomodation {
-        // border:2px solid black;
         width: 50%;
-        float: right;
+        margin:auto;
+        margin-right: 0;
+        height: auto;
         text-align: center;
+        color: white;
 
         h1 {
             font-size: 4em;
@@ -19,20 +23,39 @@
             font-size: 1.5em;
             width: 60%;
         }
+        &::after {
+            z-index: -1;
+            // border: 2px solid black;
+            content: "";
+            position: absolute;
+            height: 75%;
+            width: 55%;
+            right: -1%;
+            top:15%;
+            background-image: url('../../assets/img/accomodation-section-background.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            filter: grayscale(80%);
+            filter: blur(2px);
+            // overflow: hidden;
+
+        }
     }
+
     #left-triangle{
-        content:"";
+        // content:"";
         padding: 0;
         margin: 0;
         width: 50%;
-        height: 144%;
+        height: 134%;
         position: absolute;
         // border:2px solid black;
         background-image: url('../../assets/SVGs/leftTriangle.svg');
         background-position: center;
         background-repeat: no-repeat ;
         background-size: contain;
-        top: -30%;
+        top: -15%;
         left:-2.7%;
     }
 }
