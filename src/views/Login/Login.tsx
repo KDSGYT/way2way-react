@@ -45,7 +45,7 @@ function Login() {
 
     return (
         <section id="login">
-            <form id="login-card">
+            <form id="login-card" onSubmit={(e) => e.preventDefault()}>
                 <h1>Login</h1>
                 <Link to="/signup">Don't have an account? Create an Account</Link>
                 <TextField
@@ -76,7 +76,7 @@ function Login() {
                         }
                         label={"Remember Me"}
                     />
-                    <Link to="/forgot-password" >Forgot Password!</Link>
+                    <Link to="/forgot-password" >Forgot Password ?</Link>
                 </FormGroup>
                 <span id="login-button">
 

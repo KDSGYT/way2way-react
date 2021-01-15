@@ -60,7 +60,7 @@ function Navbar() {
                                 activeStyle={style}
                                 className="nav-link"
                             >
-                                {value.userData.name}
+                                {value.userData.displayName}
                             </NavLink>)
 
                         } else {

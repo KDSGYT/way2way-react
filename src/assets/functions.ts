@@ -21,15 +21,20 @@ export function sortDataAlphabetically(array: any) {
  * @param password string 
  */
 export async function createUser(data: any, password: string) {
-    await firebaseAuth.createUserWithEmailAndPassword(data.email, password)
-        .then((user: any) => user.user.uid)
-        .then(async (UID: string) => await addUserToDB(UID, data))
-        .catch((error) => {
-            // var errorCode = error.code;
-            // var errorMessage = error.message;
-            console.error(error)
-        });
+    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(async () => await firebaseAuth.createUserWithEmailAndPassword(data.email, password))
+        .then(async () => {
+            const currentUser: any = await firebaseAuth.currentUser;
+            return await currentUser.updateProfile(data)
+                // .then((res: any) => console.log(res))
+        })
+        .then((res) => console.log(firebaseAuth.currentUser))
+        // .then(async () => console.log(await firebaseAuth.currentUser))
+        .catch((error) => console.error(error))
+
 }
+
+
 
 /**
  * Adds user data to the DB to be used afterwards
@@ -49,8 +54,8 @@ async function addUserToDB(UID: string, data: any) {
  * @param setSignOut set the global state is the user is signed out or not
  */
 export async function loginUser(email: string, password: string, setState: any, setSignOut: any, type: string, rememberUser: boolean) {
-    const persistenceType: string =  (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
-    firebaseAuth.setPersistence(persistenceType)
+    const persistenceType: string = (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
+    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => {
             if (type === "email") {
                 await firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -59,19 +64,8 @@ export async function loginUser(email: string, password: string, setState: any, 
                 await firebaseAuth.signInWithRedirect(googleProvider)
             }
         })
-        .then((res: any) => res.user)
-        //Error handling required... What if the user doesn't have the information in DB.
-        .then(async (user: any) => {
-            try{
-                await getUserFromDB(user.UID, setState)
-            } catch {
-                await addUserToDB(user.UID,user)
-            }
-        })
         .then(() => setSignOut(false))
         .catch((error) => {
-            // var errorCode = error.code;
-            // var errorMessage = error.message;
             console.log(error)
         });
 }
@@ -82,13 +76,8 @@ export async function loginUser(email: string, password: string, setState: any, 
  * @param setState set global state for user info
  */
 export async function getUserFromDB(UID: string, setState: any) {
-    const DataRef = firestore.collection('users').doc(UID);
-    const doc = await DataRef.get()
-    if (!doc.exists) { console.log('no such document') }
-    else {
-        setState(doc.data())
-        // console.log(doc.data())
-    }
+    const currentUser = await firebaseAuth.currentUser
+    setState(currentUser)
 }
 
 /**
