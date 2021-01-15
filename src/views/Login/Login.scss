@@ -9,18 +9,17 @@
     align-items: center;
 
     #login-card {
-        // border: 2px solid black;
         font-family: 'Segoe UI', Geneva, Verdana, sans-serif;
         padding: 5%;
+        padding-right: 2%;
         height: 100%;
         width: 37.5%;
-        margin: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
 
         h1 {
-            font-size: 4rem;
+            font-size: 4em;
             padding: 0;
 
         }
@@ -49,7 +48,7 @@
                 cursor: pointer;
                 position: absolute;
                 float: right;
-                right: 4%; //make zero when button design is done
+                right: 0%;
                 width: 20%;
                 border: none;
                 background-color: black;
@@ -74,7 +73,7 @@
                 width: 15%;
                 height: 100%;
                 // margin: auto;
-                margin-left:3%;
+                margin-left: 3%;
                 padding: 1%;
                 border: none;
                 background-color: white;
@@ -84,12 +83,10 @@
                 border-style: solid;
 
                 img {
-
                     height: 100%;
                 }
             }
         }
-
     }
 
 
@@ -100,21 +97,19 @@
         padding: 0;
 
         p {
-
             position: absolute;
-            font-size: 800%;
+            font-size: 7em;
             width: 50%;
-            min-width: 50%;
+            overflow-wrap: break-word;
+            min-width: 10ch;
             text-align: right;
             // border: 2px solid white;
             top: 10%;
             right: 10%;
             color: white;
-
         }
 
         #art {
-            // position: absolute;
             content: "";
             top: 0;
             height: inherit;
@@ -126,8 +121,6 @@
             background-attachment: inherit;
         }
     }
-
-
 }
 
 a {

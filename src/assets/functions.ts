@@ -48,8 +48,9 @@ async function addUserToDB(UID: string, data: any) {
  * @param setState set global state for data that is received
  * @param setSignOut set the global state is the user is signed out or not
  */
-export async function loginUser(email: string, password: string, setState: any, setSignOut: any, type: string) {
-    firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+export async function loginUser(email: string, password: string, setState: any, setSignOut: any, type: string, rememberUser: boolean) {
+    const persistenceType: string =  (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
+    firebaseAuth.setPersistence(persistenceType)
         .then(async () => {
             if (type === "email") {
                 await firebaseAuth.signInWithEmailAndPassword(email, password)
@@ -58,8 +59,15 @@ export async function loginUser(email: string, password: string, setState: any, 
                 await firebaseAuth.signInWithRedirect(googleProvider)
             }
         })
-        .then((res: any) => res.user.uid)
-        .then(async (UID: string) => await getUserFromDB(UID, setState))
+        .then((res: any) => res.user)
+        //Error handling required... What if the user doesn't have the information in DB.
+        .then(async (user: any) => {
+            try{
+                await getUserFromDB(user.UID, setState)
+            } catch {
+                await addUserToDB(user.UID,user)
+            }
+        })
         .then(() => setSignOut(false))
         .catch((error) => {
             // var errorCode = error.code;

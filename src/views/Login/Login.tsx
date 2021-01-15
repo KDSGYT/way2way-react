@@ -10,6 +10,7 @@ function Login() {
     const password: any = useRef("");
     const history: any = useHistory();
     const rememberUser: any = useRef("");
+    const [checked, setChecked] = React.useState(false);
     const context: any = useContext(UserCTX)
 
 
@@ -19,6 +20,11 @@ function Login() {
         }
     }, [history, context.signOut]);
 
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setChecked(event.target.checked);
+    };
+
     async function handleSubmit(e: any, type: string) {
         e.preventDefault();
         try {
@@ -27,11 +33,12 @@ function Login() {
                 password.current.value,
                 context.setUserData,
                 context.setSignOut,
-                type
+                type,
+                rememberUser.current.checked
             )
             await history.push('/profile')
         } catch (e) {
-            console.log("sopmething went wrong")
+            console.log(e)
         }
 
     }
@@ -63,6 +70,8 @@ function Login() {
                             <Checkbox
                                 inputRef={rememberUser}
                                 id="checkbox"
+                                checked={checked}
+                                onChange={handleChange}
                             />
                         }
                         label={"Remember Me"}
@@ -71,14 +80,14 @@ function Login() {
                 </FormGroup>
                 <span id="login-button">
 
-                <input type="submit" value="Login" id="input-login-button" onClick={(e: any) => handleSubmit(e, "email")} />
+                    <input type="submit" value="Login" id="input-login-button" onClick={(e: any) => handleSubmit(e, "email")} />
                 </span>
-                {/* <hr /> */}
-            <p id="alternative-login-button">
-                Or Login with: <button className="login-button" onClick={(e: any) => handleSubmit(e, "google")} >
-                    <img src={Google} alt="" />
-                </button>
-            </p>
+                <hr />
+                <p id="alternative-login-button">
+                    Or Login with: <button className="login-button" onClick={(e: any) => handleSubmit(e, "google")} >
+                        <img src={Google} alt="" />
+                    </button>
+                </p>
             </form>
             <div id="login-art">
                 <p>WELCOME Back.</p>
