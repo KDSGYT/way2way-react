@@ -12,6 +12,7 @@ import NOTFOUND from './views/404/404';
 import { firebaseAuth } from './Util/firebase';
 import {getUserFromDB} from './assets/functions'
 import UserProfile from './views/UserProfile/UserProfile';
+import Accomodation from './views/Accomodation/Accomodation';
 
 function App() {
   const [userData, setUserData] = useState({})
@@ -48,6 +49,10 @@ function App() {
             {/* Agecny Route */}
             <Route path="/agencies">
               <Agency />
+            </Route>
+
+            <Route path="/accomodation">
+              <Accomodation />
             </Route>
 
             {/* Author Route */}

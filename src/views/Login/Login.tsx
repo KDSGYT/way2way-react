@@ -90,7 +90,7 @@ function Login() {
                 </p>
             </form>
             <div id="login-art">
-                <p>WELCOME Back.</p>
+                <p>Welcome Back.</p>
                 <div id="art"></div>
             </div>
 

@@ -25,10 +25,10 @@ export async function createUser(data: any, password: string) {
         .then(async () => await firebaseAuth.createUserWithEmailAndPassword(data.email, password))
         .then(async () => {
             const currentUser: any = await firebaseAuth.currentUser;
-            return await currentUser.updateProfile(data)
+            await currentUser.updateProfile(data)
                 // .then((res: any) => console.log(res))
         })
-        .then((res) => console.log(firebaseAuth.currentUser))
+        // .then(() => firebaseAuth.currentUser)
         // .then(async () => console.log(await firebaseAuth.currentUser))
         .catch((error) => console.error(error))
 
@@ -77,7 +77,7 @@ export async function loginUser(email: string, password: string, setState: any, 
  */
 export async function getUserFromDB(UID: string, setState: any) {
     const currentUser = await firebaseAuth.currentUser
-    setState(currentUser)
+    await setState(currentUser)
 }
 
 /**
@@ -88,7 +88,7 @@ export async function getData(setState: any) {
     const newState: any = []
     const data = await firestore.collection('agencies').get()
     await data.forEach((doc) => newState.push(doc.data()))
-    setState(newState)
+    await setState(newState)
     return;
 }
 

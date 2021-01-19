@@ -1,0 +1,14 @@
+#accomodation {
+    margin-top: 0.7vh;
+    // height: 93.3vh;
+    border: 2px solid black;
+
+    #container {
+        margin: auto;
+        max-width: 2080px;
+        padding: 7%;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        // grid-template-rows: 20%;
+    }
+}
