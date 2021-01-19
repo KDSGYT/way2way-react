@@ -8,15 +8,17 @@ import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
 
 function Signup() {
+    
     const firstName: any = useRef("")
     const lastName: any = useRef("")
     const phone: any = useRef("")
     const password: any = useRef("")
+    const confirmPassword: any = useRef("")
     const email: any = useRef()
     const history: any = useHistory();
     const context: any = useContext(UserCTX)
+   
     async function handleClick(e: any) {
-        console.log(email.current.value)
         const data = {
             displayName: firstName.current.value,
             lastName: lastName.current.value,
@@ -38,7 +40,7 @@ function Signup() {
 
     return (
         <section id="sign-up">
-            <form id="sign-up-card" onSubmit={handleClick}>
+            <form id="sign-up-card" onSubmit={async (e) => await password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
                 <h1>SignUp</h1>
                 {/* <Link to="/signup">Don't have an account? Create an Account</Link> */}
                 <div id="name">
@@ -72,6 +74,15 @@ function Signup() {
                     inputRef={password}
                     required type="password"
                     label="Password"
+                    variant="outlined"
+                    autoComplete="off"
+                />
+
+                <TextField
+                    id="password"
+                    inputRef={confirmPassword}
+                    required type="Confirm password"
+                    label="Confirm Password"
                     variant="outlined"
                     autoComplete="off"
                 />

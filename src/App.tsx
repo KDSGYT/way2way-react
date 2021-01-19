@@ -10,13 +10,14 @@ import Signup from './views/Signup/Signup';
 import UserCTX from './CTX/CTX'
 import NOTFOUND from './views/404/404';
 import { firebaseAuth } from './Util/firebase';
-import {getUserFromDB} from './assets/functions'
+import { getUserFromDB } from './assets/functions'
 import UserProfile from './views/UserProfile/UserProfile';
 import Accomodation from './views/Accomodation/Accomodation';
+import AdView from './views/AdView/AdView';
 
 function App() {
   const [userData, setUserData] = useState({})
-  const [signOut , setSignOut ] = useState(true)
+  const [signOut, setSignOut] = useState(true)
   const value = { userData, setUserData, signOut, setSignOut }
   // React.useEffect(() => {
   //   console.log(`userdata: ${userData}`)
@@ -29,7 +30,7 @@ function App() {
         var uid = user.uid;
         getUserFromDB(uid, setUserData)
         setSignOut(false)
-      } 
+      }
     });
   }, []);
 
@@ -51,10 +52,14 @@ function App() {
               <Agency />
             </Route>
 
-            <Route path="/accomodation">
+            <Route exact path="/accomodation">
               <Accomodation />
             </Route>
 
+            <Route path="/accomodation/:AID">
+              <AdView />
+            </Route>
+            
             {/* Author Route */}
             <Route path="/author">
               <Author />

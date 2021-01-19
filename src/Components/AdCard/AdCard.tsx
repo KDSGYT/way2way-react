@@ -1,5 +1,7 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Image from '../../assets/img/accomodation-section-background.jpg'
+import AdView from '../../views/AdView/AdView';
 import './AdCard.scss';
 
 interface props {
@@ -8,9 +10,17 @@ interface props {
     furnished: boolean
     washroom: number
     rent: number
+    AID: string
 }
 
-const AdCard: FC<props> = ({bedroom, address, washroom,furnished, rent }) => {
+const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID }) => {
+
+    const history = useHistory();
+
+    function handleClick(e:any) {
+        e.preventDefault();
+        history.push(`/accomodation/${AID}`);
+    }
 
     return (
         <div className="id-card">
@@ -49,7 +59,7 @@ const AdCard: FC<props> = ({bedroom, address, washroom,furnished, rent }) => {
                         {/* Is the place furnished */}
                         <div className="furnished">
                             <div className="amount">
-                                <h4>{furnished ? "Yes" : "No" }</h4>
+                                <h4>{furnished ? "Yes" : "No"}</h4>
                             </div>
                             <div className="amount-for">
                                 <p>Furnished</p>
@@ -68,11 +78,13 @@ const AdCard: FC<props> = ({bedroom, address, washroom,furnished, rent }) => {
                     </div>
                 </div>
 
-                <button className="view-button">
+                <button className="view-button" onClick={handleClick}>
                     View Ad
                 </button>
             </div>
         </div>
+
+
     )
 }
 
