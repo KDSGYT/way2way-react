@@ -1,3 +1,4 @@
+@import '../../assets/Global.scss';
 
 #accomodation-area {
     height: 65vh;
@@ -6,9 +7,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    .accomodation {
+
+    .text {
         width: 50%;
-        margin:auto;
+        margin: auto;
         margin-right: 0;
         height: auto;
         text-align: center;
@@ -23,6 +25,7 @@
             font-size: 1.5em;
             width: 60%;
         }
+
         &::after {
             z-index: -1;
             // border: 2px solid black;
@@ -31,7 +34,7 @@
             height: 75%;
             width: 55%;
             right: -1%;
-            top:15%;
+            top: 15%;
             background-image: url('../../assets/img/accomodation-section-background.jpg');
             background-position: center;
             background-repeat: no-repeat;
@@ -43,7 +46,9 @@
         }
     }
 
-    #left-triangle{
+    #left-triangle {
+        display: block;
+
         // content:"";
         padding: 0;
         margin: 0;
@@ -53,9 +58,44 @@
         // border:2px solid black;
         background-image: url('../../assets/SVGs/leftTriangle.svg');
         background-position: center;
-        background-repeat: no-repeat ;
+        background-repeat: no-repeat;
         background-size: contain;
         top: -15%;
-        left:-2.7%;
+        left: -2.7%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #accomodation-area {
+
+        height: auto;
+        margin: 10% 0;
+
+        .text {
+            margin-top:10%;
+            padding-top:3%;
+            min-height: 23vh;
+            font-size: 0.7em;
+            background-image: none;
+            width: 100%;
+            color: white;
+            background-color: black;
+            border: 7px solid $accentRed;
+            border-left: none;
+            border-right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        #left-triangle {
+            border: 2px solid black;
+            display: none;
+        }
     }
 }

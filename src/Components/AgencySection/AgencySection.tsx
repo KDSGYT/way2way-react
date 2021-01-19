@@ -9,8 +9,6 @@ function AgencySection() {
                 <p>A list of all employment agencies that can help you to survive in Canada as a newcommer</p>
             </div>
             <div id="right-triangle">
-
-                {/* <Triangle /> */}
             </div>
         </section>
     )

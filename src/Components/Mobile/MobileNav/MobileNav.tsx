@@ -1,26 +1,19 @@
-import ToggleButton from './ToggleButton/ToggleButton'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import UserCTX from '../../CTX/CTX';
-import './Navbar.scss';
+import '../../Navbar/Navbar.scss';
+import './MobileNav.scss';
 
-function Navbar() {
-
+function MobileNav() {
 
     const style = {
         borderBottom: "1px solid white",
         paddingBottom: "5px"
     }
 
-
-
-
-    // if(window.innerWidth<768) return (<MobileNav />)
     return (
         <nav id="navbar" className={"accentstyles"}>
-            <ToggleButton />
             <div id="navpage-links" className="nav-links-group">
-
+                
                 <NavLink
                     activeStyle={style}
                     to="/"
@@ -59,7 +52,7 @@ function Navbar() {
             <div className="nav-links-group" id="account-links">
 
                 {/* will display the username in navbar when the user is logged in */}
-                <UserCTX.Consumer>
+                {/* <UserCTX.Consumer>
                     {(value: any) => {
                         if (!value.signOut) {
                             return (<NavLink
@@ -89,9 +82,9 @@ function Navbar() {
                             </>)
                         }
                     }}
-                </UserCTX.Consumer>
+                </UserCTX.Consumer> */}
             </div>
         </nav>
     )
 }
-export default Navbar;
+export default MobileNav;

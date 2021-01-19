@@ -1,12 +1,39 @@
-@import '../../assets/Global.scss';
+// @import '../../assets/Global.scss';
 @import '../../assets/Variables.scss';
+
+
+.accentstyles{
+    display: block;
+    color: #FFF;
+    background: #000;
+    background-clip: padding-box;
+    $border: 3px;
+    border: solid $border transparent;
+    border-top: 1px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        height: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        margin: -$border;
+        /* !importanté */
+        border-radius: inherit;
+        /* !importanté */
+        background-color: linear-gradient(1.0turn, #F94848 0%, rgba(0,0,0, 1) 100%);
+    }
+}
 
 #navbar {
     // border: 2px solid black;
     list-style-type: none;
-    // min-height: 20;
     height: $navbar-height;
-    padding: 0 1%;
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -20,8 +47,7 @@
 
     // stroke: linear-gradient(green, yellow);
 
-
-
+   
     .nav-links-group {
         width: 50%;
         // border:2px solid green;
@@ -50,4 +76,52 @@
     }
 
 
+}
+
+@media (max-width:768px) {
+    #navbar {
+        min-height: $navbar-height;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        align-content: center;
+        z-index: 99;
+
+        
+        #navpage-links,
+        #account-links {
+            border: 2px solid black;
+            position: absolute;
+            display: flex;
+            height: $navbar-height + 40vh;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            z-index: inherit;
+            background-color: black;
+            width: 101.8%;
+            left: -1%;
+        }
+
+        #navpage-links {
+            top: $navbar-height + 1vh;
+            // bottom: 0;
+        }
+
+        #account-links {
+            top: ($navbar-height * 2) + 40vh;
+            height: $navbar-height + 11vh;
+            // display: none;
+        }
+
+    }
+
+    .accentstyles{
+        display: none;
+        &::after{
+            display: none;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import React, { FC, Profiler } from 'react';
+import React, { FC, } from 'react';
 import AboutSection from '../../Components/AboutSection/AboutSection';
 import AccomodationSection from '../../Components/AccomodationSection/AccomodationSection';
 import AgencySection from '../../Components/AgencySection/AgencySection';
@@ -32,7 +32,7 @@ const Home: FC<props> = () => {
     }
 
     return (
-        <Profiler id="home" onRender={homeProfileCallback}>
+        <div id="home-page">
             <section id="home">
                 <div id="website-name">
                     <h1>WAY2WAY.in</h1>
@@ -41,7 +41,7 @@ const Home: FC<props> = () => {
             <AgencySection />
             <AccomodationSection />
             <AboutSection />
-        </Profiler>
+        </div>
     )
 }
 

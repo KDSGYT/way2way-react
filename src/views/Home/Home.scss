@@ -1,43 +1,60 @@
 @import '../../assets/Global.scss';
 
-#home {
-    margin-top: 0.7vh;
-    height: 93.3vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    background-image: url('../../assets/img/homebackgroundalter.jpg');
-    background-position: center;
-    background-size: cover;
-    position: relative;
+#home-page {
+    display: block;
+    padding: 0;
+    margin: 0;
+    min-width: 100vw;
+    min-height: 100vh;
 
-    &:after {
-        position: absolute;
-        content: "";
-        z-index: 2;
-        height: inherit;
-        fill: black;
-    }
-
-    #website-name {
-        // height: 9%;
-        // width: 20.5%;
-        margin: auto;
+    #home {
+        // display: block;
+        margin-top: 0.7vh;
+        height: 93.3vh;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         text-align: center;
-        color: white;
-        background-image: url('../../assets/SVGs/way2way.svg');
+        background-image: url('../../assets/img/homebackgroundalter.jpg');
         background-position: center;
-        background-size: contain;
-        padding: 3%;
-        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
 
-        h1 {
-            letter-spacing: 1px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        #website-name {
+            // height: 9%;
+            // width: 20.5%;
             margin: auto;
-            font-size: 4em;
+            text-align: center;
+            color: white;
+            background-image: url('../../assets/SVGs/way2way.svg');
+            background-position: center;
+            background-size: contain;
+            padding: 3%;
+            background-repeat: no-repeat;
+
+            h1 {
+                letter-spacing: 1px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                margin: auto;
+                font-size: 4em;
+            }
+        }
+    }
+}
+
+// Mobile Devices
+@media (max-width: 768px) {
+    #home-page {
+        #home {
+            background-position: 63% center;
+
+            #website-name {
+                h1 {
+                    font-size: 3.5em;
+                }
+            }
         }
     }
 }

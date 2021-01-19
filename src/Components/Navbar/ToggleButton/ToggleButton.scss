@@ -1,0 +1,52 @@
+@import '../../../assets/Variables.scss';
+
+#toggle-button {
+    display: none;
+}
+
+@media (max-width:768px) {
+    #button-container {
+        margin-left: -0.7%;
+        width: 100vw;
+        height: $navbar-height +1vh;
+        background-color: black;
+        border-bottom: 5px solid $accentRed;
+        #toggle-button {
+            margin: 2% 0 0 3% ;
+            border: none;
+            background-color: transparent;
+            // border:2px solid black;
+            width: 8%;
+            height: $navbar-height - 1vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            .line {
+                // border: 1px solid black;
+                width: 100%;
+                height: 10%;
+                background-color: white;
+            }
+            .line1,.line2, .line3{
+                transition: all 0.5s ease;
+                transform-origin: left;
+            }
+            .line3{
+                // transform-origin: right;
+            }
+        }
+        .toggle{
+            .line1{
+                transform: rotateZ(38deg)
+            }
+            .line2{
+                opacity: 0%;
+            }
+            .line3{
+                transform: rotateZ(-38deg);
+            }
+
+        }
+    }
+}
