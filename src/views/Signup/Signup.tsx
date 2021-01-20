@@ -7,6 +7,7 @@ import UserCTX from '../../CTX/CTX';
 import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
+import { useUserSignedOut } from '../../assets/Hooks';
 
 function Signup() {
     
@@ -17,8 +18,8 @@ function Signup() {
     const confirmPassword: any = useRef("")
     const email: any = useRef()
     const history: any = useHistory();
-    const context: any = useContext(UserCTX)
-    
+    // const context: any = useContext(UserCTX)
+    const [signOut] = useUserSignedOut()
     let location = useLocation();
 
     async function handleClick(e: any) {
@@ -35,12 +36,12 @@ function Signup() {
     }
 
     useEffect(() => {
-        if (!context.signOut) {
+        if (!signOut) {
             history.push('/profile')
         }
         const currentuser = firebaseAuth.currentUser;
         console.log(currentuser)
-    }, [context.signOut, history]);
+    }, [signOut, history]);
 
 
 

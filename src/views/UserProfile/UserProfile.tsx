@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
+import { useUserSignedOut } from '../../assets/Hooks';
 import UserCTX from '../../CTX/CTX';
 import { firebaseAuth } from '../../Util/firebase';
 import PostAccAdd from './PostAccAdd/PostAccAdd';
@@ -8,7 +9,9 @@ function UserProfile() {
     const history = useHistory()
     const context: any = useContext(UserCTX);
     const { path, url } = useRouteMatch();
-    function signout(setSignOut: any) {
+    const [signOut, setSignOut] = useUserSignedOut()
+
+    function signout() {
         firebaseAuth.signOut();
         setSignOut(true);
         context.setUserData({});
@@ -17,11 +20,11 @@ function UserProfile() {
 
     useEffect(() => {
 
-        if (context.signOut) {
+        if (signOut) {
             history.push('/login');
         }
 
-    }, [context.signOut]);
+    }, [signOut]);
 
     return (
         <section id="user-profile" >
@@ -43,7 +46,7 @@ function UserProfile() {
                                 <input
                                     type="button"
                                     value="signout"
-                                    onClick={() => signout(value.setSignOut)
+                                    onClick={() => signout()
                                     } />
                             </div>
                         )
