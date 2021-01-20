@@ -16,10 +16,8 @@
 
         #agency-list {
             border: none;
-            // border: 2px solid black;
             height: 80%;
             width: 100%;
-            // text-align: left;
             overflow: scroll;
             background-color: black;
             position: relative;
@@ -45,6 +43,22 @@
                 td {
                     padding: 1%;
                     padding-left: 1%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:768px){
+    #agencies{
+        #container{
+            width: 100%;
+            height: 100%;
+            #agency-list{
+                #header{
+                    .branch, .email{
+                        display: none;
+                    }
                 }
             }
         }

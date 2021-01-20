@@ -11,18 +11,19 @@ function Agency() {
     }, [])
 
     const list = sortDataAlphabetically(data).map((item: any, index: number) => <AgencyList id={index + 1} key={index} data={item} />)
+    
     return (
         <section id="agencies">
             <div id="container">
                 <table id="agency-list">
                     <thead>
                         <tr id="header">
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>ADDRESS</th>
-                            <th>PHONE</th>
-                            <th>BRANCH</th>
-                            <th>E-MAIL</th>
+                            <th className="id">ID</th>
+                            <th className="name">NAME</th>
+                            <th className="address">ADDRESS</th>
+                            <th className="phone">PHONE</th>
+                            <th className="branch">BRANCH</th>
+                            <th className="email">E-MAIL</th>
                         </tr>
                     </thead>
                     <tbody>

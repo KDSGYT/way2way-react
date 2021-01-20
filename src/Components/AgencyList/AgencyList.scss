@@ -21,3 +21,15 @@
         color: inherit;
     }
 }
+
+@media (max-width:768px){
+    .agency-card{
+        .branch, .email{
+            display: none;
+        }
+        &:hover{
+            color:black;
+            background-color: white;
+        }
+    }
+}

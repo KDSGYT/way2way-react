@@ -11,12 +11,12 @@ const AgencyList: FC<props> = ({ data, id }) => {
     const stamp = verified ? <img src={stampIcon} className="stamp" alt="verified" title="verified" /> : null;
     return (
         <tr key={name} className="agency-card">
-            <td key="id">{id}</td>
-            <td key="name" className="agency-name">{name}{stamp}</td>
-            <td key="addres">{address}</td>
-            <td key="phone"> <a href={`tel:${phone}`}>{phone}</a></td>
-            <td key="branch">{branch}</td>
-            <td key="email"><a href={`mailto:${email}`} >{email}</a></td>
+            <td className="id" key="id">{id}</td>
+            <td key="name" className="agency-name name">{name}{stamp}</td>
+            <td className="address" key="addres">{address}</td>
+            <td className="phone" key="phone"> <a href={`tel:${phone}`}>{phone}</a></td>
+            <td className="branch" key="branch">{branch}</td>
+            <td className="email" key="email"><a href={`mailto:${email}`} >{email}</a></td>
         </tr>
     )
 }
