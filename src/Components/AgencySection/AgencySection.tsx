@@ -1,5 +1,5 @@
-import React from 'react';
 import './AgencySection.scss';
+
 function AgencySection() {
     
     return (
@@ -13,4 +13,5 @@ function AgencySection() {
         </section>
     )
 }
+
 export default AgencySection;
