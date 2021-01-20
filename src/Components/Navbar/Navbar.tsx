@@ -85,7 +85,6 @@ function Navbar() {
 
             <div ref={accountLinks} className="nav-links-group" id="account-links">
 
-                {/* will display the username in navbar when the user is logged in */}
                 <UserCTX.Consumer>
                     {(value: any) => {
                         if (!value.signOut) {

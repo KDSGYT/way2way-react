@@ -24,7 +24,7 @@ function UserProfile() {
             history.push('/login');
         }
 
-    }, [signOut]);
+    }, [signOut, history]);
 
     return (
         <section id="user-profile" >

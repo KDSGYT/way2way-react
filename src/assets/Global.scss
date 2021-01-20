@@ -25,3 +25,10 @@
         background: linear-gradient(1.0turn, #F94848 0%, rgba(0,0,0, 1) 100%);
     }
 }
+
+.display-as-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

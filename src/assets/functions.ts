@@ -26,7 +26,7 @@ export async function createUser(data: any, password: string) {
         .then(async () => {
             const currentUser: any = await firebaseAuth.currentUser;
             await currentUser.updateProfile(data)
-                // .then((res: any) => console.log(res))
+            // .then((res: any) => console.log(res))
         })
         // .then(() => firebaseAuth.currentUser)
         // .then(async () => console.log(await firebaseAuth.currentUser))
@@ -90,6 +90,19 @@ export async function getData(setState: any) {
     await data.forEach((doc) => newState.push(doc.data()))
     await setState(newState)
     return;
+}
+
+/**
+ * Send password reset link
+ */
+export async function forgotPassword(emailAddress:string) {
+
+    firebaseAuth.sendPasswordResetEmail(emailAddress).then(function () {
+        // Email sent.
+        console.log('password-reset Links sent')
+    }).catch(function (error) {
+        // An error happened.
+    });
 }
 
 // export function checkIfAdmin(UID, setError, error) {

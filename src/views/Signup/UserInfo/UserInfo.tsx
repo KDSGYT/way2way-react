@@ -1,8 +1,23 @@
-import React from 'react';
+import { FormGroup } from "@material-ui/core";
+import UserCTX from "../../../CTX/CTX";
 
 function UserInfo() {
+
     return (
-        <h1> user Info</h1>
+        <UserCTX.Consumer>
+            {(value: any): any => {
+                console.log(value.userData)
+                return (
+                    <section id="user-info">
+                        <FormGroup>
+                            {/* <TextField */}
+                            {/* label="" */}
+                            {/* /> */}
+                        </FormGroup>
+                    </section>
+                )
+            }}
+        </UserCTX.Consumer>
     )
 }
 

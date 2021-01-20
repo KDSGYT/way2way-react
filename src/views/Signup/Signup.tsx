@@ -1,16 +1,15 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
-import UserCTX from '../../CTX/CTX';
 import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
 import { useUserSignedOut } from '../../assets/Hooks';
 
 function Signup() {
-    
+
     const firstName: any = useRef("")
     const lastName: any = useRef("")
     const phone: any = useRef("")
@@ -18,7 +17,6 @@ function Signup() {
     const confirmPassword: any = useRef("")
     const email: any = useRef()
     const history: any = useHistory();
-    // const context: any = useContext(UserCTX)
     const [signOut] = useUserSignedOut()
     let location = useLocation();
 
@@ -29,7 +27,7 @@ function Signup() {
             email: email.current.value,
             phoneNumber: phone.current.value,
             photoURL: "",
-            postedAds:0
+            postedAds: 0
         }
         await createUser(data, password.current.value)
         history.push('/profile')
@@ -71,7 +69,8 @@ function Signup() {
                 <TextField
                     id="email"
                     inputRef={email}
-                    required type="email"
+                    required
+                    type="email"
                     label="Username"
                     variant="outlined"
                     autoComplete="off"
@@ -80,19 +79,23 @@ function Signup() {
                 <TextField
                     id="password"
                     inputRef={password}
-                    required type="password"
+                    required
+                    type="password"
                     label="Password"
                     variant="outlined"
                     autoComplete="off"
+
                 />
 
                 <TextField
                     id="password"
                     inputRef={confirmPassword}
-                    required type="Confirm password"
+                    required
+                    type="password"
                     label="Confirm Password"
                     variant="outlined"
                     autoComplete="off"
+
                 />
 
                 <TextField

@@ -15,6 +15,7 @@ import UserProfile from './views/UserProfile/UserProfile';
 import Accomodation from './views/Accomodation/Accomodation';
 import AdView from './views/AdView/AdView';
 import UserInfo from './views/Signup/UserInfo/UserInfo';
+import ForgetPassword from './views/ForgotPassword/ForgetPassword';
 
 function App() {
   const [userData, setUserData] = useState({})
@@ -70,6 +71,10 @@ function App() {
             {/* Login Route */}
             <Route path="/login">
               <Login />
+            </Route>
+
+            <Route path="/forgot-password">
+              <ForgetPassword />
             </Route>
 
             {/* Signup Route */}
