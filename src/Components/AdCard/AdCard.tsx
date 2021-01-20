@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 import Image from '../../assets/img/accomodation-section-background.jpg'
 import AdView from '../../views/AdView/AdView';
 import './AdCard.scss';

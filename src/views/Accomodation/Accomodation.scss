@@ -11,3 +11,14 @@
     }
 }
 
+
+@media (max-width:768px) {
+    #accomodation {
+        #container {
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+}
