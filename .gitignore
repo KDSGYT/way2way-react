@@ -29,3 +29,6 @@ yarn-debug.log*
 yarn-error.log*
 
 src/Util/firebase.ts*
+
+#todo
+TODO

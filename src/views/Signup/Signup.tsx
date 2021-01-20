@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
-import { useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import UserCTX from '../../CTX/CTX';
 import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
+import UserInfo from './UserInfo/UserInfo';
 
 function Signup() {
     
@@ -17,14 +18,17 @@ function Signup() {
     const email: any = useRef()
     const history: any = useHistory();
     const context: any = useContext(UserCTX)
-   
+    
+    let location = useLocation();
+
     async function handleClick(e: any) {
         const data = {
             displayName: firstName.current.value,
             lastName: lastName.current.value,
             email: email.current.value,
             phoneNumber: phone.current.value,
-            photoURL: ""
+            photoURL: "",
+            postedAds:0
         }
         await createUser(data, password.current.value)
         history.push('/profile')
@@ -37,6 +41,9 @@ function Signup() {
         const currentuser = firebaseAuth.currentUser;
         console.log(currentuser)
     }, [context.signOut, history]);
+
+
+
 
     return (
         <section id="sign-up">
@@ -112,6 +119,11 @@ function Signup() {
                 <div id="art"></div>
             </div>
 
+            <Switch>
+                <Route path={`${location}/user-info`} >
+                    <UserInfo />
+                </Route>
+            </Switch>
         </section >
 
     )

@@ -14,6 +14,7 @@ import { getUserFromDB } from './assets/functions'
 import UserProfile from './views/UserProfile/UserProfile';
 import Accomodation from './views/Accomodation/Accomodation';
 import AdView from './views/AdView/AdView';
+import UserInfo from './views/Signup/UserInfo/UserInfo';
 
 function App() {
   const [userData, setUserData] = useState({})
@@ -59,7 +60,7 @@ function App() {
             <Route path="/accomodation/:AID">
               <AdView />
             </Route>
-            
+
             {/* Author Route */}
             <Route path="/author">
               <Author />
@@ -74,6 +75,10 @@ function App() {
             {/* Signup Route */}
             <Route path="/signup">
               <Signup />
+            </Route>
+            
+            <Route path={`/user-info`} >
+              <UserInfo />
             </Route>
 
             <Route path="/profile">
