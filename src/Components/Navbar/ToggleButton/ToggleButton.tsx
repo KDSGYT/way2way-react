@@ -1,13 +1,17 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useState } from 'react';
 import './ToggleButton.scss';
-function ToggleButton() {
+
+interface props {
+    toggle: string
+    setToggle: any
+}
+const ToggleButton: FC<props> = ({toggle, setToggle}) => {
 
 
-    const [toggle, setToggle] = useState("");
 
     function handleToggle() {
-        if (toggle==="") setToggle("toggle")
+        if (toggle === "") setToggle("toggle")
         else setToggle("")
     }
 

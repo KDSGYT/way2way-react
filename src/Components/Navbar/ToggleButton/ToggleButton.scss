@@ -38,15 +38,16 @@
         }
         .toggle{
             .line1{
-                transform: rotateZ(38deg)
+                transform: rotateZ(40deg)
             }
             .line2{
                 opacity: 0%;
             }
             .line3{
-                transform: rotateZ(-38deg);
+                transform: rotateZ(-40deg);
             }
 
         }
+        
     }
 }

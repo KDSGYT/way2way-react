@@ -2,7 +2,7 @@
 @import '../../assets/Variables.scss';
 
 
-.accentstyles{
+.accentstyles {
     display: block;
     color: #FFF;
     background: #000;
@@ -25,7 +25,7 @@
         /* !importanté */
         border-radius: inherit;
         /* !importanté */
-        background-color: linear-gradient(1.0turn, #F94848 0%, rgba(0,0,0, 1) 100%);
+        background-color: linear-gradient(1.0turn, #F94848 0%, rgba(0, 0, 0, 1) 100%);
     }
 }
 
@@ -47,7 +47,7 @@
 
     // stroke: linear-gradient(green, yellow);
 
-   
+
     .nav-links-group {
         width: 50%;
         // border:2px solid green;
@@ -79,6 +79,7 @@
 }
 
 @media (max-width:768px) {
+
     #navbar {
         min-height: $navbar-height;
         height: auto;
@@ -89,9 +90,9 @@
         align-content: center;
         z-index: 99;
 
-        
         #navpage-links,
         #account-links {
+            transition: all 1s ease;
             border: 2px solid black;
             position: absolute;
             display: flex;
@@ -99,7 +100,7 @@
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            z-index: inherit;
+            z-index:-1;
             background-color: black;
             width: 101.8%;
             left: -1%;
@@ -116,12 +117,16 @@
             // display: none;
         }
 
+
     }
 
-    .accentstyles{
+
+    .accentstyles {
         display: none;
-        &::after{
+
+        &::after {
             display: none;
         }
     }
+
 }

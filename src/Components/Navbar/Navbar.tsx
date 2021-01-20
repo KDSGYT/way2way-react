@@ -1,5 +1,5 @@
 import ToggleButton from './ToggleButton/ToggleButton'
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserCTX from '../../CTX/CTX';
 import './Navbar.scss';
@@ -12,14 +12,29 @@ function Navbar() {
         paddingBottom: "5px"
     }
 
+    const [toggle, setToggle] = useState("");
+    const [hidden, setHidden] = useState("")
+    const navpageLinks:any = useRef()
+    const accountLinks:any = useRef()
 
+    useEffect(() => {
+        if(toggle==="toggle"){
+            navpageLinks.current.style.top="6vh";
+            accountLinks.current.style.top="52vh";
+        }
+        else {
+            navpageLinks.current.style.top = "-39vh";
+            accountLinks.current.style.top="-10vh";
+        }
+    }, [toggle]);
 
-
-    // if(window.innerWidth<768) return (<MobileNav />)
     return (
-        <nav id="navbar" className={"accentstyles"}>
-            <ToggleButton />
-            <div id="navpage-links" className="nav-links-group">
+        <nav id="navbar" className={`accentstyles ${hidden}`}>
+            <ToggleButton 
+                toggle={toggle}
+                setToggle={setToggle}
+            />
+            <div ref={navpageLinks} id="navpage-links" className="nav-links-group">
 
                 <NavLink
                     activeStyle={style}
@@ -56,7 +71,7 @@ function Navbar() {
 
             </div>
 
-            <div className="nav-links-group" id="account-links">
+            <div ref={accountLinks} className="nav-links-group" id="account-links">
 
                 {/* will display the username in navbar when the user is logged in */}
                 <UserCTX.Consumer>

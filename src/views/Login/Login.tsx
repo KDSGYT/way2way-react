@@ -4,7 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { loginUser } from '../../assets/functions';
 import UserCTX from '../../CTX/CTX';
 import './Login.scss';
-import Google from '../../assets/SVGs/google.svg'
+import Google from '../../assets/SVGs/google.svg';
+
 function Login() {
     const email: any = useRef("");
     const password: any = useRef("");
