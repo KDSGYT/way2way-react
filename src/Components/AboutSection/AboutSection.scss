@@ -45,7 +45,7 @@
             background-image: url('../../assets/SVGs/aboutText.svg');
             padding: 8% 6%;
             padding-left: 8%;
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
@@ -57,4 +57,16 @@
     //     left: 27%;
     // }
 
+}
+
+@media (max-width:768px) {
+    #about-section {
+        margin-top: 10vh;
+        height: 60vh;
+        #sub-section {
+            #about-text {
+                width: 100%;
+            }
+        }
+    }
 }
