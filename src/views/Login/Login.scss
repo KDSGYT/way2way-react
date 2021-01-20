@@ -127,3 +127,29 @@ a {
     text-decoration: none;
     color: black;
 }
+
+@media (max-width:768px) {
+    #login {
+        height: 92vh;
+
+        #login-card {
+            width: 100%;
+            // margin:0 auto;
+            padding: 0 5%;
+
+            #login-button>#input-login-button {
+                width: 30%;
+            }
+
+            #alternative-login-button>.login-button {
+                width: 20%;
+            }
+
+        }
+
+        #login-art {
+            display: none;
+        }
+
+    }
+}

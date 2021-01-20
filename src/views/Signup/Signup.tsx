@@ -107,7 +107,7 @@ function Signup() {
                     </button>
                 </p>
             </form>
-            <div id="login-art">
+            <div id="signup-art">
                 <p>Create Your Account</p>
                 <div id="art"></div>
             </div>
