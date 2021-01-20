@@ -13,24 +13,28 @@ function Navbar() {
     }
 
     const [toggle, setToggle] = useState("");
-    const [hidden, setHidden] = useState("")
-    const navpageLinks:any = useRef()
-    const accountLinks:any = useRef()
+    const navpageLinks: any = useRef()
+    const accountLinks: any = useRef()
+
+
+    async function handleClick() {
+        await setToggle("")
+    }
 
     useEffect(() => {
-        if(toggle==="toggle"){
-            navpageLinks.current.style.top="6vh";
-            accountLinks.current.style.top="52vh";
+        if (toggle === "toggle") {
+            navpageLinks.current.style.top = "6vh";
+            accountLinks.current.style.top = "52vh";
         }
         else {
             navpageLinks.current.style.top = "-39vh";
-            accountLinks.current.style.top="-10vh";
+            accountLinks.current.style.top = "-10vh";
         }
     }, [toggle]);
 
     return (
-        <nav id="navbar" className={`accentstyles ${hidden}`}>
-            <ToggleButton 
+        <nav id="navbar" className={`accentstyles`}>
+            <ToggleButton
                 toggle={toggle}
                 setToggle={setToggle}
             />
@@ -41,6 +45,8 @@ function Navbar() {
                     to="/"
                     exact
                     className="nav-link"
+                    onClick={handleClick}
+
                 >
                     HOME
                 </NavLink>
@@ -49,6 +55,8 @@ function Navbar() {
                     activeStyle={style}
                     to="/agencies"
                     className="nav-link"
+                    onClick={handleClick}
+
                 >
                     AGENCY
             </NavLink>
@@ -57,6 +65,8 @@ function Navbar() {
                     activeStyle={style}
                     to="/accomodation"
                     className="nav-link"
+                    onClick={handleClick}
+
                 >
                     ACCOMODATION
                 </NavLink>
@@ -65,6 +75,8 @@ function Navbar() {
                     activeStyle={style}
                     to="author"
                     className="nav-link"
+                    onClick={handleClick}
+
                 >
                     AUTHOR
                 </NavLink>
@@ -81,6 +93,8 @@ function Navbar() {
                                 to="/profile"
                                 activeStyle={style}
                                 className="nav-link"
+                                onClick={handleClick}
+
                             >
                                 {value.userData.displayName}
                             </NavLink>)
@@ -91,6 +105,8 @@ function Navbar() {
                                     to="/login"
                                     activeStyle={style}
                                     className="nav-link"
+                                    onClick={handleClick}
+
                                 >
                                     LOGIN
                                 </NavLink>
@@ -98,6 +114,8 @@ function Navbar() {
                                     to="/signup"
                                     activeStyle={style}
                                     className="nav-link"
+                                    onClick={handleClick}
+
                                 >
                                     SIGNUP
                                 </NavLink>
