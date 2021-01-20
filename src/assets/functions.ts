@@ -95,7 +95,7 @@ export async function getData(setState: any) {
 /**
  * Send password reset link
  */
-export async function forgotPassword(emailAddress:string) {
+export async function forgotPassword(emailAddress: string) {
 
     firebaseAuth.sendPasswordResetEmail(emailAddress).then(function () {
         // Email sent.
@@ -104,6 +104,16 @@ export async function forgotPassword(emailAddress:string) {
         // An error happened.
     });
 }
+
+
+export async function getAdData(AID: string, setState: any) {
+
+    await firestore.collection('ads').doc(AID).get()
+        .then(async (res) => res.data())
+        .then(async (res: any) => await setState(res))
+        .catch(err => console.log(err))
+}
+
 
 // export function checkIfAdmin(UID, setError, error) {
 //     firestore.collection('user').doc('admin').get()

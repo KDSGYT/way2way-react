@@ -13,7 +13,7 @@ import { firebaseAuth } from './Util/firebase';
 import { getUserFromDB } from './assets/functions'
 import UserProfile from './views/UserProfile/UserProfile';
 import Accomodation from './views/Accomodation/Accomodation';
-import AdView from './views/AdView/AdView';
+import AdView from './views/Accomodation/AdView/AdView';
 import UserInfo from './views/Signup/UserInfo/UserInfo';
 import ForgetPassword from './views/ForgotPassword/ForgetPassword';
 

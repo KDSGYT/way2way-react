@@ -13,7 +13,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -22,7 +22,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -31,7 +31,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -40,7 +40,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -49,7 +49,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -58,7 +58,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -67,7 +67,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -76,7 +76,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -85,7 +85,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -94,7 +94,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
                 
                 <AdCard
@@ -103,7 +103,7 @@ function Accomodation() {
                     furnished={false}
                     washroom={1}
                     rent={1600}
-                    AID={'something'}
+                    AID={'UID'}
                 />
 
             </div>
