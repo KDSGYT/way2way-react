@@ -1,11 +1,24 @@
-#post-ad{
+#post-ad {
     width: 100%;
     height: 94vh;
-    #post-ad-form{
-        border:2px solid black;
+
+    #post-ad-form {
+
+        // border: 2px solid black;
         width: 60%;
         height: 60%;
-        padding:1%;
+        padding: 1%;
         justify-content: space-evenly;
+    }
+
+    #radio-form{
+        width: 24%;
+    }
+
+    #radio-group,
+    #radio-form {
+        // border: 2px solid black;
+        justify-content: space-evenly;
+        flex-direction: row;
     }
 }

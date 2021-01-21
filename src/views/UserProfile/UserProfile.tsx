@@ -28,8 +28,8 @@ function UserProfile() {
 
     return (
         <section id="user-profile" >
-            <Link to={`${url}/post`} >Click</Link>
             <Route exact path={`${path}`}>
+                <Link to={`${url}/post`} >Click</Link>
                 <UserCTX.Consumer>
                     {(value: any) => {
                         const {

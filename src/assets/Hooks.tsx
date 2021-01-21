@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import UserCTX from '../CTX/CTX';
-import { firestore } from '../Util/firebase';
+import { fireStorage  } from '../Util/firebase';
 
 /**
  * Get signout information about user.
@@ -17,9 +17,5 @@ export function useUserSignedOut() {
 export function useUserData() {
     const CTX: any = useContext(UserCTX)
     return ([CTX.userData, CTX.setUserData])
-
-}
-
-export function useForgetPassword() {
 
 }

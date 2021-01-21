@@ -1,4 +1,4 @@
-import firebase, { firebaseAuth, firestore, googleProvider } from '../Util/firebase';
+import firebase, { firebaseAuth, fireStorage, firestore, googleProvider } from '../Util/firebase';
 
 /**
  * Arrange array elements alphabetically 
@@ -114,6 +114,53 @@ export async function getAdData(AID: string, setState: any) {
         .catch(err => console.log(err))
 }
 
+
+/**
+ * Uploads the image to the database and returns the url of the image
+ * @param image File that is uploaded by the user
+ * @param UID User id of the user 
+ */
+export async function getImageUrl(image: any, UID: string, setImageUrl: any) {
+    const storageRef = fireStorage.ref();
+
+    // upload file to the images folder
+    const uploadTask = storageRef.child(`images/${UID}/${image.name}`).put(image)
+    // get progress of  upload file
+    await uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        (snapshot): any => {
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                    console.log('Upload is running');
+                    break;
+            }
+        }, (error) => {
+            switch (error.code) {
+                case 'storage/unauthorized':
+                    // User doesn't have permission to access the object
+                    break;
+
+                case 'storage/canceled':
+                    // User canceled the upload
+                    break;
+
+
+                case 'storage/unknown':
+                    // Unknown error occurred, inspect error.serverResponse
+                    break;
+            }
+            // get download url when download is finished
+        }, async () => {
+            await uploadTask.snapshot.ref.getDownloadURL()
+                .then(async (downloadURL) => await setImageUrl(downloadURL))
+        }
+    )
+
+}
 
 // export function checkIfAdmin(UID, setError, error) {
 //     firestore.collection('user').doc('admin').get()
