@@ -1,6 +1,6 @@
-import { Button, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup, TextField } from '@material-ui/core';
+import { Button, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup, TextField } from '@material-ui/core';
 import React, { useEffect, useRef, useState } from 'react';
-import { getImageUrl } from '../../../assets/functions';
+import { createPost, getImageUrl } from '../../../assets/functions';
 import { useUserData } from '../../../assets/Hooks';
 import './PostAccAdd.scss'
 function PostAccAdd() {
@@ -24,19 +24,26 @@ function PostAccAdd() {
 
     useEffect(() => {
         console.table(postData)
-
+        createPost(postData)
     }, [postData]);
 
     useEffect(() => {
         if (imageUrl !== "") {
             setPostData({
+                postOwnerData: {
+                    displayName: userData.displayName,
+                    UID: userData.uid,
+                    email: userData.email,
+                    phone:userData.phoneNumber
+                },
                 postTitle: postTitle.current.value,
                 postAddress: postAddress.current.value,
                 postDiscription: postDiscription.current.value,
                 postRent: postRent.current.value,
                 postBedroom: postBedroom.current.value,
                 postFurnished: furnished,
-                postImageUrl: imageUrl
+                postImageUrl: imageUrl,
+                posted: new Date()
             })
         }
     }, [imageUrl])
@@ -54,31 +61,36 @@ function PostAccAdd() {
                     accept="image/"
                     multiple
                     type="file"
+                    required
                 />
 
                 <TextField
                     label="Title"
                     variant="outlined"
                     inputRef={postTitle}
-
+                    required
                 />
                 <TextField
                     label="Bedroom"
                     variant="outlined"
                     inputRef={postBedroom}
+                    required
 
                 />
                 <TextField
                     label="Address"
                     variant="outlined"
                     inputRef={postAddress}
+                    required
+
                 />
                 <TextField
                     label="Rent"
                     variant="outlined"
                     type="number"
                     inputRef={postRent}
-
+                    required
+                    
                 />
 
                 <TextField
@@ -90,6 +102,7 @@ function PostAccAdd() {
                 <FormGroup
                     className="display-as-flex"
                     id="radio-form"
+                    
                 >
                     <FormLabel component="legend">Furnished</FormLabel>
                     <RadioGroup

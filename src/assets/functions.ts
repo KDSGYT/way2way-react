@@ -162,6 +162,11 @@ export async function getImageUrl(image: any, UID: string, setImageUrl: any) {
 
 }
 
+export function createPost(postData: object) {
+    firestore.collection('ads').doc().set(postData)
+        .then(() => console.log('it worked'))
+}
+
 // export function checkIfAdmin(UID, setError, error) {
 //     firestore.collection('user').doc('admin').get()
 //         .then(res => res.data().UID)

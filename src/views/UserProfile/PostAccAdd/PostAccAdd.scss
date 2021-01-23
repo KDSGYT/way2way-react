@@ -9,9 +9,16 @@
         height: 60%;
         padding: 1%;
         justify-content: space-evenly;
+
+        // Hide the arrows for increasing number in input type number
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            display: none;
+        }
     }
 
-    #radio-form{
+    #radio-form {
         width: 24%;
     }
 
