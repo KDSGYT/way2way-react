@@ -54,7 +54,7 @@ async function addUserToDB(UID: string, data: any) {
  * @param setSignOut set the global state is the user is signed out or not
  */
 export async function loginUser(email: string, password: string, setState: any, setSignOut: any, type: string, rememberUser: boolean) {
-    const persistenceType: string = (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
+    // const persistenceType: string = (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => {
             if (type === "email") {
@@ -162,11 +162,27 @@ export async function getImageUrl(image: any, UID: string, setImageUrl: any) {
 
 }
 
+/**
+ * Create the post in the DB to be accesssed later
+ * @param postData Post data entered by the user
+ */
 export function createPost(postData: object) {
     firestore.collection('ads').doc().set(postData)
         .then(() => console.log('it worked'))
 }
 
+
+/**
+ * Get data from the database
+ */
+export async function getAds(setAds:any) {
+    const snapshot = await firestore.collection('ads').get();
+    const data: any = [];
+    snapshot.forEach(element => {
+        data.push(element.data());//need to find a way to send the post id to the state to be displayed
+    });
+    await setAds(data)
+}
 // export function checkIfAdmin(UID, setError, error) {
 //     firestore.collection('user').doc('admin').get()
 //         .then(res => res.data().UID)

@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import Image from '../../assets/img/accomodation-section-background.jpg'
 import './AdCard.scss';
 
 interface props {
@@ -10,9 +9,10 @@ interface props {
     washroom: number
     rent: number
     AID: string
+    imageUrl: string
 }
 
-const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID }) => {
+const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID, imageUrl }) => {
 
     const history = useHistory();
 
@@ -24,11 +24,11 @@ const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID })
     return (
         <div className="id-card">
             <div className="upper-section">
-                <img src={Image} alt="" />
+                <img src={imageUrl} alt="" />
 
             </div>
             <div className="lower-section">
-                <p className="address">{address}</p>
+                <p className="address"><b>{address}</b></p>
                 {/* Discription for the accomodation */}
                 <div className="discription">
 

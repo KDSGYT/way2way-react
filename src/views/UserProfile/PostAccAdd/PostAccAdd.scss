@@ -1,25 +1,36 @@
 #post-ad {
     width: 100%;
     height: 94vh;
-
+    // border:2px solid black;
     #post-ad-form {
-
+        position: relative;
         // border: 2px solid black;
-        width: 60%;
-        height: 60%;
+        width: 80%;
+        height: 80%;
         padding: 1%;
         justify-content: space-evenly;
 
         // Hide the arrows for increasing number in input type number
-
+        .input-field{
+            // border:2px solid black;
+            width: 50%;
+        }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             display: none;
         }
+
+        #upload-icon{
+            // border:2px solid black;
+            width: 60px;
+            // padding: 10%;
+            height: initial;
+
+        }
     }
 
     #radio-form {
-        width: 24%;
+        width: 50%;
     }
 
     #radio-group,
