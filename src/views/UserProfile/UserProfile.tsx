@@ -73,7 +73,7 @@ function UserProfile() {
                                             variant="outlined"
                                             id="sign-out-button"
                                             type="button"
-                                            onClick={() => signout()} 
+                                            onClick={() => signout()}
                                         >Signout</Button>
 
                                         {/* Link to post ad view */}

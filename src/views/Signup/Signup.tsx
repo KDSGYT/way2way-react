@@ -21,6 +21,7 @@ function Signup() {
     let location = useLocation();
 
     async function handleClick(e: any) {
+        
         const data = {
             displayName: firstName.current.value,
             lastName: lastName.current.value,
@@ -29,6 +30,7 @@ function Signup() {
             photoURL: "",
             postedAds: 0
         }
+
         await createUser(data, password.current.value)
         history.push('/profile')
     }
