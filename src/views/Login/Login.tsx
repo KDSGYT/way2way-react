@@ -32,8 +32,7 @@ function Login() {
             await loginUser(
                 email.current.value,
                 password.current.value,
-                context.setUserData,
-                context.setSignOut,
+                context,
                 type,
                 rememberUser.current.checked
             )

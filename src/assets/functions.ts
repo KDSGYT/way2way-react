@@ -37,7 +37,7 @@ export async function createUser(
         .then(async () => await firebaseAuth.createUserWithEmailAndPassword(email, password))
         .then(async (userCredintials: any) => {
             // console.log(userCredintials)
-            const currentUser: any = await firebaseAuth.currentUser;
+            // const currentUser: any = await firebaseAuth.currentUser;
             const updateData = {
                 displayName,
                 photoURL,
@@ -46,8 +46,11 @@ export async function createUser(
                 phoneNumber,
                 postedAds,
             }
-            await currentUser.updateProfile(updateData)
+            // await currentUser.updateProfile(updateData)
             await addUserToDB(userCredintials.user.UID, DBdata)
+        })
+        .then(() => {
+            
         })
         // .then(() => firebaseAuth.currentUser)
         // .then(async () => console.log(await firebaseAuth.currentUser))
@@ -75,18 +78,19 @@ async function addUserToDB(UID: string, data: any) {
  * @param setState set global state for data that is received
  * @param setSignOut set the global state is the user is signed out or not
  */
-export async function loginUser(email: string, password: string, setState: any, setSignOut: any, type: string, rememberUser: boolean) {
+export async function loginUser(email: string, password: string, CTX: any, type: string, rememberUser: boolean) {
     // const persistenceType: string = (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => {
             if (type === "email") {
-                await firebaseAuth.signInWithEmailAndPassword(email, password)
+                return await firebaseAuth.signInWithEmailAndPassword(email, password)
 
             } else if (type === "google") {
-                await firebaseAuth.signInWithRedirect(googleProvider)
+                return await firebaseAuth.signInWithRedirect(googleProvider)
+
             }
         })
-        .then(() => setSignOut(false))
+        .then(() => CTX.setSignOut(false))
         .catch((error) => {
             console.log(error)
         });
@@ -113,8 +117,35 @@ export async function forgotPassword(emailAddress: string) {
  * @param setState set global state for user info
  */
 export async function getUserFromDB(UID: string, setState: any) {
-    const currentUser = await firebaseAuth.currentUser
-    await setState(currentUser)
+
+
+    const {
+        displayName,
+        email,
+        phoneNumber,
+        photoURL,
+        uid
+    }: any = await firebaseAuth.currentUser;
+    let userDataFromDB={}
+
+    await firestore.collection('users').doc(uid).get()
+        .then((data:any) => console.log(data))
+    // const {
+    //     displayName,
+    //     email,
+    //     phoneNumber,
+    //     //userprofile url with default url if the images goes not exist
+    //     photoURL = defaultPhotoUrl
+    // } = value.userData;
+
+    const newState = {
+        displayName,
+        email,
+        phoneNumber,
+        photoURL
+    }
+    // await setState(currentUser)
+    console.log(newState)
 }
 
 /**
