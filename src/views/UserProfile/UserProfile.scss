@@ -1,6 +1,55 @@
-#user-profile{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+@import '../../assets/Global.scss';
 
+#user-profile {
+    height: 93vh;
+    width: 100vw;
+
+    #user-profile-card {
+        border: 2px solid rgb(145, 145, 145);
+        $height: 400px;
+        width: 10%;
+        height: 45%;
+        min-height: $height;
+        min-width: $height - 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        // align-items: center;
+        padding: auto;
+        border-radius: 5px;
+
+        #upper-portion {
+            height: 60%;
+            width: 100%;
+
+            img {
+                border-radius: 50%;
+                height: 80%;
+                object-fit: contain;
+            }
+        }
+
+        #lower-portion {
+            width: 100%;
+            height: 40%;
+            justify-content: space-evenly;
+
+            #profile-button {
+                width: 80%;
+                height: 30%;
+                flex-direction: row;
+                justify-content: space-evenly;
+                button{
+                    border:none;
+                    border-radius: 5px;
+                    border:2px solid black;
+                    padding: 2%;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color:white;
+                    background-color: black;
+                }
+            }
+        }
+    }
 }
