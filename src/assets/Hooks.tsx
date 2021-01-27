@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import UserCTX from '../CTX/CTX';
+import { firebaseAuth } from '../Util/firebase';
 import { getImageUrl } from './functions';
 
 /**
@@ -20,10 +21,14 @@ export function useUserData() {
 
 }
 
-
+/**
+ * Returns the url of the image from firebase storage after upload
+ * @param image -file
+ */
 export function useGetImageUrl(image: any) {
     const [imageUrl, setImageUrl] = useState("");
     const [userData] = useUserData();
     getImageUrl(image, userData.uid, setImageUrl);
     return [imageUrl]
 }
+

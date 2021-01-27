@@ -21,7 +21,7 @@ function Signup() {
     let location = useLocation();
 
     async function handleClick(e: any) {
-        
+        e.preventDefault()
         const data = {
             displayName: firstName.current.value,
             lastName: lastName.current.value,
@@ -30,7 +30,7 @@ function Signup() {
             photoURL: "",
             postedAds: 0
         }
-
+        console.log(data)
         await createUser(data, password.current.value)
         history.push('/profile')
     }
@@ -48,7 +48,7 @@ function Signup() {
 
     return (
         <section id="sign-up">
-            <form id="sign-up-card" onSubmit={async (e) => await password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
+            <form id="sign-up-card" onSubmit={(e) => password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
                 <h1>SignUp</h1>
                 {/* <Link to="/signup">Don't have an account? Create an Account</Link> */}
                 <div id="name">

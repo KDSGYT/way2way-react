@@ -9,7 +9,7 @@ function ForgotPassword() {
 
     async function handleSubmit(e: any) {
         e.preventDefault()
-        await forgotPassword(emailAddress.current.value)
+        forgotPassword(emailAddress.current.value)
     }
 
     return (
@@ -23,7 +23,7 @@ function ForgotPassword() {
                     label="Email"
                     type="email"
                 />
-                <input id="submit-button" type="submit" onClick={handleSubmit}value="Send Link" />
+                <input id="submit-button" type="submit" onClick={handleSubmit} value="Send Link" />
             </FormGroup>
 
         </section>

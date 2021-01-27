@@ -47,7 +47,7 @@ function UserProfile() {
                             //userprofile url with default url if the images goes not exist
                             photoURL = defaultPhotoUrl
                         } = value.userData;
-
+                        const DPURL = photoURL !== null && photoURL.length > 3 ? photoURL.replace('96', '496') : defaultPhotoUrl
                         return (
                             <div id="user-profile-card" className={'display-as-flex'}>
 
@@ -55,14 +55,14 @@ function UserProfile() {
                                 <div className={'display-as-flex'} id="upper-portion">
 
                                     {/* 96 is replaced with 296 in the photourl to get high resolution image */}
-                                    <img src={photoURL.replace('96', '296')} alt="something" />
+                                    <img src={DPURL} alt="something" />
                                 </div>
 
                                 {/* lower portion of the card containing all the other information and buttons */}
                                 <div id="lower-portion" className={'display-as-flex'}>
 
                                     <h1>{displayName}</h1>
-                                    {/* <h2>{email}</h2> */}
+                                    <h2>{email}</h2>
                                     {/* <h3>{phoneNumber}</h3> */}
 
                                     {/* buttons to signout and post ad */}

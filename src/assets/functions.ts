@@ -20,13 +20,34 @@ export function sortDataAlphabetically(array: any) {
  * @param data Object Contains user data
  * @param password string 
  */
-export async function createUser(data: any, password: string) {
+export async function createUser(
+    {
+        email,
+        displayName,
+        lastName,
+        phoneNumber,
+        photoURL,
+        postedAds
+
+    }: any,
+    password: string
+) {
+    // body of the function 
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .then(async () => await firebaseAuth.createUserWithEmailAndPassword(data.email, password))
-        .then(async () => {
+        .then(async () => await firebaseAuth.createUserWithEmailAndPassword(email, password))
+        .then(async (userCredintials: any) => {
+            // console.log(userCredintials)
             const currentUser: any = await firebaseAuth.currentUser;
-            await currentUser.updateProfile(data)
-            // .then((res: any) => console.log(res))
+            const updateData = {
+                displayName,
+                photoURL,
+            }
+            const DBdata = {
+                phoneNumber,
+                postedAds,
+            }
+            await currentUser.updateProfile(updateData)
+            await addUserToDB(userCredintials.user.UID, DBdata)
         })
         // .then(() => firebaseAuth.currentUser)
         // .then(async () => console.log(await firebaseAuth.currentUser))
@@ -44,6 +65,7 @@ export async function createUser(data: any, password: string) {
 async function addUserToDB(UID: string, data: any) {
     const collection = firestore.collection('users');
     await collection.doc(UID).set(data)
+        .catch((e) => console.log(e))
 }
 
 /**
@@ -70,6 +92,21 @@ export async function loginUser(email: string, password: string, setState: any, 
         });
 }
 
+
+/**
+ * Reset pass
+ * @param emailAddress string
+ */
+export async function forgotPassword(emailAddress: string) {
+
+    firebaseAuth.sendPasswordResetEmail(emailAddress).then(function () {
+        // Email sent.
+        console.log('password-reset Link sent')
+    }).catch(function (error) {
+        // An error happened.
+    });
+}
+
 /**
  * Retrieves the data from DB using UID received after login
  * @param UID UserID unique to a project
@@ -91,20 +128,6 @@ export async function getData(setState: any) {
     await setState(newState)
     return;
 }
-
-/**
- * Send password reset link
- */
-export async function forgotPassword(emailAddress: string) {
-
-    firebaseAuth.sendPasswordResetEmail(emailAddress).then(function () {
-        // Email sent.
-        console.log('password-reset Links sent')
-    }).catch(function (error) {
-        // An error happened.
-    });
-}
-
 
 export async function getAdData(AID: string, setState: any) {
 
@@ -175,7 +198,7 @@ export function createPost(postData: object) {
 /**
  * Get data from the database
  */
-export async function getAds(setAds:any) {
+export async function getAds(setAds: any) {
     const snapshot = await firestore.collection('ads').get();
     const data: any = [];
     snapshot.forEach(element => {
