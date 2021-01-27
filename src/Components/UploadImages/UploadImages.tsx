@@ -34,7 +34,7 @@ const UploadImages: FC<props> = ({ inputRef }) => {
 
     return (
         <>
-            <div id="preview">
+            <div id="preview" className={'display-as-flex'}>
                 {preview}
             </div>
             {limitReached}

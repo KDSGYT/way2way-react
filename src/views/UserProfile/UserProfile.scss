@@ -5,7 +5,7 @@
     width: 100vw;
 
     #user-profile-card {
-        border: 2px solid rgb(145, 145, 145);
+        border: 2px solid rgba(145, 145, 145, 0.685);
         $height: 400px;
         width: 10%;
         height: 45%;
@@ -39,13 +39,13 @@
                 height: 30%;
                 flex-direction: row;
                 justify-content: space-evenly;
-                button{
-                    border:none;
+                button:hover{
+                    width: auto;
                     border-radius: 5px;
                     border:2px solid black;
-                    padding: 2%;
-                    font-size: 1rem;
-                    font-weight: 700;
+                    // padding: 2%;
+                    // font-size: 1rem;
+                    // font-weight: 700;
                     color:white;
                     background-color: black;
                 }

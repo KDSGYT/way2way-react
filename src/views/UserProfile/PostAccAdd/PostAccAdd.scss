@@ -1,6 +1,7 @@
 #post-ad {
     width: 100%;
     height: 94vh;
+
     // border:2px solid black;
     #post-ad-form {
         position: relative;
@@ -9,18 +10,31 @@
         height: 80%;
         padding: 1%;
         justify-content: space-evenly;
+        $form-width: 35%;
+
+        .input-field {
+            width: $form-width;
+        }
+
+        .grouped-input-field {
+            width: $form-width;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .input-field {
+                width: 49%;
+                // margin: auto;
+
+            }
+        }
 
         // Hide the arrows for increasing number in input type number
-        .input-field{
-            // border:2px solid black;
-            width: 50%;
-        }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             display: none;
         }
 
-        #upload-icon{
+        #upload-icon {
             // border:2px solid black;
             width: 60px;
             // padding: 10%;
@@ -38,5 +52,10 @@
         // border: 2px solid black;
         justify-content: space-evenly;
         flex-direction: row;
+    }
+
+    #ad-submit-button:hover{
+        background-color: black;
+        color:white;
     }
 }

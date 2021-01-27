@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import React, { useContext, useEffect } from 'react';
 import { Link, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { useUserSignedOut } from '../../assets/Hooks';
@@ -68,18 +69,20 @@ function UserProfile() {
                                     <div id="profile-button" className={'display-as-flex'} >
 
                                         {/* signout button */}
-                                        <button
+                                        <Button
+                                            variant="outlined"
                                             id="sign-out-button"
                                             type="button"
                                             onClick={() => signout()} 
-                                        >Signout</button>
+                                        >Signout</Button>
 
                                         {/* Link to post ad view */}
-                                        <button
+                                        <Button
+                                            variant="outlined"
                                             onClick={() => history.push(`${url}/post`)}
                                         >
                                             Post Ad
-                                        </button>
+                                        </Button>
                                     </div>
 
                                 </div>

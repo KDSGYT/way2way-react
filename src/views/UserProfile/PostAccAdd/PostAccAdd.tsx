@@ -59,7 +59,7 @@ function PostAccAdd() {
     }, [imageUrl])
 
 
-    function handleNumberChange(e:any) {
+    function handleNumberChange(e: any) {
         // check if the user has entered the letter e 
         // Do not register the keystroke if the user enters 
     }
@@ -77,7 +77,7 @@ function PostAccAdd() {
                 />
 
 
-
+                {/* Post title */}
                 <TextField
                     label="Title"
                     variant="outlined"
@@ -85,26 +85,34 @@ function PostAccAdd() {
                     required
                     className={"input-field"}
                 />
-                <TextField
-                    label="Bedroom"
-                    variant="outlined"
-                    inputRef={postBedroom}
-                    required
-                    type="number"
-                    onChange={handleNumberChange}
-                    className={"input-field"}
 
-                />
-                <TextField
-                    label="Washroom"
-                    type="number"
-                    onChange={handleNumberChange}
-                    variant="outlined"
-                    inputRef={postWashroom}
-                    required
-                    className={"input-field"}
+                <span className={" display-as-flex grouped-input-field"}>
+                    {/* Number of bedrooos */}
+                    <TextField
+                        label="Bedroom"
+                        variant="outlined"
+                        inputRef={postBedroom}
+                        required
+                        type="number"
+                        onChange={handleNumberChange}
+                        className={"input-field"}
 
-                />
+                    />
+
+                    {/* Number of washrooms */}
+                    <TextField
+                        label="Washroom"
+                        type="number"
+                        onChange={handleNumberChange}
+                        variant="outlined"
+                        inputRef={postWashroom}
+                        required
+                        className={"input-field"}
+
+                    />
+                </span>
+
+                {/* Location Address */}
                 <TextField
                     label="Address"
                     variant="outlined"
@@ -113,6 +121,8 @@ function PostAccAdd() {
                     className={"input-field"}
 
                 />
+
+                {/* Rent for the place */}
                 <TextField
                     label="Rent"
                     variant="outlined"
@@ -124,6 +134,7 @@ function PostAccAdd() {
 
                 />
 
+                {/* Discription if any */}
                 <TextField
                     label="Discription"
                     rowsMax={8}
@@ -132,11 +143,11 @@ function PostAccAdd() {
                     className={"input-field"}
 
                 />
+
+                {/* If the place furnished */}
                 <FormGroup
                     className="display-as-flex"
                     id="radio-form"
-
-
                 >
                     <FormLabel component="legend">Furnished</FormLabel>
                     <RadioGroup
@@ -161,7 +172,9 @@ function PostAccAdd() {
                         />
                     </RadioGroup>
                 </FormGroup>
-                <Button onClick={handleSubmit} variant="outlined">
+
+                {/* Submit the form */}
+                <Button id="ad-submit-button" onClick={handleSubmit} variant="outlined">
                     Submit
                 </Button>
             </FormGroup>
