@@ -10,7 +10,7 @@ const UploadImages: FC<props> = ({ inputRef }) => {
     const [images, setImages] = useState([]);
     const preview: any = images.map((image: any, index) => {
         return (
-            <img className="image-preview" src={URL.createObjectURL(image)} key={index} />
+            <img className="image-preview" alt="" src={URL.createObjectURL(image)} key={index} />
         )
     })
     const [maxLimitReached, setMaxLimitReached] = useState(false)
