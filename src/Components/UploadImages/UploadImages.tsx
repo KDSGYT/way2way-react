@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import './UploadImages.scss';
+
 interface props {
     inputRef?: any
 }
@@ -13,8 +14,10 @@ const UploadImages: FC<props> = ({ inputRef }) => {
             <img className="image-preview" alt="" src={URL.createObjectURL(image)} key={index} />
         )
     })
+    
     const [maxLimitReached, setMaxLimitReached] = useState(false)
     const limitReached = maxLimitReached ? <h3>Max Limit Reached: 5 images</h3> : null
+    
     function handleChange() {
         // console.log(inputRef.current.files[0])
         setImages((prevState): any => {

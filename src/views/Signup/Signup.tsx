@@ -2,45 +2,57 @@ import React, { useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
-import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
+import { Switch, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
-import { useUserSignedOut } from '../../assets/Hooks';
+import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 
 function Signup() {
 
     const firstName: any = useRef("")
     const lastName: any = useRef("")
-    const phone: any = useRef("")
     const password: any = useRef("")
     const confirmPassword: any = useRef("")
     const email: any = useRef()
     const history: any = useHistory();
-    const [signOut] = useUserSignedOut()
-    let location = useLocation();
+    const [signOut] = useUserSignedOut();
+    const [userData] = useUserData();
+
+    // let location = useLocation();
+    const { path, url } = useRouteMatch();
+
 
     async function handleClick(e: any) {
         e.preventDefault()
         const data = {
-            displayName: firstName.current.value,
-            lastName: lastName.current.value,
             email: email.current.value,
-            phoneNumber: phone.current.value,
             photoURL: "",
             postedAds: 0
         }
         console.log(data)
-        await createUser(data, password.current.value)
-        history.push('/profile')
+        // Account is created using Email and password
+        /**
+         *  @param data - user information as entered on the signup page
+         *  @param password - as entered by the user
+         */
+        try{
+            await createUser(data, password.current.value)
+        } catch (e) {
+
+        }
+        // user will be redirected to another page where the user is required to enter addition information
+        history.push(`${url}/user-info`)
     }
 
     useEffect(() => {
-        if (!signOut) {
+        if (!signOut && userData.displayName !== undefined) {
             history.push('/profile')
+        } else {
+            history.push('/signup/user-info')
         }
-        const currentuser = firebaseAuth.currentUser;
-        console.log(currentuser)
+        // const currentuser = firebaseAuth.currentUser;
+        // console.log(currentuser)
     }, [signOut, history]);
 
 
@@ -48,85 +60,58 @@ function Signup() {
 
     return (
         <section id="sign-up">
-            <form id="sign-up-card" onSubmit={(e) => password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
-                <h1>SignUp</h1>
-                {/* <Link to="/signup">Don't have an account? Create an Account</Link> */}
-                <div id="name">
+            <Route path={path} exact>
+                <form id="sign-up-card" onSubmit={(e) => password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
+                    <h1>SignUp</h1>
                     <TextField
-                        inputRef={firstName}
+                        id="email"
+                        inputRef={email}
                         required
-                        id="f-name"
-                        label="First Name"
+                        type="email"
+                        label="Email"
                         variant="outlined"
+                        autoComplete="off"
                     />
 
                     <TextField
-                        inputRef={lastName}
+                        id="password"
+                        inputRef={password}
                         required
-                        id="l-name"
-                        label="Last Name" variant="outlined"
+                        type="password"
+                        label="Password"
+                        variant="outlined"
+                        autoComplete="off"
+
                     />
+
+                    <TextField
+                        inputRef={confirmPassword}
+                        required
+                        type="password"
+                        label="Confirm Password"
+                        variant="outlined"
+                        autoComplete="off"
+
+                    />
+                    <div id="signup-button">
+
+                        <input type="submit" value="Sign Up" id="input-signup-button" />
+                    </div>
+                    <hr />
+                    <p id="alternative-signup-button">
+                        Or SignUp with: <button className="signup-button"  >
+                            <img src={Google} alt="" />
+                        </button>
+                    </p>
+                </form>
+                <div id="signup-art">
+                    <p>Create Your Account</p>
+                    <div id="art"></div>
                 </div>
 
-                <TextField
-                    id="email"
-                    inputRef={email}
-                    required
-                    type="email"
-                    label="Username"
-                    variant="outlined"
-                    autoComplete="off"
-                />
-
-                <TextField
-                    id="password"
-                    inputRef={password}
-                    required
-                    type="password"
-                    label="Password"
-                    variant="outlined"
-                    autoComplete="off"
-
-                />
-
-                <TextField
-                    id="password"
-                    inputRef={confirmPassword}
-                    required
-                    type="password"
-                    label="Confirm Password"
-                    variant="outlined"
-                    autoComplete="off"
-
-                />
-
-                <TextField
-                    inputRef={phone}
-                    required
-                    id="phone"
-                    label="Phone "
-                    type="tel"
-                    variant="outlined"
-                />
-
-                <div id="signup-button">
-
-                    <input type="submit" value="Sign Up" id="input-signup-button" />
-                </div>
-                <hr />
-                <p id="alternative-signup-button">
-                    Or SignUp with: <button className="signup-button"  >
-                        <img src={Google} alt="" />
-                    </button>
-                </p>
-            </form>
-            <div id="signup-art">
-                <p>Create Your Account</p>
-                <div id="art"></div>
-            </div>
-
+            </Route>
             <Switch>
-                <Route path={`${location}/user-info`} >
+                <Route path={`/signup/user-info`} >
                     <UserInfo />
                 </Route>
             </Switch>

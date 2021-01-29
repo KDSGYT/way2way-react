@@ -87,7 +87,7 @@ function Navbar() {
 
                 <UserCTX.Consumer>
                     {(value: any) => {
-                        if (!value.signOut) {
+                        if (!value.signOut && value.userData.displayName !== undefined) {
                             return (<NavLink
                                 to="/profile"
                                 activeStyle={style}

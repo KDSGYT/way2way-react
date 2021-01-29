@@ -30,30 +30,12 @@ export async function createUser(
         postedAds
 
     }: any,
+
     password: string
 ) {
     // body of the function 
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => await firebaseAuth.createUserWithEmailAndPassword(email, password))
-        .then(async (userCredintials: any) => {
-            // console.log(userCredintials)
-            // const currentUser: any = await firebaseAuth.currentUser;
-            const updateData = {
-                displayName,
-                photoURL,
-            }
-            const DBdata = {
-                phoneNumber,
-                postedAds,
-            }
-            // await currentUser.updateProfile(updateData)
-            await addUserToDB(userCredintials.user.UID, DBdata)
-        })
-        .then(() => {
-            
-        })
-        // .then(() => firebaseAuth.currentUser)
-        // .then(async () => console.log(await firebaseAuth.currentUser))
         .catch((error) => console.error(error))
 
 }
@@ -65,9 +47,18 @@ export async function createUser(
  * @param UID UserID that is unique to the project
  * @param data User data to be sent to the DB
  */
-async function addUserToDB(UID: string, data: any) {
+export async function addUserToDB(data: any) {
     const collection = firestore.collection('users');
-    await collection.doc(UID).set(data)
+    const currentUser: any = firebaseAuth.currentUser;
+    console.log(currentUser)
+    console.log(data)
+
+    // const newData = {
+    //     ...data,
+    //     photoURL
+    // }
+    await collection.doc(currentUser.uid).set(data)
+        // .then(() => )
         .catch((e) => console.log(e))
 }
 
@@ -84,10 +75,8 @@ export async function loginUser(email: string, password: string, CTX: any, type:
         .then(async () => {
             if (type === "email") {
                 return await firebaseAuth.signInWithEmailAndPassword(email, password)
-
             } else if (type === "google") {
                 return await firebaseAuth.signInWithRedirect(googleProvider)
-
             }
         })
         .then(() => CTX.setSignOut(false))
@@ -124,12 +113,12 @@ export async function getUserFromDB(UID: string, setState: any) {
         email,
         phoneNumber,
         photoURL,
-        uid
+        uid = UID
     }: any = await firebaseAuth.currentUser;
-    let userDataFromDB={}
+    let userDataFromDB = {}
 
     await firestore.collection('users').doc(uid).get()
-        .then((data:any) => console.log(data))
+        .then((data: any) => console.log(data))
     // const {
     //     displayName,
     //     email,

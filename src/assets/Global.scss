@@ -26,9 +26,16 @@
     }
 }
 
+// make the element display as flex
 .display-as-flex{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+// Hide the arrows for increasing number in input type number
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
 }
