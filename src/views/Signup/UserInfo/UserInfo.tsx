@@ -2,7 +2,7 @@ import { Button, FormGroup, TextField } from "@material-ui/core";
 import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { addUserToDB, getImageUrl } from "../../../assets/functions";
-import { useGetImageUrl, useUserData, useUserSignedOut } from "../../../assets/Hooks";
+import { useUserData, useUserSignedOut } from "../../../assets/Hooks";
 import { firebaseAuth } from "../../../Util/firebase";
 
 import './UserInfo.scss';
@@ -20,29 +20,43 @@ function UserInfo() {
     const displayName: any = useRef("")
     const phoneNumber: any = useRef("")
     const address: any = useRef("")
-
+    const [creatingAccount, setCreatingAccount] = useState(true)
 
     // user will be redirected to signup page if the user did not Entered the information required to create an account
     useEffect(() => {
-        // check if the user is signed ou
+        // console.log(userData)
+        // check if the user is signed out
         if (signout) {
-            // history.push('/signup')
+            history.push('/signup')
         }
-    }, [signout]);
+    }, [signout, history]);
 
+    /**
+     * Triggered by the after handleSubmit is executed and changes the imageURL state
+     */
+    useEffect(() => {
+        /** execute only when then user is logged in and imageURL is present */
+        if (!signout && creatingAccount && imageURL !== "") {
+            const currentUser: any = firebaseAuth.currentUser
+            const newData = {
+                ...data,
+                UID: currentUser.uid,
+                photoURL: imageURL
+            }
+            addUserToDB(newData, setUserData)
+            setCreatingAccount(false)
+            history.push('/profile')
+        }
+    }, [imageURL])
 
+    /**
+     * gets the current user and get the image url on submit,
+     * then change the imageURL state which triggers handle useEffect
+     */
     async function handleSubmit() {
         const currentUser: any = firebaseAuth.currentUser
-        await getImageUrl(inputFile.current.files[0], currentUser.uid, setImageURL)
+        getImageUrl(inputFile.current.files[0], currentUser.uid, setImageURL)
     }
-
-    useEffect(() => {
-        const newData = {
-            ...data,
-            photoURL: imageURL
-        }
-        addUserToDB(newData)
-    }, [imageURL])
 
     const handleChange = () => {
         if (inputFile.current.files[0]) {
@@ -54,16 +68,13 @@ function UserInfo() {
                 ...prevState,
                 displayName: displayName.current.value,
                 phoneNumber: phoneNumber.current.value,
-                address: address.current.value
-                // photoURL: imageURL
+                address: address.current.value,
+                postedAds: 0
             }
             return newState;
         })
     }
 
-    useEffect(() => {
-        console.log(data)
-    }, [data])
 
     return (
         <section id="user-info">

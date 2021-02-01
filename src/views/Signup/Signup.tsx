@@ -42,13 +42,13 @@ function Signup() {
 
         }
         // user will be redirected to another page where the user is required to enter addition information
-        history.push(`${url}/user-info`)
+        // history.push(`${url}/user-info`)
     }
 
     useEffect(() => {
         if (!signOut && userData.displayName !== undefined) {
             history.push('/profile')
-        } else {
+        } else if(!signOut && userData.displayName === undefined){
             history.push('/signup/user-info')
         }
         // const currentuser = firebaseAuth.currentUser;
@@ -60,7 +60,7 @@ function Signup() {
 
     return (
         <section id="sign-up">
-            <Route path={path} exact>
+            <Route path={`/signup`} exact>
                 <form id="sign-up-card" onSubmit={(e) => password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
                     <h1>SignUp</h1>
                     <TextField
@@ -97,12 +97,12 @@ function Signup() {
 
                         <input type="submit" value="Sign Up" id="input-signup-button" />
                     </div>
-                    <hr />
+                    {/* <hr />
                     <p id="alternative-signup-button">
                         Or SignUp with: <button className="signup-button"  >
                             <img src={Google} alt="" />
                         </button>
-                    </p>
+                    </p> */}
                 </form>
                 <div id="signup-art">
                     <p>Create Your Account</p>

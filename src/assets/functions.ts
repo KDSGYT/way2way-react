@@ -23,12 +23,6 @@ export function sortDataAlphabetically(array: any) {
 export async function createUser(
     {
         email,
-        displayName,
-        lastName,
-        phoneNumber,
-        photoURL,
-        postedAds
-
     }: any,
 
     password: string
@@ -47,7 +41,7 @@ export async function createUser(
  * @param UID UserID that is unique to the project
  * @param data User data to be sent to the DB
  */
-export async function addUserToDB(data: any) {
+export async function addUserToDB(data: any, setUserData:any) {
     const collection = firestore.collection('users');
     const currentUser: any = firebaseAuth.currentUser;
     console.log(currentUser)
@@ -58,7 +52,7 @@ export async function addUserToDB(data: any) {
     //     photoURL
     // }
     await collection.doc(currentUser.uid).set(data)
-        // .then(() => )
+        .then(() => setUserData(data))
         .catch((e) => console.log(e))
 }
 
@@ -107,18 +101,30 @@ export async function forgotPassword(emailAddress: string) {
  */
 export async function getUserFromDB(UID: string, setState: any) {
 
-
     const {
-        displayName,
         email,
-        phoneNumber,
-        photoURL,
         uid = UID
     }: any = await firebaseAuth.currentUser;
-    let userDataFromDB = {}
 
     await firestore.collection('users').doc(uid).get()
-        .then((data: any) => console.log(data))
+        .then((doc: any) => doc.data())
+        .then((userData: any) => {
+            const {
+                displayName,
+                phoneNumber,
+                photoURL,
+                address,
+                postedAds
+            } = userData;
+
+            const newState = {
+                displayName,
+                email,
+                phoneNumber,
+                photoURL
+            }
+            setState(newState)
+        })
     // const {
     //     displayName,
     //     email,
@@ -127,14 +133,8 @@ export async function getUserFromDB(UID: string, setState: any) {
     //     photoURL = defaultPhotoUrl
     // } = value.userData;
 
-    const newState = {
-        displayName,
-        email,
-        phoneNumber,
-        photoURL
-    }
-    // await setState(currentUser)
-    console.log(newState)
+    // // await setState(currentUser)
+    // console.log(newState)
 }
 
 /**
@@ -226,6 +226,8 @@ export async function getAds(setAds: any) {
     });
     await setAds(data)
 }
+
+
 // export function checkIfAdmin(UID, setError, error) {
 //     firestore.collection('user').doc('admin').get()
 //         .then(res => res.data().UID)

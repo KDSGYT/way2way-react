@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import React, { useContext, useEffect } from 'react';
 import { Link, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
-import { useUserSignedOut } from '../../assets/Hooks';
+import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 import UserCTX from '../../CTX/CTX';
 import { firebaseAuth } from '../../Util/firebase';
 import PostAccAdd from './PostAccAdd/PostAccAdd';
@@ -13,7 +13,8 @@ function UserProfile() {
     const context: any = useContext(UserCTX);//Global CTX to get the information
     const { path, url } = useRouteMatch();
     const [signOut, setSignOut] = useUserSignedOut()  //custom hook to get or set user signout
-
+    const [userData] = useUserData()
+    const currentUser: any = firebaseAuth.currentUser
     /**
      * signout the user and redirect to the login page
      */
@@ -28,7 +29,11 @@ function UserProfile() {
     useEffect(() => {
         if (signOut) {
             history.push('/login');
-        }
+
+            // need to create a redirect here when the user has not entered the information for the account yet in the db
+        }// } else if (!signout && currentUser.uid) {
+        //     history.push('/signup/user-info')
+        // }
     }, [signOut, history]);
 
 
@@ -54,8 +59,10 @@ function UserProfile() {
                                 {/* upper portion of the card containing the user profile image */}
                                 <div className={'display-as-flex'} id="upper-portion">
 
-                                    {/* 96 is replaced with 296 in the photourl to get high resolution image */}
-                                    <img src={DPURL} alt="something" />
+                                    <span id="dp-container">
+                                        {/* 96 is replaced with 296 in the photourl to get high resolution image */}
+                                        <img src={DPURL} alt="something" />
+                                    </span>
                                 </div>
 
                                 {/* lower portion of the card containing all the other information and buttons */}

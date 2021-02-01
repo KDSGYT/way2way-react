@@ -5,6 +5,7 @@ import { loginUser } from '../../assets/functions';
 import UserCTX from '../../CTX/CTX';
 import './Login.scss';
 import Google from '../../assets/SVGs/google.svg';
+import { useUserData } from '../../assets/Hooks';
 
 function Login() {
     const email: any = useRef("");
@@ -13,13 +14,18 @@ function Login() {
     const rememberUser: any = useRef("");
     const [checked, setChecked] = React.useState(false);
     const context: any = useContext(UserCTX)
+    const [userData] = useUserData();
 
 
     useEffect(() => {
-        if (!context.signOut) {
+
+    }, [])
+
+    useEffect(() => {
+        if (!context.signOut && (userData.displayName !== "")) {
             history.push('/profile');
         }
-    }, [history, context.signOut]);
+    }, [history, context.signOut, userData]);
 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,18 +34,14 @@ function Login() {
 
     async function handleSubmit(e: any, type: string) {
         e.preventDefault();
-        try {
-            await loginUser(
-                email.current.value,
-                password.current.value,
-                context,
-                type,
-                rememberUser.current.checked
-            )
-            await history.push('/profile')
-        } catch (e) {
-            console.log(e)
-        }
+        await loginUser(
+            email.current.value,
+            password.current.value,
+            context,
+            type,
+            rememberUser.current.checked
+        )
+        await history.push('/profile')
 
     }
 

@@ -8,10 +8,11 @@
     align-items: center;
 
     #sign-up-card {
+        border:2px solid black;
         margin:auto;
         font-family: 'Segoe UI', Geneva, Verdana, sans-serif;
-        padding: 5%;
-        padding-right: 2%;
+        padding: 8% 6%;
+        // padding-right: 2%;
         height: 100%;
         width: 35.5%;
         display: flex;
@@ -46,6 +47,7 @@
                 float: right;
                 right: 0%;
                 width: 20%;
+                min-width: 9ch;
                 border: none;
                 background-color: black;
                 color: white;

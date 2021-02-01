@@ -30,7 +30,7 @@ function App() {
     firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         var uid = user.uid;
-        getUserFromDB(uid, setUserData)
+        // getUserFromDB(uid, setUserData)
         setSignOut(false)
       }
     });
