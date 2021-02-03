@@ -73,6 +73,8 @@ export async function loginUser(email: string, password: string, CTX: any, type:
                 return await firebaseAuth.signInWithRedirect(googleProvider)
             }
         })
+        // .then((user:any) => user.user.uid  )
+        // .then((UID) => getUserFromDB(UID, CTX.setUserData) )
         .then(() => CTX.setSignOut(false))
         .catch((error) => {
             console.log(error)
@@ -112,9 +114,7 @@ export async function getUserFromDB(UID: string, setState: any) {
             const {
                 displayName,
                 phoneNumber,
-                photoURL,
-                address,
-                postedAds
+                photoURL
             } = userData;
 
             const newState = {
@@ -210,8 +210,10 @@ export async function getImageUrl(image: any, UID: string, setImageUrl: any) {
  * @param postData Post data entered by the user
  */
 export function createPost(postData: object) {
+    console.log("Crating")
     firestore.collection('ads').doc().set(postData)
         .then(() => console.log('it worked'))
+        .catch((e) => console.log(e))
 }
 
 
@@ -247,6 +249,3 @@ export async function getAds(setAds: any) {
 //             throw error;
 //         })
 // }
-
-
-

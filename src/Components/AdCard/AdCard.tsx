@@ -8,7 +8,7 @@ interface props {
     furnished: boolean
     washroom: number
     rent: number
-    AID: string
+    AID: number
     imageUrl: string
 }
 
@@ -82,7 +82,6 @@ const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID, i
                 </button>
             </div>
         </div>
-
 
     )
 }

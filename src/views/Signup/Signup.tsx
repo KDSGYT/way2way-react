@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
-import { Switch, Route, useHistory, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useHistory} from 'react-router-dom';
 import Google from '../../assets/SVGs/google.svg'
+import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
 import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 
@@ -18,7 +19,7 @@ function Signup() {
     const [userData] = useUserData();
 
     // let location = useLocation();
-    const { path, url } = useRouteMatch();
+    // const { path, url } = useRouteMatch();
 
 
     async function handleClick(e: any) {
@@ -51,7 +52,7 @@ function Signup() {
         }
         // const currentuser = firebaseAuth.currentUser;
         // console.log(currentuser)
-    }, [signOut, history]);
+    }, [signOut, history, userData]);
 
 
 

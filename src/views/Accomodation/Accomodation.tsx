@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { AdsCTX } from '../../App';
 import { getAds } from '../../assets/functions';
 import AdCard from '../../Components/AdCard/AdCard';
 import './Accomodation.scss';
 
 function Accomodation() {
 
-    const [ads, setAds] = useState([]);
-
+    const ads = useContext(AdsCTX);
     useEffect(() => {
-        getAds(setAds);
 
     }, []);
 
     React.useEffect(() => {
-
         console.log(ads)
     }, [ads]);
+
     const data: any = ads.map((post: any, index: number) => {
+
         if (post.postTitle) {
             return (
                 <AdCard
@@ -26,18 +26,19 @@ function Accomodation() {
                     furnished={post.postFurnished}
                     washroom={post.postWashroom}
                     rent={post.postRent}
-                    AID={'something'}
+                    AID={index}
                     imageUrl={post.postImageUrl}
                 />
             )
         }
+        return null;
     })
     return (
-        <section id="accomodation">
-            <div id="container">
-                {data}
-            </div>
-        </section>
+            <section id="accomodation">
+                <div id="container">
+                    {data}
+                </div>
+            </section>
     )
 }
 export default Accomodation;

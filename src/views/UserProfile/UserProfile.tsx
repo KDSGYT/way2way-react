@@ -1,6 +1,6 @@
 import Button from '@material-ui/core/Button';
 import React, { useContext, useEffect } from 'react';
-import {Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 import UserCTX from '../../CTX/CTX';
 import { firebaseAuth } from '../../Util/firebase';
@@ -13,8 +13,8 @@ function UserProfile() {
     const context: any = useContext(UserCTX);//Global CTX to get the information
     const { path, url } = useRouteMatch();
     const [signOut, setSignOut] = useUserSignedOut()  //custom hook to get or set user signout
-    const [userData] = useUserData()
-    const currentUser: any = firebaseAuth.currentUser
+    // const [userData] = useUserData();
+    // const currentUser: any = firebaseAuth.currentUser;
     /**
      * signout the user and redirect to the login page
      */
@@ -27,7 +27,7 @@ function UserProfile() {
 
     // Check if the user is signedout then redirect to the login page
     useEffect(() => {
-        console.log(userData)
+        // console.log(userData)
         if (signOut) {
             history.push('/login');
 
@@ -49,7 +49,7 @@ function UserProfile() {
                         const {
                             displayName,
                             email,
-                            phoneNumber,
+                            // phoneNumber,
                             //userprofile url with default url if the images goes not exist
                             photoURL = defaultPhotoUrl
                         } = value.userData;
