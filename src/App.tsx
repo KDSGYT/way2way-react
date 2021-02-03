@@ -30,7 +30,11 @@ function App() {
     firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         var uid = user.uid;
-        getUserFromDB(uid, setUserData)
+
+        /**
+         * Find alternative as this created error of redirecting to profile insted to add user info after signup
+         */
+        // getUserFromDB(uid, setUserData)
         setSignOut(false)
       }
     });
