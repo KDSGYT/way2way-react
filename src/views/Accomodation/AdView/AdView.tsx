@@ -25,7 +25,6 @@ function AdView() {
         postDiscription,
         postFurnished,
         postImageUrl,
-        postOwnerData,
         postRent,
     } = data
 

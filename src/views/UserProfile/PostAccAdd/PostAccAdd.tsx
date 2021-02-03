@@ -59,14 +59,15 @@ function PostAccAdd() {
         }
     }, [imageUrl,
         furnished,
-        userData
+        userData,
+        current
     ])
 
 
-    function handleNumberChange(e: any) {
-        // check if the user has entered the letter e 
-        // Do not register the keystroke if the user enters 
-    }
+    // function handleNumberChange(e: any) {
+    //     // check if the user has entered the letter e 
+    //     // Do not register the keystroke if the user enters 
+    // }
 
     return (
         <section id="post-ad" className="display-as-flex">

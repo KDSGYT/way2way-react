@@ -1,4 +1,4 @@
-import firebase, { firebaseAuth, fireStorage, firestore, googleProvider } from '../Util/firebase';
+import firebase, { firebaseAuth, firebaseDB, fireStorage, firestore, googleProvider } from '../Util/firebase';
 
 /**
  * Arrange array elements alphabetically 
@@ -41,9 +41,9 @@ export async function createUser(
  * @param UID UserID that is unique to the project
  * @param data User data to be sent to the DB
  */
-export async function addUserToDB(data: any, setUserData:any) {
-    const collection = firestore.collection('users');
+export async function addUserToDB(data: any, setUserData: any) {
     const currentUser: any = firebaseAuth.currentUser;
+    const collection = firebaseDB.ref('users/' + currentUser.uid);
     console.log(currentUser)
     console.log(data)
 
@@ -51,7 +51,7 @@ export async function addUserToDB(data: any, setUserData:any) {
     //     ...data,
     //     photoURL
     // }
-    await collection.doc(currentUser.uid).set(data)
+    await collection.set(data)
         .then(() => setUserData(data))
         .catch((e) => console.log(e))
 }
@@ -73,8 +73,8 @@ export async function loginUser(email: string, password: string, CTX: any, type:
                 return await firebaseAuth.signInWithRedirect(googleProvider)
             }
         })
-        // .then((user:any) => user.user.uid  )
-        // .then((UID) => getUserFromDB(UID, CTX.setUserData) )
+        .then((user: any) => user.user.uid)
+        .then((UID) => getUserFromDB(UID, CTX.setUserData))
         .then(() => CTX.setSignOut(false))
         .catch((error) => {
             console.log(error)
@@ -108,33 +108,11 @@ export async function getUserFromDB(UID: string, setState: any) {
         uid = UID
     }: any = await firebaseAuth.currentUser;
 
-    await firestore.collection('users').doc(uid).get()
-        .then((doc: any) => doc.data())
-        .then((userData: any) => {
-            const {
-                displayName,
-                phoneNumber,
-                photoURL
-            } = userData;
+    firebase.database().ref('/users/' + uid).once('value')
+        .then((snapshot) => {
+            setState(snapshot.val())
+        });
 
-            const newState = {
-                displayName,
-                email,
-                phoneNumber,
-                photoURL
-            }
-            setState(newState)
-        })
-    // const {
-    //     displayName,
-    //     email,
-    //     phoneNumber,
-    //     //userprofile url with default url if the images goes not exist
-    //     photoURL = defaultPhotoUrl
-    // } = value.userData;
-
-    // // await setState(currentUser)
-    // console.log(newState)
 }
 
 /**
