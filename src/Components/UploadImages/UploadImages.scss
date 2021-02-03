@@ -2,12 +2,14 @@
 $background-color: rgb(185, 185, 185);
 
 #preview {
-    background-color: $background-color;
+    // background-color: $background-color;
+    background-color: none;
+    border: none;
     min-width: 53.6%;
     min-height: 20%;
-    border: 0.5px solid rgb(65, 65, 65);
+    // border: 0.5px solid rgb(65, 65, 65);
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.24);
+    // box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.24);
     padding: 0;
     flex-direction: row;
     justify-content: space-evenly;

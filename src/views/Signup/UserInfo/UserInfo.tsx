@@ -14,7 +14,7 @@ function UserInfo() {
     const history = useHistory();
     const [image, setImage] = useState("");
     const [imageURL, setImageURL] = useState("")
-    const [userData, setUserData] = useUserData(); //get data from global userdata state
+    const [, setUserData] = useUserData(); //get data from global userdata state
     const [data, setData] = useState({}) //store data as entered by the user
     const inputFile: any = useRef("")
     const displayName: any = useRef("")
@@ -47,7 +47,7 @@ function UserInfo() {
             setCreatingAccount(false)
             history.push('/profile')
         }
-    }, [imageURL])
+    }, [imageURL, data, history, setUserData, creatingAccount, signout])
 
     /**
      * gets the current user and get the image url on submit,

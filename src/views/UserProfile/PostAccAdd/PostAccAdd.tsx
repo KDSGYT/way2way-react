@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createPost, getImageUrl } from '../../../assets/functions';
 import { useUserData } from '../../../assets/Hooks';
 import UploadImages from '../../../Components/UploadImages/UploadImages';
+import { firebaseAuth } from '../../../Util/firebase';
 import './PostAccAdd.scss'
 function PostAccAdd() {
 
@@ -10,7 +11,7 @@ function PostAccAdd() {
     const [furnished, setFurnished] = useState(false);
     const image: any = useRef();
     const [imageUrl, setImageUrl] = useState("");
-
+    const current:any = firebaseAuth.currentUser;
     const postTitle: any = useRef();
     const postAddress: any = useRef();
     const postDiscription: any = useRef();
@@ -26,7 +27,7 @@ function PostAccAdd() {
 
     useEffect(() => {
         console.table(postData)
-        if (postTitle.current.value.length > 5) {
+        if (postTitle.current.value !== "") {
             createPost(postData)
 
         }
@@ -41,7 +42,7 @@ function PostAccAdd() {
             setPostData({
                 postOwnerData: {
                     displayName: userData.displayName,
-                    UID: userData.uid,
+                    UID: current.uid,
                     email: userData.email,
                     phone: userData.phoneNumber
                 },
@@ -56,7 +57,10 @@ function PostAccAdd() {
                 postBathroom: postWashroom.current.value
             })
         }
-    }, [imageUrl])
+    }, [imageUrl,
+        furnished,
+        userData
+    ])
 
 
     function handleNumberChange(e: any) {
@@ -94,7 +98,7 @@ function PostAccAdd() {
                         inputRef={postBedroom}
                         required
                         type="number"
-                        onChange={handleNumberChange}
+                        // onChange={handleNumberChange}
                         className={"input-field"}
 
                     />
@@ -103,7 +107,7 @@ function PostAccAdd() {
                     <TextField
                         label="Washroom"
                         type="number"
-                        onChange={handleNumberChange}
+                        // onChange={handleNumberChange}
                         variant="outlined"
                         inputRef={postWashroom}
                         required
@@ -127,7 +131,7 @@ function PostAccAdd() {
                     label="Rent"
                     variant="outlined"
                     type="number"
-                    onChange={handleNumberChange}
+                    // onChange={handleNumberChange}
                     inputRef={postRent}
                     required
                     className={"input-field"}

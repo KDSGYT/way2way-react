@@ -16,7 +16,7 @@ const UploadImages: FC<props> = ({ inputRef }) => {
     })
     
     const [maxLimitReached, setMaxLimitReached] = useState(false)
-    const limitReached = maxLimitReached ? <h3>Max Limit Reached: 5 images</h3> : null
+    const limitReached = maxLimitReached ? <h3>Max Limit Reached: 1 image</h3> : null
     
     function handleChange() {
         // console.log(inputRef.current.files[0])
