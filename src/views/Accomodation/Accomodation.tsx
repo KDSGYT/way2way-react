@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AdsCTX } from '../../App';
-import { getAds } from '../../assets/functions';
 import AdCard from '../../Components/AdCard/AdCard';
 import './Accomodation.scss';
 
@@ -34,11 +33,11 @@ function Accomodation() {
         return null;
     })
     return (
-            <section id="accomodation">
-                <div id="container">
-                    {data}
-                </div>
-            </section>
+        <section id="accomodation">
+            <div id="container">
+                {data}
+            </div>
+        </section>
     )
 }
 export default Accomodation;
