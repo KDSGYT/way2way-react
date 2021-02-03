@@ -16,7 +16,9 @@
             border: none;
             background-color: transparent;
             // border:2px solid black;
-            width: 8%;
+            width: 7vw;
+            // min-width: 30px;
+            // border: 2px solid white;
             height: $navbar-height - 1vh;
             display: flex;
             flex-direction: column;
@@ -24,27 +26,24 @@
 
             .line {
                 // border: 1px solid black;
+
                 width: 100%;
                 height: 10%;
                 background-color: white;
-            }
-            .line1,.line2, .line3{
                 transition: all 0.5s ease;
                 transform-origin: left;
-            }
-            .line3{
-                // transform-origin: right;
+                border-radius: 5px;
             }
         }
         .toggle{
             .line1{
-                transform: rotateZ(40deg)
+                transform: rotateZ(0.125turn)
             }
             .line2{
-                opacity: 0%;
+                opacity: 0%
             }
             .line3{
-                transform: rotateZ(-40deg);
+                transform: rotateZ(-0.125turn);
             }
 
         }

@@ -4,16 +4,14 @@ import './Signup.scss';
 import { createUser } from '../../assets/functions';
 import { Switch, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import Google from '../../assets/SVGs/google.svg'
-import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
 import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 
 function Signup() {
 
-    const firstName: any = useRef("")
-    const lastName: any = useRef("")
+    // const firstName: any = useRef("")
+    // const lastName: any = useRef("")
     const password: any = useRef("")
-    const confirmPassword: any = useRef("")
     const email: any = useRef()
     const history: any = useHistory();
     const [signOut] = useUserSignedOut();
@@ -36,7 +34,7 @@ function Signup() {
          *  @param data - user information as entered on the signup page
          *  @param password - as entered by the user
          */
-        try{
+        try {
             await createUser(data, password.current.value)
         } catch (e) {
 
@@ -48,7 +46,7 @@ function Signup() {
     useEffect(() => {
         if (!signOut && userData.displayName !== undefined) {
             history.push('/profile')
-        } else if(!signOut && userData.displayName === undefined){
+        } else if (!signOut && userData.displayName === undefined) {
             history.push('/signup/user-info')
         }
         // const currentuser = firebaseAuth.currentUser;
@@ -61,7 +59,7 @@ function Signup() {
     return (
         <section id="sign-up">
             <Route path={`/signup`} exact>
-                <form id="sign-up-card" onSubmit={(e) => password.current.value === confirmPassword.current.value ? handleClick(e) : console.log('Password Does not match')}>
+                <form id="sign-up-card" onSubmit={handleClick}>
                     <h1>SignUp</h1>
                     <TextField
                         id="email"
@@ -84,7 +82,7 @@ function Signup() {
 
                     />
 
-                    <TextField
+                    {/* <TextField
                         inputRef={confirmPassword}
                         required
                         type="password"
@@ -92,17 +90,17 @@ function Signup() {
                         variant="outlined"
                         autoComplete="off"
 
-                    />
+                    /> */}
                     <div id="signup-button">
 
                         <input type="submit" value="Sign Up" id="input-signup-button" />
                     </div>
-                    {/* <hr />
+                    <hr />
                     <p id="alternative-signup-button">
                         Or SignUp with: <button className="signup-button"  >
                             <img src={Google} alt="" />
                         </button>
-                    </p> */}
+                    </p>
                 </form>
                 <div id="signup-art">
                     <p>Create Your Account</p>

@@ -8,17 +8,11 @@ interface props {
 const ToggleButton: FC<props> = ({ toggle, setToggle }) => {
 
 
-
+    // Toggle the button
     function handleToggle() {
         if (toggle === "") setToggle("toggle")
         else setToggle("")
     }
-
-
-
-    useEffect(() => {
-        console.log(toggle)
-    }, [toggle]);
 
     return (
         <div id="button-container">

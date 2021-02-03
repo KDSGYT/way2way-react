@@ -1,6 +1,6 @@
 import Button from '@material-ui/core/Button';
 import React, { useContext, useEffect } from 'react';
-import { Link, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
+import {Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 import UserCTX from '../../CTX/CTX';
 import { firebaseAuth } from '../../Util/firebase';
@@ -27,6 +27,7 @@ function UserProfile() {
 
     // Check if the user is signedout then redirect to the login page
     useEffect(() => {
+        console.log(userData)
         if (signOut) {
             history.push('/login');
 
