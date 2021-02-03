@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './AdView.scss'
 import { AdsCTX } from '../../../App';
 
 function AdView() {
@@ -30,7 +31,7 @@ function AdView() {
 
     const DataCTX = useContext(AdsCTX);
     useEffect(() => {
-        setData((prevState:any) => {
+        setData((prevState: any) => {
             const data: object = DataCTX[AID]
             const newState = {
                 ...prevState,
@@ -46,16 +47,10 @@ function AdView() {
     }, [data])
 
     return (
-        <section>
-            <h1>{postTitle}</h1>
-        <h1>{postAddress}</h1>
-        <h1>{postBathroom}</h1>
-        <h1>{postBedroom}</h1>
-        <h1>{postDiscription}</h1>
-        <h1>{postFurnished}</h1>
-        <h1>{postImageUrl}</h1>
-        {/* <h1>{postOwnerData}</h1> */}
-        <h1>{postRent}</h1>
+        <section id="ad-view">
+            <div id="ad-card">
+                <h1>{postTitle}</h1>
+            </div>
         </section>
     )
 }

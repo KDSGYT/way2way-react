@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './AdCard.scss';
 
 interface props {
+    title: string
     address: string
     bedroom: number
     furnished: boolean
@@ -12,11 +13,11 @@ interface props {
     imageUrl: string
 }
 
-const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID, imageUrl }) => {
+const AdCard: FC<props> = ({ title, bedroom, address, washroom, furnished, rent, AID, imageUrl }) => {
 
     const history = useHistory();
 
-    function handleClick(e:any) {
+    function handleClick(e: any) {
         e.preventDefault();
         history.push(`/accomodation/${AID}`);
     }
@@ -28,7 +29,7 @@ const AdCard: FC<props> = ({ bedroom, address, washroom, furnished, rent, AID, i
 
             </div>
             <div className="lower-section">
-                <p className="address"><b>{address}</b></p>
+                <p className="address"><b>{title}</b></p>
                 {/* Discription for the accomodation */}
                 <div className="discription">
 

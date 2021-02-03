@@ -20,6 +20,7 @@ function Accomodation() {
             return (
                 <AdCard
                     key={index}
+                    title={post.postTitle}
                     address={post.postAddress}
                     bedroom={post.postBedroom}
                     furnished={post.postFurnished}
