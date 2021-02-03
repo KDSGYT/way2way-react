@@ -1,4 +1,4 @@
-import firebase, { firebaseAuth, fireStorage, firestore, googleProvider } from '../Util/firebase';
+import firebase, { firebaseAuth, firebaseDB, fireStorage, firestore, googleProvider } from '../Util/firebase';
 
 /**
  * Arrange array elements alphabetically 
@@ -42,8 +42,8 @@ export async function createUser(
  * @param data User data to be sent to the DB
  */
 export async function addUserToDB(data: any, setUserData:any) {
-    const collection = firestore.collection('users');
     const currentUser: any = firebaseAuth.currentUser;
+    const collection = firebaseDB.ref('users/'+ currentUser.uid);
     console.log(currentUser)
     console.log(data)
 
@@ -51,7 +51,7 @@ export async function addUserToDB(data: any, setUserData:any) {
     //     ...data,
     //     photoURL
     // }
-    await collection.doc(currentUser.uid).set(data)
+    await collection.set(data)
         .then(() => setUserData(data))
         .catch((e) => console.log(e))
 }
