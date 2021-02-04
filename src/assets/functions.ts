@@ -20,16 +20,11 @@ export function sortDataAlphabetically(array: any) {
  * @param data Object Contains user data
  * @param password string 
  */
-export async function createUser(
-    {
-        email,
-    }: any,
-
-    password: string
-) {
+export async function createUser({ email }: any, password: string) {
     // body of the function 
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => await firebaseAuth.createUserWithEmailAndPassword(email, password))
+        // .then(() => )
         .catch((error) => console.error(error))
 
 }
@@ -47,14 +42,11 @@ export async function addUserToDB(data: any, setUserData: any) {
     console.log(currentUser)
     console.log(data)
 
-    // const newData = {
-    //     ...data,
-    //     photoURL
-    // }
     await collection.set(data)
         .then(() => setUserData(data))
         .catch((e) => console.log(e))
 }
+
 
 /**
  * Login the user with simple email and password login credentials
