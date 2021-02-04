@@ -16,7 +16,9 @@ function AdView() {
         postRent: "",
         postTitle: "",
     }
+    // get the AID or ad id from the parameter
     const { AID }: any = useParams()
+
     const [data, setData]: any = useState(placeholderData);
     const {
         postTitle,
@@ -30,6 +32,8 @@ function AdView() {
     } = data
 
     const DataCTX = useContext(AdsCTX);
+    
+    // Run when ad context changes or when the AID is changed
     useEffect(() => {
         setData((prevState: any) => {
             const data: object = DataCTX[AID]
@@ -41,15 +45,10 @@ function AdView() {
         })
     }, [DataCTX, AID]);
 
-    useEffect(() => {
-        console.log(data)
-
-    }, [data])
-
     return (
-        <section id="ad-view">
+        <section id="ad-view" className="display-as-flex">
             <div id="ad-card">
-                <h1>{postTitle}</h1>
+                <h1>{postBathroom}</h1>
             </div>
         </section>
     )

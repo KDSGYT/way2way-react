@@ -1,6 +1,11 @@
 @import '../../../assets/Variables.scss';
+@import '../../../assets/Global.scss';
 #ad-view{
+    border:2px solid black;
     height: 100vh - $navbar-height;
-    // border:5px solid black;
-
+    width: 100vw;
+    
+    #ad-card{
+        border:2px solid black;
+    }
 }
