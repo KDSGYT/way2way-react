@@ -1,11 +1,68 @@
 @import '../../../assets/Variables.scss';
 @import '../../../assets/Global.scss';
-#ad-view{
-    border:2px solid black;
+
+
+$border-grey: rgb(100, 100, 100);
+
+#view {
+    // border: 2px solid $border-grey;
     height: 100vh - $navbar-height;
     width: 100vw;
-    
-    #ad-card{
-        border:2px solid black;
+
+    #ad-data {
+        // border: 1px solid $border-grey;
+        height: 80vh;
+        width: 90vw;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        #images {
+            margin: 20px;
+            $images-container-width: 30%;
+            width: $images-container-width;
+            max-width: 516px;
+            height: 40%;
+            padding: auto;
+            // border: 2px solid $border-grey;
+            overflow: hidden;
+
+            img {
+                object-position: center;
+                width: auto;
+                height: 100%;
+            }
+
+        }
+
+        #post-body {
+            // border:2px solid black;
+            width: 40%;
+            height: 60%;
+            justify-content: space-evenly;
+            
+            #address{
+                
+            }
+
+            .post-info {
+                width: 80%;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+
+            #owner-contact-details{
+                width: inherit;
+                flex-direction: row;
+                justify-content: space-evenly;
+            }
+        }
+        
+        .data{
+            border: 1px solid $border-grey;
+            font-size: 1.3rem;
+            padding: 2%;
+            font-weight: 500;
+
+        }
     }
 }
