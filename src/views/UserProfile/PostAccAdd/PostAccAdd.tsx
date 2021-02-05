@@ -43,7 +43,7 @@ function PostAccAdd() {
                 postOwnerData: {
                     displayName: userData.displayName,
                     UID: current.uid,
-                    email: userData.email,
+                    email: current.email,
                     phone: userData.phoneNumber
                 },
                 postTitle: postTitle.current.value,

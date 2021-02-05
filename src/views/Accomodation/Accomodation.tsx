@@ -24,7 +24,7 @@ function Accomodation() {
                     address={post.postAddress}
                     bedroom={post.postBedroom}
                     furnished={post.postFurnished}
-                    washroom={post.postWashroom}
+                    washroom={post.postBathroom}
                     rent={post.postRent}
                     AID={index}
                     imageUrl={post.postImageUrl}

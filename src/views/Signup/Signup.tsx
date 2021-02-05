@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
@@ -7,6 +7,7 @@ import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
 import { useUserData, useUserSignedOut } from '../../assets/Hooks';
+import UserCTX from '../../CTX/CTX';
 
 function Signup() {
 
@@ -17,7 +18,7 @@ function Signup() {
     const history: any = useHistory();
     const [signOut] = useUserSignedOut();
     const [userData] = useUserData();
-
+    const {setSignup}:any = useContext(UserCTX)
     // let location = useLocation();
     // const { path, url } = useRouteMatch();
 
@@ -37,6 +38,11 @@ function Signup() {
          */
         try {
             await createUser(data, password.current.value)
+            /**
+             * set the signup state to true 
+             * * prevents unwanted redirect to profile when logged in
+             */
+            setSignup(true) 
         } catch (e) {
 
         }
