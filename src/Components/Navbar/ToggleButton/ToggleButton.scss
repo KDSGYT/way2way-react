@@ -4,7 +4,7 @@
     display: none;
 }
 
-@media (max-width:768px) {
+@media (max-width:562px) {
     #button-container {
         margin-left: -0.7%;
         width: 100vw;
@@ -16,7 +16,7 @@
             border: none;
             background-color: transparent;
             // border:2px solid black;
-            width: 7vw;
+            width: 30px;
             // min-width: 30px;
             // border: 2px solid white;
             height: $navbar-height - 1vh;
