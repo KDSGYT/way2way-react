@@ -68,11 +68,12 @@ export async function loginUser(email: string, password: string, CTX: any, type:
             }
         })
         .then((user: any) => user.user.uid)
-        .then((UID) => getUserFromDB(UID, CTX.setUserData))
+        .then((UID) => {
+            getUserFromDB(UID, CTX.setUserData)
+        })
         .then(() => CTX.setSignOut(false))
         .catch((err) => {
-            console.log(err)
-            // setError(err)    
+            // error handling when the user enters wrong password or something else went wrong
             switch (err.code) {
                 case 'auth/wrong-password':
                     setError('Invalid Credentials');
@@ -107,17 +108,26 @@ export async function forgotPassword(emailAddress: string) {
  * @param UID UserID unique to a project
  * @param setState set global state for user info
  */
-export async function getUserFromDB(UID: string, setState: any) {
+export function getUserFromDB(UID: string, setState: any, setError:any= "") {
 
     const {
         email,
         uid = UID
-    }: any = await firebaseAuth.currentUser;
+    }: any = firebaseAuth.currentUser;
 
-    firebase.database().ref('/users/' + uid).once('value')
-        .then((snapshot) => {
-            setState(snapshot.val())
-        });
+    // try {
+        firebase.database().ref('/users/' + uid).once('value')
+            .then((snapshot) => {
+                setState(snapshot.val())
+            })
+            .catch((e) => {
+                setError('User not found')
+            })
+    // } catch (e) {
+        // console.log(e)
+        // throw new Error(e)
+    // }
+    // throw 'usernto dounf'
 
 }
 

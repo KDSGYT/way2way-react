@@ -47,13 +47,21 @@ function UserProfile() {
                         // console.log(value.userData)
                         const defaultPhotoUrl = 'https://via.placeholder.com/200x200.png?text=User';
                         const {
-                            displayName,
+                            displayName="",
                             email,
                             // phoneNumber,
                             //userprofile url with default url if the images goes not exist
                             photoURL = defaultPhotoUrl
                         } = value.userData;
+
+                        /**
+                         * If the URL is defined and URL is not equal to DEFAULT URL then 
+                         * replace the 96 ( resolution of the image ) in url with 496 (higher resolution of image )
+                         * 
+                         * The numbers above are present in the URL sent by GOOGLE and can be manipulated to get desired Image quality
+                         */
                         const DPURL = photoURL !== null && photoURL.length > 3 ? photoURL.replace('96', '496') : defaultPhotoUrl
+                        
                         return (
                             <div id="user-profile-card" className={'display-as-flex'}>
 
