@@ -55,6 +55,8 @@ function App() {
          */
         if (!signup) {
             getUserFromDB(uid, setUserData, setError)
+        } else {
+          
         }
 
         setSignOut(false)
