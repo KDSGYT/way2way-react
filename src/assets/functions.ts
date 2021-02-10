@@ -55,8 +55,10 @@ export async function addUserToDB(data: any, setUserData: any) {
  * @param setState set global state for data that is received
  * @param setSignOut set the global state is the user is signed out or not
  */
-export async function loginUser(email: string, password: string, CTX: any, type: string, rememberUser: boolean) {
+export async function loginUser(email: string, password: string, CTX: any, type: string, rememberUser: boolean, setError: any) {
+
     // const persistenceType: string = (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
+    let error;
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => {
             if (type === "email") {
@@ -68,9 +70,21 @@ export async function loginUser(email: string, password: string, CTX: any, type:
         .then((user: any) => user.user.uid)
         .then((UID) => getUserFromDB(UID, CTX.setUserData))
         .then(() => CTX.setSignOut(false))
-        .catch((error) => {
-            console.log(error)
+        .catch((err) => {
+            console.log(err)
+            // setError(err)    
+            switch (err.code) {
+                case 'auth/wrong-password':
+                    setError('Invalid Credentials');
+                    break;
+                default:
+                    setError('Bummer, Something Went Wrong')
+            }
         });
+
+
+    // if (error !== undefined) {
+    // }
 }
 
 
