@@ -58,7 +58,7 @@ export async function addUserToDB(data: any, setUserData: any) {
 export async function loginUser(email: string, password: string, CTX: any, type: string, rememberUser: boolean, setError: any) {
 
     // const persistenceType: string = (rememberUser ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
-    let error;
+    // let error;
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(async () => {
             if (type === "email") {
