@@ -24,6 +24,8 @@ function App() {
   const [userData, setUserData] = useState({})
   const [signOut, setSignOut] = useState(true)
   const [signup, setSignup] = useState(false)
+  const [error, setError] = useState("")
+
   const value = {
     userData,//User Data to be accessed by the whole app 
     setUserData, //set userData for global state
@@ -32,6 +34,15 @@ function App() {
     signup, //is the user signing up
     setSignup //set the user is signing up
   }
+
+
+  // useEffect(() => {
+  //   if(userData.displayName === null){
+  //     setUserData({
+  //       displayName: ""
+  //     })
+  //   }
+  // }, [userData])
 
   //load data form database if the user is already Signed in
   useEffect(() => {
@@ -43,12 +54,14 @@ function App() {
          * Find alternative as this created error of redirecting to profile insted to add user info after signup
          */
         if (!signup) {
-          getUserFromDB(uid, setUserData)
-
+            getUserFromDB(uid, setUserData, setError)
         }
+
         setSignOut(false)
       }
+
     });
+    // get all the ads from DB to be displayed
     getAds(setAds);
 
   }, []);
