@@ -70,7 +70,12 @@
             }
         }
 
+        hr{
+            visibility: hidden; //remove these lines to show the buttons back again
+        }
+
         #alternative-login-button {
+            visibility: hidden; //remove these lines to show the buttons back again
             height: 5%;
             display: flex;
             align-items: center;
