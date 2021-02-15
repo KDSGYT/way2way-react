@@ -12,7 +12,7 @@ function Login() {
     const password: any = useRef("");
     const history: any = useHistory();
     const rememberUser: any = useRef("");
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true); //default value for the remember user credentials
     const context: any = useContext(UserCTX)
     const [userData] = useUserData();
     const [error, setError] = useState("")
