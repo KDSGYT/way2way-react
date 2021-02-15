@@ -54,6 +54,7 @@ function UserProfile() {
                             //userprofile url with default url if the images goes not exist
                             photoURL = defaultPhotoUrl
                         } = context.userData;
+                        
                         /**
                          * If the URL is defined and URL is not equal to DEFAULT URL then 
                          * replace the 96 ( resolution of the image ) in url with 496 (higher resolution of image )
