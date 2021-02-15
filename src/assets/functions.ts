@@ -29,6 +29,10 @@ export async function createUser(
 ) {
     // body of the function 
     firebaseAuth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
+        /**
+             * creating user with email and password only returns error nothing else
+             */
         .then(async () => await firebaseAuth.createUserWithEmailAndPassword(email, password))
         .catch((error) => console.error(error))
 
@@ -44,15 +48,9 @@ export async function createUser(
 export async function addUserToDB(data: any, setUserData: any) {
     const currentUser: any = firebaseAuth.currentUser;
     const collection = firebaseDB.ref('users/' + currentUser.uid);
-    console.log(currentUser)
-    console.log(data)
-
-    // const newData = {
-    //     ...data,
-    //     photoURL
-    // }
     await collection.set(data)
-        .then(() => setUserData(data))
+        .then(async () => await setUserData(data))
+        .then(() => console.log('Worked'))
         .catch((e) => console.log(e))
 }
 
@@ -74,7 +72,7 @@ export async function loginUser(email: string, password: string, CTX: any, type:
             }
         })
         .then((user: any) => user.user.uid)
-        .then((UID) => getUserFromDB(UID, CTX.setUserData))
+        .then(async (UID) => await getUserFromDB(UID, CTX.setUserData))
         .then(() => CTX.setSignOut(false))
         .catch((error) => {
             console.log(error)
@@ -109,8 +107,8 @@ export async function getUserFromDB(UID: string, setState: any) {
     }: any = await firebaseAuth.currentUser;
 
     firebase.database().ref('/users/' + uid).once('value')
-        .then((snapshot) => {
-            setState(snapshot.val())
+        .then(async (snapshot) => {
+            await setState(snapshot.val())
         });
 
 }
@@ -160,9 +158,11 @@ export async function getImageUrl(image: any, UID: string, setImageUrl: any) {
                     break;
             }
         }, (error) => {
+            console.log(error)
             switch (error.code) {
                 case 'storage/unauthorized':
                     // User doesn't have permission to access the object
+
                     break;
 
                 case 'storage/canceled':
@@ -188,7 +188,7 @@ export async function getImageUrl(image: any, UID: string, setImageUrl: any) {
  * @param postData Post data entered by the user
  */
 export function createPost(postData: object) {
-    console.log("Crating")
+    console.log("Creating")
     firestore.collection('ads').doc().set(postData)
         .then(() => console.log('it worked'))
         .catch((e) => console.log(e))

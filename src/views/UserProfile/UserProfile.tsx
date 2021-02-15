@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import React, { useContext, useEffect } from 'react';
 import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
-import { useUserData, useUserSignedOut } from '../../assets/Hooks';
+import { useUserSignedOut } from '../../assets/Hooks';
 import UserCTX from '../../CTX/CTX';
 import { firebaseAuth } from '../../Util/firebase';
 import PostAccAdd from './PostAccAdd/PostAccAdd';
@@ -42,17 +42,18 @@ function UserProfile() {
         <section id="user-profile" className={'display-as-flex'}>
 
             <Route exact path={`${path}`}>
-                <UserCTX.Consumer>
-                    {(value: any) => {
-                        // console.log(value.userData)
+                {() => {
+                    // console.log(value.userData)
+                    // if(value.userData) return null
+                    try {
                         const defaultPhotoUrl = 'https://via.placeholder.com/200x200.png?text=User';
                         const {
-                            displayName,
+                            displayName = "",
                             email,
                             // phoneNumber,
                             //userprofile url with default url if the images goes not exist
                             photoURL = defaultPhotoUrl
-                        } = value.userData;
+                        } = context.userData;
                         const DPURL = photoURL !== null && photoURL.length > 3 ? photoURL.replace('96', '496') : defaultPhotoUrl
                         return (
                             <div id="user-profile-card" className={'display-as-flex'}>
@@ -96,8 +97,10 @@ function UserProfile() {
                                 </div>
                             </div>
                         )
-                    }}
-                </UserCTX.Consumer>
+                    } catch (e) {
+                        window.location.reload()
+                    }
+                }}
             </Route>
 
             {/* Defined route to the postad view */}

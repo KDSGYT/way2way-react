@@ -1,8 +1,9 @@
 import { Button, FormGroup, TextField } from "@material-ui/core";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { addUserToDB, getImageUrl } from "../../../assets/functions";
 import { useUserData, useUserSignedOut } from "../../../assets/Hooks";
+import UserCTX from "../../../CTX/CTX";
 import { firebaseAuth } from "../../../Util/firebase";
 
 import './UserInfo.scss';
@@ -14,13 +15,14 @@ function UserInfo() {
     const history = useHistory();
     const [image, setImage] = useState("");
     const [imageURL, setImageURL] = useState("")
-    const [, setUserData] = useUserData(); //get data from global userdata state
+    // const [, setUserData] = useUserData(); //get data from global userdata state
     const [data, setData] = useState({}) //store data as entered by the user
     const inputFile: any = useRef("")
     const displayName: any = useRef("")
     const phoneNumber: any = useRef("")
     const address: any = useRef("")
-    const [creatingAccount, setCreatingAccount] = useState(true)
+    const context:any = useContext(UserCTX)
+    
 
     // user will be redirected to signup page if the user did not Entered the information required to create an account
     useEffect(() => {
@@ -31,23 +33,26 @@ function UserInfo() {
         }
     }, [signout, history]);
 
+
     /**
      * Triggered by the after handleSubmit is executed and changes the imageURL state
      */
     useEffect(() => {
+        console.log('urlChanged')
         /** execute only when then user is logged in and imageURL is present */
-        if (!signout && creatingAccount && imageURL !== "") {
+        if (context.creatingAccount && imageURL) {
             const currentUser: any = firebaseAuth.currentUser
             const newData = {
                 ...data,
                 UID: currentUser.uid,
                 photoURL: imageURL
             }
-            addUserToDB(newData, setUserData)
-            setCreatingAccount(false)
+            addUserToDB(newData, context.setUserData)
+            context.setCreatingAccount(false)
+            context.setSignup(false)
             history.push('/profile')
         }
-    }, [imageURL, data, history, setUserData, creatingAccount, signout])
+    }, [imageURL, data])
 
     /**
      * gets the current user and get the image url on submit,
@@ -55,7 +60,7 @@ function UserInfo() {
      */
     async function handleSubmit() {
         const currentUser: any = firebaseAuth.currentUser
-        getImageUrl(inputFile.current.files[0], currentUser.uid, setImageURL)
+        await getImageUrl(inputFile.current.files[0], currentUser.uid, setImageURL)
     }
 
     const handleChange = () => {

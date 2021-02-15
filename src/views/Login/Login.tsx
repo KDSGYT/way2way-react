@@ -16,16 +16,28 @@ function Login() {
     const context: any = useContext(UserCTX)
     const [userData] = useUserData();
 
-
+    // set signup false when the user visits the login page
     useEffect(() => {
-
+        if (!context.creatingAccount) {
+            context.setSignup(false)
+            console.log(context.signup)
+        }
+        // else if(context.creatingAccount && context.signup) {
+        //     history.push('/signup/user-info')
+        // }
     }, [])
 
+    // track signup changes
     useEffect(() => {
-        if (!context.signOut && (userData.displayName !== "")) {
+        console.log(context.signup)
+
+    }, [context.signup])
+
+    useEffect(() => {
+        if (context.userData.UID) {
             history.push('/profile');
         }
-    }, [history, context.signOut, userData]);
+    }, [history, context, userData]);
 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
