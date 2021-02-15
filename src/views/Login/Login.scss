@@ -24,6 +24,14 @@
 
         }
 
+        #error{
+            margin: 0;
+            padding: 0;
+            // border:2px solid black;
+            color:red;
+
+        }
+
         #login-options {
             display: flex;
             flex-direction: row;
@@ -62,7 +70,12 @@
             }
         }
 
+        hr{
+            visibility: hidden; //remove these lines to show the buttons back again
+        }
+
         #alternative-login-button {
+            visibility: hidden; //remove these lines to show the buttons back again
             height: 5%;
             display: flex;
             align-items: center;

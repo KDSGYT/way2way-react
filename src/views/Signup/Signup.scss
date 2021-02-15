@@ -60,7 +60,12 @@
             }
         }
 
+        hr{
+            visibility: hidden;
+        }
+
         #alternative-signup-button {
+            visibility: hidden;
             height: 5%;
             display: flex;
             align-items: center;

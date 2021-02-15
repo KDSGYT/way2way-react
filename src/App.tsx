@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import './App.scss';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './views/Home/Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Author from './views/Author/Author';
 import Agency from './views/Agency/Agency';
 import Login from './views/Login/Login';
@@ -16,22 +16,36 @@ import Accomodation from './views/Accomodation/Accomodation';
 import AdView from './views/Accomodation/AdView/AdView';
 import UserInfo from './views/Signup/UserInfo/UserInfo';
 import ForgetPassword from './views/ForgotPassword/ForgetPassword';
+
 export const AdsCTX = createContext([])
 
 function App() {
   const [ads, setAds] = useState([]);
-
+  const [creatingAccount, setCreatingAccount] = useState(false)
   const [userData, setUserData] = useState({})
   const [signOut, setSignOut] = useState(true)
   const [signup, setSignup] = useState(false)
+  const [error, setError] = useState("")
+
   const value = {
     userData,//User Data to be accessed by the whole app 
     setUserData, //set userData for global state
     signOut, //is the user signedout
     setSignOut, // set the user signedout true or false
     signup, //is the user signing up
-    setSignup //set the user is signing up
+    setSignup, //set the user is signing up,
+    creatingAccount,
+    setCreatingAccount
   }
+
+
+  // useEffect(() => {
+  //   if(userData.displayName === null){
+  //     setUserData({
+  //       displayName: ""
+  //     })
+  //   }
+  // }, [userData])
 
   //load data form database if the user is already Signed in
   useEffect(() => {
@@ -44,14 +58,19 @@ function App() {
          */
         if (!signup) {
           getUserFromDB(uid, setUserData)
-
+          setSignOut(false)
         }
-        setSignOut(false)
       }
+
     });
+    // get all the ads from DB to be displayed
     getAds(setAds);
 
   }, []);
+
+  useEffect(() => {
+    console.log(userData)
+  }, [userData])
 
   return (
     <Router>

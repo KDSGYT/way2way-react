@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import { TextField } from '@material-ui/core';
 import './Signup.scss';
 import { createUser } from '../../assets/functions';
-import { Switch, Route, useHistory} from 'react-router-dom';
+import { Switch, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import Google from '../../assets/SVGs/google.svg'
 import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
@@ -11,20 +11,18 @@ import UserCTX from '../../CTX/CTX';
 
 function Signup() {
 
-    // const firstName: any = useRef("")
-    // const lastName: any = useRef("")
     const password: any = useRef("")
     const email: any = useRef()
     const history: any = useHistory();
     const [signOut] = useUserSignedOut();
     const [userData] = useUserData();
-    const {setSignup}:any = useContext(UserCTX)
-    // let location = useLocation();
-    // const { path, url } = useRouteMatch();
+    const { signup, setSignup, setCreatingAccount }: any = useContext(UserCTX)
+    const { path, url } = useRouteMatch();
 
 
     async function handleClick(e: any) {
         e.preventDefault()
+
         const data = {
             email: email.current.value,
             photoURL: "",
@@ -38,29 +36,40 @@ function Signup() {
          */
         try {
             await createUser(data, password.current.value)
-            /**
-             * set the signup state to true 
-             * * prevents unwanted redirect to profile when logged in
-             */
-            setSignup(true) 
         } catch (e) {
 
         }
         // user will be redirected to another page where the user is required to enter addition information
-        // history.push(`${url}/user-info`)
+        history.push(`${url}/user-info`)
     }
 
     useEffect(() => {
-        if (!signOut && userData.displayName !== undefined) {
+        if (!signOut && !signup) {
             history.push('/profile')
-        } else if (!signOut && userData.displayName === undefined) {
+        } else if (!signOut && signup) {
             history.push('/signup/user-info')
         }
         // const currentuser = firebaseAuth.currentUser;
         // console.log(currentuser)
-    }, [signOut, history, userData]);
+    }, [signOut, history, userData, signup]);
 
 
+    useEffect(() => {
+        /**
+         * set the signup state to true 
+         * * prevents unwanted redirect to profile when logged in
+         */
+        setSignup(true)
+        setCreatingAccount(true)
+        return () => {
+            setCreatingAccount(false)
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log(signup)
+
+    }, [signup])
 
 
     return (
