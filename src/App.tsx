@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import './App.scss';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './views/Home/Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Author from './views/Author/Author';
 import Agency from './views/Agency/Agency';
 import Login from './views/Login/Login';
@@ -16,11 +16,12 @@ import Accomodation from './views/Accomodation/Accomodation';
 import AdView from './views/Accomodation/AdView/AdView';
 import UserInfo from './views/Signup/UserInfo/UserInfo';
 import ForgetPassword from './views/ForgotPassword/ForgetPassword';
+
 export const AdsCTX = createContext([])
 
 function App() {
   const [ads, setAds] = useState([]);
-
+  const [creatingAccount, setCreatingAccount] = useState(false)
   const [userData, setUserData] = useState({})
   const [signOut, setSignOut] = useState(true)
   const [signup, setSignup] = useState(false)
@@ -32,7 +33,9 @@ function App() {
     signOut, //is the user signedout
     setSignOut, // set the user signedout true or false
     signup, //is the user signing up
-    setSignup //set the user is signing up
+    setSignup, //set the user is signing up,
+    creatingAccount,
+    setCreatingAccount
   }
 
 
@@ -54,12 +57,9 @@ function App() {
          * Find alternative as this created error of redirecting to profile insted to add user info after signup
          */
         if (!signup) {
-            getUserFromDB(uid, setUserData, setError)
-        } else {
-          
+          getUserFromDB(uid, setUserData)
+          setSignOut(false)
         }
-
-        setSignOut(false)
       }
 
     });
@@ -67,6 +67,10 @@ function App() {
     getAds(setAds);
 
   }, []);
+
+  useEffect(() => {
+    console.log(userData)
+  }, [userData])
 
   return (
     <Router>

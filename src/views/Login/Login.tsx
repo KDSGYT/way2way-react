@@ -18,11 +18,26 @@ function Login() {
     const [error, setError] = useState("")
     const invalidCredentials = () => error ? <h1>invalidCredentials</h1> : null
 
+    // set signup false when the user visits the login page
     useEffect(() => {
-        if (!context.signOut && (userData.displayName !== "")) {
+        if (!context.creatingAccount) {
+            context.setSignup(false)
+            console.log(context.signup)
+        }
+        // else if(context.creatingAccount && context.signup) {
+        //     history.push('/signup/user-info')
+        // }
+    }, [])
+
+    // track signup changes
+    useEffect(() => {
+        console.log(context.signup)
+    }, [context.signup])
+    useEffect(() => {
+        if (context.userData.UID) {
             history.push('/profile');
         }
-    }, [history, context.signOut, userData]);
+    }, [history, context, userData]);
 
     // clear the fields when the user enters wrong credentials
     useEffect(() => {

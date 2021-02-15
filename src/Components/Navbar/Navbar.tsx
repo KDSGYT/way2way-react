@@ -87,10 +87,8 @@ function Navbar() {
 
                 <UserCTX.Consumer>
                     {(value: any) => {
-                        // const {
-                        //     displayName=""
-                        // } = value.userData;
-                        if (value.userData && !value.signOut && value.userData.displayName !== "") {
+
+                        if (!value.signOut && !value.signup && value.userData) {
                             return (<NavLink
                                 to="/profile"
                                 activeStyle={style}
