@@ -1,4 +1,5 @@
 import React, { FC, } from 'react';
+import { useHistory } from 'react-router-dom';
 import AboutSection from '../../Components/AboutSection/AboutSection';
 import AccomodationSection from '../../Components/AccomodationSection/AccomodationSection';
 import AgencySection from '../../Components/AgencySection/AgencySection';
@@ -30,7 +31,7 @@ const Home: FC<props> = () => {
     //     }
     //     console.table(data)
     // }
-
+    const history: any = useHistory();
     return (
         <div id="home-page">
             <section id="home">
@@ -38,9 +39,9 @@ const Home: FC<props> = () => {
                     <h1>WAY2WAY.in</h1>
                 </div>
             </section>
-            <AgencySection />
-            <AccomodationSection />
-            <AboutSection />
+            <AgencySection onClick={() => history.push('/agencies')} />
+            <AccomodationSection onClick={() => history.push('/accomodation')} />
+            <AboutSection onClick={() => history.push('/author')} />
         </div>
     )
 }
