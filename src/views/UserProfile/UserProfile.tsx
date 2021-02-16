@@ -40,80 +40,80 @@ function UserProfile() {
 
     return (
         <section id="user-profile" className={'display-as-flex'}>
+            <Switch>
 
-            <Route exact path={`${path}`}>
-                {() => {
-                    // console.log(value.userData)
-                    // if(value.userData) return null
-                    try {
-                        const defaultPhotoUrl = 'https://via.placeholder.com/200x200.png?text=User';
-                        const {
-                            displayName = "",
-                            email,
-                            // phoneNumber,
-                            //userprofile url with default url if the images goes not exist
-                            photoURL = defaultPhotoUrl
-                        } = context.userData;
-                        
-                        /**
-                         * If the URL is defined and URL is not equal to DEFAULT URL then 
-                         * replace the 96 ( resolution of the image ) in url with 496 (higher resolution of image )
-                         * 
-                         * The numbers above are present in the URL sent by GOOGLE and can be manipulated to get desired Image quality
-                         */
-                        const DPURL = photoURL !== null && photoURL.length > 3 ? photoURL.replace('96', '496') : defaultPhotoUrl
+                <Route exact path={url}>
+                    {() => {
+                        // console.log(value.userData)
+                        // if(value.userData) return null
+                        try {
+                            const defaultPhotoUrl = 'https://via.placeholder.com/200x200.png?text=User';
+                            const {
+                                displayName = "",
+                                email,
+                                // phoneNumber,
+                                //userprofile url with default url if the images goes not exist
+                                photoURL = defaultPhotoUrl
+                            } = context.userData;
 
-                        return (
-                            <div id="user-profile-card" className={'display-as-flex'}>
+                            /**
+                             * If the URL is defined and URL is not equal to DEFAULT URL then 
+                             * replace the 96 ( resolution of the image ) in url with 496 (higher resolution of image )
+                             * 
+                             * The numbers above are present in the URL sent by GOOGLE and can be manipulated to get desired Image quality
+                             */
+                            const DPURL = photoURL !== null && photoURL.length > 3 ? photoURL.replace('96', '496') : defaultPhotoUrl
 
-                                {/* upper portion of the card containing the user profile image */}
-                                <div className={'display-as-flex'} id="upper-portion">
+                            return (
+                                <div id="user-profile-card" className={'display-as-flex'}>
 
-                                    <span id="dp-container">
-                                        {/* 96 is replaced with 296 in the photourl to get high resolution image */}
-                                        <img src={DPURL} alt="something" />
-                                    </span>
-                                </div>
+                                    {/* upper portion of the card containing the user profile image */}
+                                    <div className={'display-as-flex'} id="upper-portion">
 
-                                {/* lower portion of the card containing all the other information and buttons */}
-                                <div id="lower-portion" className={'display-as-flex'}>
-
-                                    <h1>{displayName}</h1>
-                                    <h2>{email}</h2>
-                                    {/* <h3>{phoneNumber}</h3> */}
-
-                                    {/* buttons to signout and post ad */}
-                                    <div id="profile-button" className={'display-as-flex'} >
-
-                                        {/* signout button */}
-                                        <Button
-                                            variant="outlined"
-                                            id="sign-out-button"
-                                            type="button"
-                                            onClick={() => signout()}
-                                        >Signout</Button>
-
-                                        {/* Link to post ad view */}
-                                        <Button
-                                            variant="outlined"
-                                            onClick={() => history.push(`${url}/post`)}
-                                        >
-                                            Post Ad
-                                        </Button>
+                                        <span id="dp-container">
+                                            {/* 96 is replaced with 296 in the photourl to get high resolution image */}
+                                            <img src={DPURL} alt="something" />
+                                        </span>
                                     </div>
 
-                                </div>
-                            </div>
-                        )
-                    } catch (e) {
-                        window.location.reload()
-                    }
-                }}
-            </Route>
+                                    {/* lower portion of the card containing all the other information and buttons */}
+                                    <div id="lower-portion" className={'display-as-flex'}>
 
-            {/* Defined route to the postad view */}
-            <Switch>
-                <Route path={`/profile/post`}>
+                                        <h1>{displayName}</h1>
+                                        <h2>{email}</h2>
+                                        {/* <h3>{phoneNumber}</h3> */}
+
+                                        {/* buttons to signout and post ad */}
+                                        <div id="profile-button" className={'display-as-flex'} >
+
+                                            {/* signout button */}
+                                            <Button
+                                                variant="outlined"
+                                                id="sign-out-button"
+                                                type="button"
+                                                onClick={() => signout()}
+                                            >Signout</Button>
+
+                                            {/* Link to post ad view */}
+                                            <Button
+                                                variant="outlined"
+                                                onClick={() => history.push(`${url}/post`)}
+                                            >
+                                                Post Ad
+                                        </Button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            )
+                        } catch (e) {
+                            window.location.reload()
+                        }
+                    }}
+                </Route>
+
+                {/* Defined route to the postad view */}
+                <Route path={`${url}/post`}>
                     <PostAccAdd />
                 </Route>
             </Switch>

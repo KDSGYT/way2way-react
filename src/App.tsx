@@ -25,7 +25,7 @@ function App() {
   const [userData, setUserData] = useState({})
   const [signOut, setSignOut] = useState(true)
   const [signup, setSignup] = useState(false)
-  const [error, setError] = useState("")
+  // const [error, setError] = useState("")
 
   const value = {
     userData,//User Data to be accessed by the whole app 
@@ -37,15 +37,6 @@ function App() {
     creatingAccount,
     setCreatingAccount
   }
-
-
-  // useEffect(() => {
-  //   if(userData.displayName === null){
-  //     setUserData({
-  //       displayName: ""
-  //     })
-  //   }
-  // }, [userData])
 
   //load data form database if the user is already Signed in
   useEffect(() => {
@@ -61,7 +52,6 @@ function App() {
           setSignOut(false)
         }
       }
-
     });
     // get all the ads from DB to be displayed
     getAds(setAds);

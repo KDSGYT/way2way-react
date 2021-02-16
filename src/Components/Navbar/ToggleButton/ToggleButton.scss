@@ -15,9 +15,10 @@
             margin: 2% 0 0 3% ;
             border: none;
             background-color: transparent;
-            // width:vw;
-            min-width: 29px;
-            max-width: 31px;
+            width:30px;
+            height: 30px;
+            // min-width: 29px;
+            // max-width: 31px;
             // border: 2px solid white;
             height: $navbar-height - 1vh;
             display: flex;
@@ -37,13 +38,13 @@
         }
         .toggle{
             .line1{
-                transform: rotateZ(0.125turn)
+                transform: rotateZ(45deg)
             }
             .line2{
                 opacity: 0%
             }
             .line3{
-                transform: rotateZ(-0.125turn);
+                transform: rotateZ(-45deg);
             }
 
         }

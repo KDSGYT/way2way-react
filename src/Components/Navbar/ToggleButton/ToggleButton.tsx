@@ -1,10 +1,11 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import './ToggleButton.scss';
 
 interface props {
     toggle: string
     setToggle: any
 }
+
 const ToggleButton: FC<props> = ({ toggle, setToggle }) => {
 
 
