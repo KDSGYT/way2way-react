@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './AdView.scss'
 import { AdsCTX } from '../../../App';
 import Button from '@material-ui/core/Button';
@@ -50,12 +50,14 @@ function AdView() {
         })
     }, [DataCTX, AID]);
 
+    const history = useHistory();
+
     return (
         <section id="view" className="display-as-flex">
             <div id="ad-data" className="display-as-flex">
                 {/* images posted by the user */}
-                <div id="images" className="display-as-flex">
-                    <img src={postImageUrl} alt="" />
+                <div id="images" className="display-as-flex" >
+                    <img src={postImageUrl} alt="" onClick={() => window.open(postImageUrl)}/>
 
                 </div>
 
@@ -73,7 +75,7 @@ function AdView() {
                         <span className="data"> Washrooms: {postBathroom}</span>
                         <span className="data">Bedrooms: {postBedroom}</span>
                     </div>
-                    <h3 className="post-info">
+                    <h3 className="post-info" id="discription">
                         Discription: {' '} {/**add empty s */}
                         <span
                             className="data"
