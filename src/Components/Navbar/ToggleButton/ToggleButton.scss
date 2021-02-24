@@ -1,53 +1,89 @@
 @import '../../../assets/Variables.scss';
+@import '../../../assets/Global.scss';
 
 #toggle-button {
     display: none;
 }
 
-@media (max-width:562px) {
+@media (max-width:480px) {
     #button-container {
+        box-sizing: border-box;
         margin-left: -0.7%;
         width: 100vw;
-        height: $navbar-height +1vh;
+        height: 46px;
         background-color: black;
         border-bottom: 5px solid $accentRed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 2%;
+
         #toggle-button {
-            margin: 2% 0 0 3% ;
+            margin: 0;
             border: none;
             background-color: transparent;
-            width:30px;
-            height: 30px;
-            // min-width: 29px;
-            // max-width: 31px;
-            // border: 2px solid white;
-            height: $navbar-height - 1vh;
+            width: 33px;
+            $button-height: 50px;
+            height: $button-height;
+            min-width: 30px;
+            // max-width: 27px;
+            // max-height: 30px;
+            // height: $button-height;
+            // min-height: 7px;
+            // height: $navbar-height - 1vh;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
 
             .line {
-                // border: 1px solid black;
-
-                width: 100%;
-                height: 10%;
+                width: 33px;
+                height: 4px;
                 background-color: white;
+                border: none;
                 transition: all 0.5s ease;
                 transform-origin: left;
                 border-radius: 5px;
+                display: block;
             }
         }
-        .toggle{
-            .line1{
+
+        .toggle {
+            justify-content: space-around;
+
+            .line1 {
                 transform: rotateZ(45deg)
             }
-            .line2{
+
+            .line2 {
+                display: none;
                 opacity: 0%
             }
-            .line3{
+
+            .line3 {
                 transform: rotateZ(-45deg);
             }
 
         }
-        
+
     }
+}
+
+@media (max-width:420px) {
+    // #button-container {
+
+    //     #toggle-button {
+    //         width: 2.6em;
+
+    //         .line {
+    //             // width: 3em;
+    //         }
+
+    //     }
+
+    //     .toggle {
+    //         .line1 {}
+
+    //         .line3 {}
+    //     }
+    // }
 }

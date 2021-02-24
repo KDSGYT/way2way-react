@@ -1,8 +1,10 @@
-import React from 'react';
+import {FC} from 'react';
+import { SectionProps } from '../../assets/Interface';
 import './AboutSection.scss';
-function AboutSection() {
+
+const AboutSection:FC<SectionProps> = ({ onClick }) =>  {
     return (
-        <section id="about-section">
+        <section onClick={onClick} id="about-section">
             <div id="section-name">
                 <h1 id="about">About</h1>
             </div>
