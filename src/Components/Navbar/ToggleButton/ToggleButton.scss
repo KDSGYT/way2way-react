@@ -7,10 +7,10 @@
 
 @media (max-width:480px) {
     #button-container {
-        box-sizing: content-box;
+        box-sizing: border-box;
         margin-left: -0.7%;
         width: 100vw;
-        height: 100%;
+        height: 46px;
         background-color: black;
         border-bottom: 5px solid $accentRed;
         flex-direction: column;
