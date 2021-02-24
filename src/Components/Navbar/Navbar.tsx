@@ -23,12 +23,12 @@ function Navbar() {
 
     useEffect(() => {
         if (toggle === "toggle") {
-            navpageLinks.current.style.top = "6vh";
-            accountLinks.current.style.top = "52vh";
+            navpageLinks.current.style.top = "5vh";
+            accountLinks.current.style.top = "50.5vh";
         }
         else {
-            navpageLinks.current.style.top = "-39vh";
-            accountLinks.current.style.top = "-10vh";
+            navpageLinks.current.style.top = "-41vh";
+            accountLinks.current.style.top = "-19vh";
         }
     }, [toggle]);
 
