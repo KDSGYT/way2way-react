@@ -1,10 +1,11 @@
-import React from 'react';
-// import RightTriangle from './Triangle/RightTriangle';
+import { FC } from 'react';
+import { SectionProps } from '../../assets/Interface';
 import './Accomodation.scss';
-function AccomodationSection() {
+
+const AccomodationSection:FC<SectionProps> = ({onClick}) => {
     return (
         <section id="accomodation-area">
-            <div className="text">
+            <div onClick={onClick} className="text">
                 <h1>Accomodation</h1>
                 <p>Ads posted by desis for desis. Find accomodation starting at $350/month</p>
             </div>

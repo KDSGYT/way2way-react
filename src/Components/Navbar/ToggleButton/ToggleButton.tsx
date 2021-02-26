@@ -16,7 +16,7 @@ const ToggleButton: FC<props> = ({ toggle, setToggle }) => {
     }
 
     return (
-        <div id="button-container">
+        <div id="button-container" className="display-as-flex">
             <button id="toggle-button" className={toggle} onClick={handleToggle}>
                 <hr className={"line line1"}></hr>
                 <hr className={"line line2 "}></hr>
