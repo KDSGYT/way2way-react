@@ -39,7 +39,7 @@ function UserProfile() {
 
 
     return (
-        <section id="user-profile" className={'display-as-flex'}>
+        <section id="user-profile" className={'display-flex'}>
             <Switch>
 
                 <Route exact path={url}>
@@ -65,10 +65,10 @@ function UserProfile() {
                             const DPURL = photoURL !== null && photoURL.length > 3 ? photoURL.replace('96', '496') : defaultPhotoUrl
 
                             return (
-                                <div id="user-profile-card" className={'display-as-flex'}>
+                                <div id="user-profile-card" className={'display-flex'}>
 
                                     {/* upper portion of the card containing the user profile image */}
-                                    <div className={'display-as-flex'} id="upper-portion">
+                                    <div className={'display-flex'} id="upper-portion">
 
                                         <span id="dp-container">
                                             {/* 96 is replaced with 296 in the photourl to get high resolution image */}
@@ -77,14 +77,14 @@ function UserProfile() {
                                     </div>
 
                                     {/* lower portion of the card containing all the other information and buttons */}
-                                    <div id="lower-portion" className={'display-as-flex'}>
+                                    <div id="lower-portion" className={'display-flex'}>
 
                                         <h1>{displayName}</h1>
                                         <h2>{email}</h2>
                                         {/* <h3>{phoneNumber}</h3> */}
 
                                         {/* buttons to signout and post ad */}
-                                        <div id="profile-button" className={'display-as-flex'} >
+                                        <div id="profile-button" className={'display-flex'} >
 
                                             {/* signout button */}
                                             <Button

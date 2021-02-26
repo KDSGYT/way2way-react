@@ -53,24 +53,24 @@ function AdView() {
     const history = useHistory();
 
     return (
-        <section id="view" className="display-as-flex">
-            <div id="ad-data" className="display-as-flex">
+        <section id="view" className="display-flex">
+            <div id="ad-data" className="display-flex">
                 {/* images posted by the user */}
-                <div id="images" className="display-as-flex" >
+                <div id="images" className="display-flex" >
                     <img src={postImageUrl} alt="" onClick={() => window.open(postImageUrl)}/>
 
                 </div>
 
                 {/* This part includes all the information of the post */}
-                <div id="post-body" className="display-as-flex">
+                <div id="post-body" className="display-flex">
 
                     <h1>{postTitle}</h1>
                     {/* Other Information about post */}
-                    <div className={" post-info display-as-flex "}>
+                    <div className={" post-info display-flex "}>
                         <span className="data" id="address">{postAddress} </span>
                         <span className="data"> Rent: ${postRent}/month</span>
                     </div>
-                    <div className={" post-info display-as-flex "}>
+                    <div className={" post-info display-flex "}>
                         <span className="data">Furnished: {postFurnished ? "Yes" : "No"}</span>
                         <span className="data"> Washrooms: {postBathroom}</span>
                         <span className="data">Bedrooms: {postBedroom}</span>
@@ -85,7 +85,7 @@ function AdView() {
                     </h3>
 
                     {/* This part inclueds all contact information */}
-                    <div id="owner-contact-details" className="display-as-flex">
+                    <div id="owner-contact-details" className="display-flex">
                         <Button
                             variant="contained"
 

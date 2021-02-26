@@ -15,10 +15,9 @@
     #sign-form {
         margin: auto;
         font-family: 'Segoe UI', Geneva, Verdana, sans-serif;
-        padding: 8% 6%;
+        padding: 8% 4%;
         height: 90%;
         width: 35.5%;
-
         // center the content
         display: flex;
         flex-direction: column;
@@ -89,11 +88,14 @@
 
 
     #signup-art {
+        border: 2px solid black;
         position: relative;
         width: 62.5%;
+        // max-width: ;
         height: 100%;
         padding: 0;
-
+        overflow: hidden;
+        object-fit: contain;
         p {
             position: absolute;
             font-size: 100px;

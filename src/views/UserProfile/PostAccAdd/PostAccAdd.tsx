@@ -70,11 +70,11 @@ function PostAccAdd() {
     // }
 
     return (
-        <section id="post-ad" className="display-as-flex">
+        <section id="post-ad" className="display-flex">
 
             <FormGroup
                 id="post-ad-form"
-                className="display-as-flex"
+                className="display-flex"
             >
 
                 <UploadImages
@@ -91,7 +91,7 @@ function PostAccAdd() {
                     className={"input-field"}
                 />
 
-                <span className={" display-as-flex grouped-input-field"}>
+                <span className={" display-flex grouped-input-field"}>
                     {/* Number of bedrooos */}
                     <TextField
                         label="Bedroom"
