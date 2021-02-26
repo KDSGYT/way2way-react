@@ -1,32 +1,30 @@
+// Signup-page section
 #sign-up {
+
     margin-top: 0.5vh;
     height: 93.5vh;
     width: 100%;
     display: flex;
+
+    // center the content of the page
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
-    #sign-up-card {
-        // border:2px solid black;
+    // Signup-form
+    #sign-form {
         margin: auto;
         font-family: 'Segoe UI', Geneva, Verdana, sans-serif;
         padding: 8% 6%;
-        // padding-right: 2%;
         height: 90%;
         width: 35.5%;
+
+        // center the content
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
 
-
-        #name {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-        }
-
+        // Signup page heading
         h1 {
             font-size: 4em;
             padding: 0;
@@ -60,7 +58,7 @@
             }
         }
 
-        hr{
+        hr {
             visibility: hidden;
         }
 
@@ -133,7 +131,7 @@ a {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        
+
         #sign-up-card {
             // height: 60%;
             padding: 0 5%;

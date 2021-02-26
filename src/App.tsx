@@ -58,10 +58,6 @@ function App() {
 
   }, []);
 
-  useEffect(() => {
-    console.log(userData)
-  }, [userData])
-
   return (
     <Router>
       <div className="App">
