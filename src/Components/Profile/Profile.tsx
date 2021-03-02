@@ -11,7 +11,7 @@ function Profile() {
 
     return (
         <div id="profile">
-            <AuthorProfileImage image={DP}/>
+            <AuthorProfileImage image={DP} id="author-image"/>
             <h1>Karan Pal Singh</h1>
             <ul id="social-media-links">
                 <li id="linked-in"><a target="_blank" rel="noreferrer" href="https://linkedin.com/in/KDSGYT" ><LinkedInIcon fontSize="large" /></a></li>

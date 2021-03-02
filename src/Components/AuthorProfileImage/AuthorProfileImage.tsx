@@ -7,9 +7,9 @@ interface props {
     id?: string //id to style the component
 }
 
-const AuthorProfileImage: FC<props> = ({ image, className }) => {
+const AuthorProfileImage: FC<props> = ({ image, className, id }) => {
     return (
-        <div className={`profile-image ${className} `} >
+        <div className={`profile-image ${className} `} id={id}>
             <img src={image} alt="" />
         </div>
     )
