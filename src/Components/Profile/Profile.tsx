@@ -4,14 +4,14 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import { Instagram } from '@material-ui/icons';
+import AuthorProfileImage from '../AuthorProfileImage/AuthorProfileImage';
+import DP from '../../assets/img/dp.png';
 
 function Profile() {
 
     return (
         <div id="profile">
-            <div id="profile-image">
-                <img src={"../../assets/img/dp.png"} alt="" />
-            </div>
+            <AuthorProfileImage image={DP}/>
             <h1>Karan Pal Singh</h1>
             <ul id="social-media-links">
                 <li id="linked-in"><a target="_blank" rel="noreferrer" href="https://linkedin.com/in/KDSGYT" ><LinkedInIcon fontSize="large" /></a></li>
