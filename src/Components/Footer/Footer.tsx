@@ -33,6 +33,16 @@ const Footer: FC<props> = () => {
                 <li><p>Our company's purpose is to provide any kind of help in Job search and Accomodation for immigrants. Our service is completely free of cost plus no ads.</p></li>
             </ul>
 
+            {/* Navigation links */}
+            <ul>
+                <li><h3>Navigation Links</h3></li>
+                <li className="link" onClick={() => history.push('/')}>Home</li>
+                <li className="link" onClick={() => history.push('/agencies')}>Agency</li>
+                <li className="link" onClick={() => history.push('/accomodation')}>Accomodation</li>
+                <li className="link" onClick={() => history.push('/author')}>Author</li>
+                <li className="link" onClick={() => history.push('/login')}>Login</li>
+            </ul>
+            
             {/* Author Section */}
             <ul id="author" className="display-as-flex">
                 <ul >
@@ -52,15 +62,6 @@ const Footer: FC<props> = () => {
 
             </ul>
 
-            {/* Navigation links */}
-            <ul>
-                <li><h3>Navigation Links</h3></li>
-                <li className="link" onClick={() => history.push('/')}>Home</li>
-                <li className="link" onClick={() => history.push('/agencies')}>Agency</li>
-                <li className="link" onClick={() => history.push('/accomodation')}>Accomodation</li>
-                <li className="link" onClick={() => history.push('/author')}>Author</li>
-                <li className="link" onClick={() => history.push('/login')}>Login</li>
-            </ul>
 
             {/* Contact US */}
             <ul>

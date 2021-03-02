@@ -76,3 +76,15 @@
     }
 
 }
+
+@media (max-width: 480px){
+    #footer{
+        flex-direction: column;
+        ul{
+            width: 90%;
+            li{
+                width: 100%;
+            }
+        }
+    }
+}
