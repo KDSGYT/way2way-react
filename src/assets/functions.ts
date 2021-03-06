@@ -111,7 +111,6 @@ export async function forgotPassword(emailAddress: string) {
 export function getUserFromDB(UID: string, setState: any, setError: any = "") {
 
     const {
-        email,
         uid = UID
     }: any = firebaseAuth.currentUser;
 

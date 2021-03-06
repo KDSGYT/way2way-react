@@ -56,7 +56,7 @@ function App() {
     // get all the ads from DB to be displayed
     getAds(setAds);
 
-  }, []);
+  }, [signup]);
 
   useEffect(() => {
     console.log(userData)

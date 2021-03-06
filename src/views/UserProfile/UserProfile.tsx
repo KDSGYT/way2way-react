@@ -11,7 +11,7 @@ function UserProfile() {
 
     const history = useHistory() // History indicates browser history
     const context: any = useContext(UserCTX);//Global CTX to get the information
-    const { path, url } = useRouteMatch();
+    const {  url } = useRouteMatch();
     const [signOut, setSignOut] = useUserSignedOut()  //custom hook to get or set user signout
     // const [userData] = useUserData();
     // const currentUser: any = firebaseAuth.currentUser;

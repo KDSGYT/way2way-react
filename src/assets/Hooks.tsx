@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import UserCTX from '../CTX/CTX';
-import { firebaseAuth } from '../Util/firebase';
 import { getImageUrl } from './functions';
 
 /**

@@ -4,7 +4,6 @@ import './Signup.scss';
 import { createUser } from '../../assets/functions';
 import { Switch, Route, useHistory, useRouteMatch } from 'react-router-dom';
 import Google from '../../assets/SVGs/google.svg'
-import { firebaseAuth } from '../../Util/firebase';
 import UserInfo from './UserInfo/UserInfo';
 import { useUserData, useUserSignedOut } from '../../assets/Hooks';
 import UserCTX from '../../CTX/CTX';
@@ -17,7 +16,7 @@ function Signup() {
     const [signOut] = useUserSignedOut();
     const [userData] = useUserData();
     const { signup, setSignup, setCreatingAccount }: any = useContext(UserCTX)
-    const { path, url } = useRouteMatch();
+    const {  url } = useRouteMatch();
 
 
     async function handleClick(e: any) {
@@ -64,7 +63,7 @@ function Signup() {
         return () => {
             setCreatingAccount(false)
         }
-    }, [])
+    }, [setCreatingAccount, setSignup])
 
     useEffect(() => {
         console.log(signup)

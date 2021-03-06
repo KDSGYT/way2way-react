@@ -16,7 +16,6 @@ function Login() {
     const context: any = useContext(UserCTX)
     const [userData] = useUserData();
     const [error, setError] = useState("")
-    const invalidCredentials = () => error ? <h1>invalidCredentials</h1> : null
 
     // set signup false when the user visits the login page
     useEffect(() => {
@@ -27,7 +26,7 @@ function Login() {
         // else if(context.creatingAccount && context.signup) {
         //     history.push('/signup/user-info')
         // }
-    }, [])
+    }, [context])
 
     // track signup changes
     useEffect(() => {

@@ -2,7 +2,7 @@ import { Button, FormGroup, TextField } from "@material-ui/core";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { addUserToDB, getImageUrl } from "../../../assets/functions";
-import { useUserData, useUserSignedOut } from "../../../assets/Hooks";
+import { useUserSignedOut } from "../../../assets/Hooks";
 import UserCTX from "../../../CTX/CTX";
 import { firebaseAuth } from "../../../Util/firebase";
 
@@ -52,7 +52,7 @@ function UserInfo() {
             context.setSignup(false)
             history.push('/profile')
         }
-    }, [imageURL, data])
+    }, [imageURL, data, context, history])
 
     /**
      * gets the current user and get the image url on submit,

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import './AdView.scss'
 import { AdsCTX } from '../../../App';
 import Button from '@material-ui/core/Button';
@@ -49,8 +49,6 @@ function AdView() {
             return newState
         })
     }, [DataCTX, AID]);
-
-    const history = useHistory();
 
     return (
         <section id="view" className="display-as-flex">
