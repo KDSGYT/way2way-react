@@ -2,11 +2,11 @@ version: "3.9"
 services:
   way2way:
     build: './'
-    image: kdsgyt/way2way:latest
+    image: way2way:latest
     container_name: way2way
     ports: 
       - '80:80'
     env_file:
-      - './production.env'
+      - './.env'
     # context: 'https://github.com/KDSGYT/way2way-react/tree/docker'
     
