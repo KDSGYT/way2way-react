@@ -6,13 +6,7 @@ services:
     container_name: way2way
     ports: 
       - '80:80'
+    env_file:
+      - './production.env'
     # context: 'https://github.com/KDSGYT/way2way-react/tree/docker'
-    environment: 
-      - REACT_APP_FIREBASE_API_KEY=AIzaSyCcl-VmqqdwySv0jUuG0S3KQHSkeqXtcqs
-      - REACT_APP_FIREBASE_AUTH_DOMAIN=way-to-way.firebase.com
-      - REACT_APP_FIREBASE_DATABASE_URL=https://way-to-way.firebaseio.com
-      - REACT_APP_FIREBASE_PROJECT_ID=way-to-way
-      - REACT_APP_FIREBASE_STORAGE_BUCKET=way-to-way.appspot.com
-      - REACT_APP_FIREBASE_MESSAGING_SENDER_ID=731977739171
-      - REACT_APP_FIREBASE_APP_ID=1:731977739171:web:fab6418fb0741b024e8816
-      - REACT_APP_FIREBASE_MEASUREMENT_ID=G-SZ6BVXY9Z8
+    
