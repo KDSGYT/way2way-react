@@ -22,6 +22,4 @@ RUN npm run build
 
 EXPOSE 80
 
-# CMD ["serve","-l","80", "-s", "build"]
-# CMD ["npm", "run", "build"]
-# CMD ["serve", "-s", "build"]
+CMD ["serve","-l","80", "-s", "build"]
