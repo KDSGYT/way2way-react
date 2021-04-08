@@ -1,10 +1,14 @@
 version: "3.9"
 services:
   way2way:
+    container_name: way2way
     build: 'Dockerfile.dev'
     env_file: .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     image: way2way:latest
     container_name: way2way
     ports: 
-      - '80:80'
+      - '3000:80'
     
