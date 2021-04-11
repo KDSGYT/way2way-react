@@ -9,9 +9,7 @@ const AccomodationSection:FC<SectionProps> = ({onClick}) => {
                 <h1>Accomodation</h1>
                 <p>Ads posted by desis for desis. Find accomodation starting at $350/month</p>
             </div>
-            <div id="left-triangle">
-                
-            </div>
+            
         </section>
     )
 }

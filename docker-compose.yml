@@ -3,7 +3,9 @@ services:
   way2way:
     container_name: way2way
     build: 'Dockerfile.dev'
+    # Environemnt variables
     env_file: .env
+    #  Connected file system to container for data persistance
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

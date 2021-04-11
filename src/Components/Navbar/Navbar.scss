@@ -2,36 +2,9 @@
 @import '../../assets/Variables.scss';
 
 
-.accentstyles {
-    display: block;
-    color: #FFF;
-    background: #000;
-    background-clip: padding-box;
-    $border: 3px;
-    border: solid $border transparent;
-    border-top: 1px;
-
-    &:after {
-        content: '';
-        position: absolute;
-        height: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-
-        margin: -$border;
-        /* !importanté */
-        border-radius: inherit;
-        /* !importanté */
-        background-color: linear-gradient(1.0turn, #F94848 0%, rgba(0, 0, 0, 1) 100%);
-    }
-}
-
 #navbar {
-    // border: 2px solid black
-    width: 100vw;
+    box-sizing: border-box;
+    width: 100%;
     list-style-type: none;
     height: $navbar-height;
     margin: 0;
@@ -41,17 +14,12 @@
     justify-content: center;
     color: white;
     font-weight: 600;
-    background-color: black;
-    &:after {
-        height: $navbar-height+1;
-    }
-
-    // stroke: linear-gradient(green, yellow);
+    background-color: $newBlack;
+    border:2px solid green;
 
 
     .nav-links-group {
         width: 50%;
-        // border:2px solid green;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -85,8 +53,7 @@
 @media (max-width:480px) {
 
     #navbar {
-        // height: $navbar-height + 0.7vh;
-        // min-height: $navbar-height;
+
         padding: 0;
         display: flex;
         flex-direction: column;

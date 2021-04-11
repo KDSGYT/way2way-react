@@ -12,7 +12,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  max-width: 1920px;
+  margin: 0;
+  padding: 0;
 }
 button, input{
   outline: none;

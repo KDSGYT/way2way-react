@@ -1,31 +1,5 @@
 @import './Variables.scss';
 
-.accentstyles{
-    color: #FFF;
-    background: #000;
-    background-clip: padding-box;
-    $border: 3px;
-    border: solid $border transparent;
-    border-top: 1px;
-
-    &:after {
-        content: '';
-        position: absolute;
-        height: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-
-        margin: -$border;
-        /* !importanté */
-        border-radius: inherit;
-        /* !importanté */
-        background: linear-gradient(1.0turn, #F94848 0%, rgba(0,0,0, 1) 100%);
-    }
-}
-
 // make the element display as flex
 .display-as-flex{
     display: flex;
