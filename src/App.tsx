@@ -58,16 +58,12 @@ function App() {
 
   }, [signup]);
 
-  useEffect(() => {
-    console.log(userData)
-  }, [userData])
-
   return (
     <Router>
       <div className="App">
+        <Navbar />
         <UserCTX.Provider value={value}>
           <AdsCTX.Provider value={ads}>
-            <Navbar />
 
             <Switch>
               {/* Route for homepage */}

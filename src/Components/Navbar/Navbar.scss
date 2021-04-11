@@ -15,7 +15,8 @@
     color: white;
     font-weight: 600;
     background-color: $newBlack;
-    border:2px solid green;
+    position: fixed;
+    z-index: 99;
 
 
     .nav-links-group {
