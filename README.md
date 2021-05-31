@@ -5,3 +5,18 @@
     </a>
 </p>
 
+<h2>Branch</h2>
+<table>
+    <tr>
+        <th><b>Branch Name</b></th>
+        <th><b>Purpose</b></th>
+    </tr>
+    <tr>
+        <td>Main</td>
+        <td>Master branch that is in production</td>
+    </tr>
+    <tr>
+        <td>Next</td>
+        <td>Next app makeover</td>
+    </tr>
+</table>
